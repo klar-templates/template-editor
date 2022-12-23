@@ -1,4 +1,4 @@
-initAdmin = function () {
+initEditor = function () {
   const iframeWindow = frames[0];
   const iframeDocument = frames[0].document;
   // Add klar-pages-app script after Babel has transpiled the JSX code
@@ -64,13 +64,6 @@ function addHtml() {
     </div>
   `;
   document.body.append(new DOMParser().parseFromString(adminHtml, 'text/html').querySelector('.layout'));
-}
-
-function addCss() {
-  const link = document.createElement('link');
-  link.href = '/editor/index.css';
-  link.rel = 'stylesheet';
-  document.querySelector('head').appendChild(link);
 }
 
 function setHead() {
