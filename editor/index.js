@@ -13,6 +13,7 @@ initEditor = function () {
     const blocks = startpage.blocks;
     const block1 = blocks[0];
     const block2 = blocks[1];
+    console.log(data)
   }
 }
 
@@ -73,3 +74,8 @@ function setHead() {
 setHead();
 addHtml();
 setEvents();
+
+parent.frames[0].addEventListener('DOMContentLoaded', (event) => {
+  initEditor();
+  console.log('DOM fully loaded and parsed');
+});
