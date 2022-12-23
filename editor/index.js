@@ -5,7 +5,6 @@ function initTemplate(data, components, config) {
   const block2 = blocks[1];
   // blocks.push(block1)
   console.log(data)
-  // setTimeout(()=>console.log(iframeWindow.templateComponents), 30)
   console.log(components);
   console.log(config);
 }
