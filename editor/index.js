@@ -32,9 +32,21 @@ function setEvents() {
     mobile.classList.remove('active');
   }
 
-  desktop.addEventListener('click', (e) => {if((window.innerWidth - 260) < 1280) {clearBreakpoints();return};if(iframe.classList.contains('desktop')) {clearBreakpoints();} else {clearBreakpoints();iframe.classList.add('desktop');e.target.classList.add('active');}});
-  ipad.addEventListener('click', (e) => {if((window.innerWidth - 260) < 1024) {clearBreakpoints();return};if(iframe.classList.contains('ipad')) {clearBreakpoints();} else {clearBreakpoints();iframe.classList.add('ipad');e.target.classList.add('active');}});
-  mobile.addEventListener('click', (e) => {if((window.innerWidth - 260) < 768) {clearBreakpoints();return};if(iframe.classList.contains('mobile')) {clearBreakpoints();} else {clearBreakpoints();iframe.classList.add('mobile');e.target.classList.add('active');}});
+  desktop.addEventListener('click', (e) => {if((window.innerWidth - 260) < 1280) {clearBreakpoints();removeEditorSetting('breakpoint');return};if(iframe.classList.contains('desktop')) {clearBreakpoints();removeEditorSetting('breakpoint');} else {clearBreakpoints();iframe.classList.add('desktop');e.target.classList.add('active');setEditorSetting('breakpoint', 'desktop');}});
+  ipad.addEventListener('click', (e) => {if((window.innerWidth - 260) < 1024) {clearBreakpoints();removeEditorSetting('breakpoint');return};if(iframe.classList.contains('ipad')) {clearBreakpoints();removeEditorSetting('breakpoint');} else {clearBreakpoints();iframe.classList.add('ipad');e.target.classList.add('active');setEditorSetting('breakpoint', 'ipad');}});
+  mobile.addEventListener('click', (e) => {if((window.innerWidth - 260) < 768) {clearBreakpoints();removeEditorSetting('breakpoint');return};if(iframe.classList.contains('mobile')) {clearBreakpoints();removeEditorSetting('breakpoint');} else {clearBreakpoints();iframe.classList.add('mobile');e.target.classList.add('active');setEditorSetting('breakpoint', 'mobile');}});
+
+  const breakpointValue = getEditorSetting('breakpoint');
+  if (breakpointValue) {
+    iframe.classList.add(breakpointValue);
+    if (breakpointValue === 'desktop') {
+      desktop.classList.add('active');
+    } else if (breakpointValue === 'ipad') {
+      ipad.classList.add('active');
+    } else if (breakpointValue === 'mobile') {
+      mobile.classList.add('active');
+    }
+  }
 }
 
 function addHtml() {
@@ -60,7 +72,7 @@ function addHtml() {
         </div>
       </aside>
       <main class="main bg-neutral-100">
-        <iframe class="iframe js-iframe transition-[width] shadow-lg" src="/"></iframe>
+        <iframe class="iframe js-iframe transition-[width] shadow-lg" src="${getEditorSetting('current-page') ? getEditorSetting('current-page') : '/'}"></iframe>
       </main>
     </div>
   `;
@@ -71,11 +83,49 @@ function setHead() {
   document.title = 'Klar Template Editor'  
 }
 
+function getEditorSettings() {
+  let editorSettings = localStorage.getItem('editor-settings');
+  if (editorSettings) {
+    editorSettings = JSON.parse(editorSettings);
+  } else {
+    editorSettings = {};
+  }
+  return editorSettings;
+}
+ 
+function getEditorSetting(key) {
+  const editorSettings = getEditorSettings();
+  return editorSettings[key];
+}
+
+function removeEditorSetting(key) {
+  const editorSettings = getEditorSettings();
+  delete editorSettings[key];
+  localStorage.setItem('editor-settings', JSON.stringify(editorSettings));
+}
+
+function setEditorSetting(key, value) {
+  const editorSettings = getEditorSettings();
+  editorSettings[key] = value; 
+  localStorage.setItem('editor-settings', JSON.stringify(editorSettings));
+}
+
+function setState() {
+
+}
+
 setHead();
 addHtml();
-setEvents();
+setEvents();  
 
 parent.frames[0].addEventListener('DOMContentLoaded', (event) => {
   initEditor();
   console.log('DOM fully loaded and parsed');
+}); 
+
+parent.frames[0].addEventListener('unload', (event) => {
+  const pathname = parent.frames[0].location.pathname;
+  if (pathname !== 'blank') {
+    setEditorSetting('current-page', pathname);
+  }
 });
