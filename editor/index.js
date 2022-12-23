@@ -4,9 +4,23 @@ function initTemplate(data, components, config) {
   const block1 = blocks[0];
   const block2 = blocks[1];
   // blocks.push(block1)
-  console.log(data)
-  console.log(components);
-  console.log(config);
+  // console.log(data);
+  // console.log(components);
+  // console.log(config);
+  renderBlocks(data, components, config);
+}
+
+function renderBlocks(data, components, config) {
+  const blockType = config.block_types.find((b) => b.name === 'TemplateEditorHero');
+  const blockData = config.data_defaults.blocks['TemplateEditorHero'];
+  const b = {...blockData, _id: `${blockType.name}-123456`,  _type: blockType.name}
+  // data.data.pages[0].blocks = [];
+  // data.data.pages[0].blocks.push(b);
+  data.data.pages[1].blocks.splice(1, 0, b);
+  // data.navigate('/');
+  // data.setData(data);
+  // console.log(data)
+  // console.log(blockType)
 }
 
 function setInitTemplate() {
@@ -16,7 +30,7 @@ function setInitTemplate() {
       .then((response) => response.json())
       .then((data) => { 
         window.templateConfig = data;
-        initTemplate(siteData, data, iframeWindow.templateComponents);
+        initTemplate(siteData, iframeWindow.templateComponents, data);
       });
     }
 }
