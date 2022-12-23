@@ -1,5 +1,5 @@
 
-import templateConfig from '../config.json';
+// import templateConfig from '../config.json';
 import Hero from "./hero";
 import Team from "./team";
 
@@ -9,7 +9,16 @@ const templateComponents = {
 };
 
 window.templateComponents = templateComponents;
-window.templateConfig = templateConfig;
+
+// window.templateConfig = templateConfig;
+// console.log(window.templateConfig)
+
+// fetch('../config.json')
+//   .then((response) => response.json())
+//   .then((data) => { 
+//     window.templateComponents = templateComponents;
+//     window.templateConfig = data;
+//   });
 
 // if (parent.frames.initAdmin) {
 //   parent.frames.initAdmin();

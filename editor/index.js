@@ -1,21 +1,25 @@
-function initEditor() {
-  const iframeWindow = frames[0];
-  const iframeDocument = frames[0].document;
-  
-  // setTimeout(()=>console.log(iframeWindow.templateComponents), 30)
-  console.log(iframeWindow.templateComponents);
-}
-
 function setInitTemplate() {
   const iframeWindow = frames[0];
   iframeWindow.initTemplate = function (data) {
-    const startpage = data.data.pages[0];
-    const blocks = startpage.blocks;
-    const block1 = blocks[0];
-    const block2 = blocks[1];
-    // blocks.push(block1)
-    console.log(data)
-  }
+    function doIt() {
+      const startpage = data.data.pages[0];
+      const blocks = startpage.blocks;
+      const block1 = blocks[0];
+      const block2 = blocks[1];
+      // blocks.push(block1)
+      console.log(data)
+      // setTimeout(()=>console.log(iframeWindow.templateComponents), 30)
+      console.log(iframeWindow.templateComponents);
+      console.log(window.templateConfig);
+    }
+
+    fetch('../config.json')
+      .then((response) => response.json())
+      .then((data) => { 
+        window.templateConfig = data;
+        doIt();
+      });
+    }
 }
 
 function setEvents() {
@@ -120,9 +124,9 @@ addHtml();
 setInitTemplate();
 setEvents();
 
-parent.frames[0].addEventListener('load', (event) => {
-  initEditor();
-}); 
+// parent.frames[0].addEventListener('load', (event) => {
+//   initEditor();
+// }); 
 
 parent.frames[0].addEventListener('unload', (event) => {
   const pathname = parent.frames[0].location.pathname;
