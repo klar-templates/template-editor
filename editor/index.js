@@ -4,7 +4,10 @@ function initEditor() {
   
   // setTimeout(()=>console.log(iframeWindow.templateComponents), 30)
   console.log(iframeWindow.templateComponents);
+}
 
+function setInitTemplate() {
+  const iframeWindow = frames[0];
   iframeWindow.initTemplate = function (data) {
     const startpage = data.data.pages[0];
     const blocks = startpage.blocks;
@@ -114,6 +117,7 @@ function setState() {
 
 setHead();
 addHtml();
+setInitTemplate();
 setEvents();
 
 parent.frames[0].addEventListener('load', (event) => {
