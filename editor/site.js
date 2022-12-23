@@ -1,4 +1,4 @@
-initEditor = function () {
+const initSite = function () {
   // Add klar-pages-app script after Babel has transpiled the JSX code
   const script = document.createElement('script');
   script.src = 'http://localhost:4173/assets/index.b5643cb4.js';
@@ -8,5 +8,5 @@ initEditor = function () {
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  initEditor();
+  initSite();
 });
