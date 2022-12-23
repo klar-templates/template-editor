@@ -2,11 +2,11 @@ initEditor = function () {
   const iframeWindow = frames[0];
   const iframeDocument = frames[0].document;
   // Add klar-pages-app script after Babel has transpiled the JSX code
-  const script = iframeDocument.createElement('script');
-  script.src = 'http://localhost:4173/assets/index.b5643cb4.js';
-  script.type = 'module';
-  script.crossOrigin = true;
-  iframeDocument.querySelector('head').appendChild(script);
+  // const script = iframeDocument.createElement('script');
+  // script.src = 'http://localhost:4173/assets/index.b5643cb4.js';
+  // script.type = 'module';
+  // script.crossOrigin = true;
+  // iframeDocument.querySelector('head').appendChild(script);
 
   iframeWindow.initTemplate = function (data) {
     const startpage = data.data.pages[0];
@@ -118,10 +118,10 @@ setHead();
 addHtml();
 setEvents();  
 
-parent.frames[0].addEventListener('DOMContentLoaded', (event) => {
-  initEditor();
-  console.log('DOM fully loaded and parsed');
-}); 
+// parent.frames[0].addEventListener('DOMContentLoaded', (event) => {
+//   initEditor();
+//   console.log('DOM fully loaded and parsed');
+// }); 
 
 parent.frames[0].addEventListener('unload', (event) => {
   const pathname = parent.frames[0].location.pathname;
