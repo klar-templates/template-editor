@@ -1,23 +1,23 @@
+function initTemplate(data, components, config) {
+  const startpage = data.data.pages[0];
+  const blocks = startpage.blocks;
+  const block1 = blocks[0];
+  const block2 = blocks[1];
+  // blocks.push(block1)
+  console.log(data)
+  // setTimeout(()=>console.log(iframeWindow.templateComponents), 30)
+  console.log(components);
+  console.log(config);
+}
+
 function setInitTemplate() {
   const iframeWindow = frames[0];
-  iframeWindow.initTemplate = function (data) {
-    function doIt() {
-      const startpage = data.data.pages[0];
-      const blocks = startpage.blocks;
-      const block1 = blocks[0];
-      const block2 = blocks[1];
-      // blocks.push(block1)
-      console.log(data)
-      // setTimeout(()=>console.log(iframeWindow.templateComponents), 30)
-      console.log(iframeWindow.templateComponents);
-      console.log(window.templateConfig);
-    }
-
+  iframeWindow.initTemplate = function (siteData) {
     fetch('../config.json')
       .then((response) => response.json())
       .then((data) => { 
         window.templateConfig = data;
-        doIt();
+        initTemplate(siteData, data, iframeWindow.templateComponents);
       });
     }
 }
