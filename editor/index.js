@@ -16,7 +16,8 @@ function renderBlocks(data, components, config) {
   const b = {...blockData, _id: `${blockType.name}-123456`,  _type: blockType.name}
   // data.data.pages[0].blocks = [];
   // data.data.pages[0].blocks.push(b);
-  data.data.pages[1].blocks.splice(1, 0, b);
+  // data.data.pages[0].blocks.splice(1, 1);
+  data.data.pages[0].blocks.splice(1, 0, b);
   // data.navigate('/');
   // data.setData(data);
   // console.log(data)
@@ -26,13 +27,8 @@ function renderBlocks(data, components, config) {
 function setInitTemplate() {
   const iframeWindow = frames[0];
   iframeWindow.initTemplate = function (siteData) {
-    fetch('../config.json')
-      .then((response) => response.json())
-      .then((data) => { 
-        window.templateConfig = data;
-        initTemplate(siteData, iframeWindow.templateComponents, data);
-      });
-    }
+    initTemplate(siteData, iframeWindow.templateComponents, window.templateConfig);
+  }
 }
 
 function setEvents() {
@@ -132,18 +128,22 @@ function setState() {
 
 }
 
-setHead();
-addHtml();
-setInitTemplate();
-setEvents();
+function startEditor(config) {
+  window.templateConfig = config;
+  setHead();
+  addHtml();
+  setInitTemplate();
+  setEvents();
+  parent.frames[0].addEventListener('unload', (event) => {
+    const pathname = parent.frames[0].location.pathname;
+    if (pathname !== 'blank') {
+      setEditorSetting('current-page', pathname);
+    }
+  });
+}
 
-// parent.frames[0].addEventListener('load', (event) => {
-//   initEditor();
-// }); 
-
-parent.frames[0].addEventListener('unload', (event) => {
-  const pathname = parent.frames[0].location.pathname;
-  if (pathname !== 'blank') {
-    setEditorSetting('current-page', pathname);
-  }
-});
+fetch('../config.json')
+  .then((response) => response.json())
+  .then((data) => { 
+    startEditor(data);
+  });
