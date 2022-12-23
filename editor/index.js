@@ -71,6 +71,5 @@ function setHead() {
 }
 
 setHead();
-addCss();
 addHtml();
 setEvents();
