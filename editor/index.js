@@ -1,13 +1,7 @@
 function initEditor() {
   const iframeWindow = frames[0];
   const iframeDocument = frames[0].document;
-  // Add klar-pages-app script after Babel has transpiled the JSX code
-  // const script = iframeDocument.createElement('script');
-  // script.src = 'http://localhost:4173/assets/index.b5643cb4.js';
-  // script.type = 'module';
-  // script.crossOrigin = true;
-  // iframeDocument.querySelector('head').appendChild(script);
-
+  
   // setTimeout(()=>console.log(iframeWindow.templateComponents), 30)
   console.log(iframeWindow.templateComponents);
 
