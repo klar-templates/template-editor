@@ -9,5 +9,4 @@ initEditor = function () {
 
 window.addEventListener('DOMContentLoaded', (event) => {
   initEditor();
-  console.log('DOM fully loaded and parsed');
 });
