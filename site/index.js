@@ -7,6 +7,6 @@ const initSite = function () {
   document.querySelector('head').appendChild(script);
 }
 
-// window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('DOMContentLoaded', (event) => {
   initSite();
-// });
+});
