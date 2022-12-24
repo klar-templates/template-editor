@@ -11,8 +11,8 @@ function initTemplate(data, components, config) {
 }
 
 function renderBlocks(data, components, config) {
-  const blockType = config.block_types.find((b) => b.name === 'TemplateEditorHero');
-  const blockData = config.data_defaults.blocks['TemplateEditorHero'];
+  const blockType = config.block_types.find((b) => b.name === 'TemplateHero');
+  const blockData = config.data_defaults.blocks['TemplateHero'];
   const b = {...blockData, _id: `${blockType.name}-123456`,  _type: blockType.name}
   // data.data.pages[0].blocks = [];
   // data.data.pages[0].blocks.push(b);
