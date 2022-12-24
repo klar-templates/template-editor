@@ -36,6 +36,7 @@ function setEvents() {
   const desktop = document.querySelector('.js-desktop');
   const ipad = document.querySelector('.js-ipad');
   const mobile = document.querySelector('.js-mobile');
+  const btnDownloadBundle = document.querySelector('.js-download-bundle');
 
   function clearBreakpoints() {
     iframe.classList.remove('desktop');
@@ -61,12 +62,27 @@ function setEvents() {
       mobile.classList.add('active');
     }
   }
+
+  btnDownloadBundle.addEventListener('click', (e) => downloadBundle(e));
+}
+
+function downloadBundle(e) {
+  // e.preventDefault();
+  const link = e.target;
+  let css = document.querySelector('style').innerHTML;
+  css = 'data:text/plain;charset=utf-8,' + encodeURIComponent(css);
+  // console.log(css);
+  link.href = css;
+  link.target = '_blank';
+  const uniqueId = (new Date()).getTime();
+  link.download = 'index.' + uniqueId + '.css';
+  // console.log(parent.frames[0].klarContext)
 }
 
 function addHtml() {
   const adminHtml = `
     <div class="layout">
-      <aside class="sidebar p-4">
+      <aside class="sidebar p-4 relative">
         <h1 class="text-2xl font-semibold text-neutral-700">Edit blocks</h1>
         <div class="breakpoints mt-4">
           <div class="inline-flex" role="group">
@@ -84,6 +100,7 @@ function addHtml() {
             </button>
           </div>
         </div>
+        <div class="mt-4"><a href="#" title="When you are ready for a release.\nDownload the Tailwind css-file and put it in the dist folder." class="js-download-bundle w-[228px] absolute left-4 bottom-4 border border-gray-200 hover:border-gray-300 text-gray-700 block text-center rounded-lg px-4 py-1.5 text-base font-semibold leading-7 shadow-sm hover:bg-primary-dark">Download CSS Bundle</a></div>
       </aside>
       <main class="main bg-neutral-100">
         <iframe class="iframe js-iframe transition-[width] shadow-lg" src="${getEditorSetting('current-page') ? getEditorSetting('current-page') : '/'}"></iframe>
