@@ -111,7 +111,7 @@ async function downloadBundle(e) {
   content = content + '';
   content = `(${content})()`;
   // content = new Blob([content], {type: 'text/plain'});
-  console.log(content);
+  // console.log(content);
   content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(content);
   // console.log(content)
   const jsLink = document.querySelector('.js-download-js-bundle');
