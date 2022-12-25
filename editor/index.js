@@ -110,15 +110,18 @@ async function downloadBundle(e) {
   content = parent.frames[0].Babel.transform(content, { presets: ['react'] }).code;
   content = content + '';
   content = `(${content})()`;
+  // content = new Blob([content], {type: 'text/plain'});
+  console.log(content);
   content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(content);
   // console.log(content)
   const jsLink = document.querySelector('.js-download-js-bundle');
+  // jsLink.href = URL.createObjectURL(content);
   jsLink.href = content;
-  jsLink.target = '_blank';
+  // jsLink.target = '_blank';
   uniqueId = (new Date()).getTime();
   jsLink.download = 'index.' + uniqueId + '.js';
   jsLink.click();
-
+  // URL.revokeObjectURL(jsLink.href);
 }
 
 function insertScript(selector, src, callback) {
