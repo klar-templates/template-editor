@@ -80,7 +80,7 @@ async function downloadBundle(e) {
   //   return;
   // }
   const cssLink = document.querySelector('.js-download-css-bundle');
-  let css = document.querySelector('style').innerHTML;
+  let css = parent.frames[0].querySelector('style').innerHTML;
   css = 'data:text/plain;charset=utf-8,' + encodeURIComponent(css);
   // console.log(css);
   cssLink.href = css;
