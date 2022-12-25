@@ -74,7 +74,7 @@ function setEvents() {
 }
 
 async function downloadBundle(e) {
-  // e.preventDefault();
+  e.preventDefault();
   // if (!window.Babel) {
   //   insertScript('head', 'https://unpkg.com/@babel/standalone/babel.min.js', function(){document.querySelector('.js-download-bundle').click()});
   //   return;
