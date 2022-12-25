@@ -91,9 +91,10 @@ async function downloadBundle(e) {
   // console.log(parent.frames[0].klarContext)
 
   const urls = window.template.config.block_types.map(b => {
-    const url = 'blocks/' + b.name + '.js'
+    const url = 'blocks/' + b.name + '.js';
     return url;
   });
+  urls.push('blocks/index.js');
   const requests = urls.map((url) => fetch(url));
   const responses = await Promise.all(requests); 
   const promises = responses.map((response) => response.text());
@@ -105,7 +106,10 @@ async function downloadBundle(e) {
   result = result.map(t => t.replace('export default ', ''));
   // console.log(result);
   let content = result.join('');
+  content = content.replace(/import (?:.|\n)*?';/gm, '');
   content = parent.frames[0].Babel.transform(content, { presets: ['react'] }).code;
+  content = content + '';
+  content = `(${content})()`;
   content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(content);
   // console.log(content)
   const jsLink = document.querySelector('.js-download-js-bundle');
