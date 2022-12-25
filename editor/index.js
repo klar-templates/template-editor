@@ -73,8 +73,63 @@ function setEvents() {
   btnDownloadBundle.addEventListener('click', (e) => downloadBundle(e));
 }
 
+/**
+ * Create a handle to a new (text) file on the local file system.
+ *
+ * @return {!Promise<FileSystemFileHandle>} Handle to the new file.
+ */
+ function getNewFileHandle() {
+  // For Chrome 86 and later...
+  if ('showSaveFilePicker' in window) {
+    const opts = {
+      types: [{
+        description: 'Text file',
+        accept: {'text/plain': ['.txt']},
+      }],
+    };
+    return window.showSaveFilePicker(opts);
+  }
+  // For Chrome 85 and earlier...
+  const opts = {
+    type: 'save-file',
+    accepts: [{
+      description: 'Text file',
+      extensions: ['txt'],
+      mimeTypes: ['text/plain'],
+    }],
+  };
+  return window.chooseFileSystemEntries(opts);
+}
+
+/**
+ * Writes the contents to disk.
+ *
+ * @param {FileSystemFileHandle} fileHandle File handle to write to.
+ * @param {string} contents Contents to write.
+ */
+//  async function writeFile(fileHandle, contents) {
+//   // Support for Chrome 82 and earlier.
+//   if (fileHandle.createWriter) {
+//     // Create a writer (request permission if necessary).
+//     const writer = await fileHandle.createWriter();
+//     // Write the full length of the contents
+//     await writer.write(0, contents);
+//     // Close the file and write the contents to disk
+//     await writer.close();
+//     return;
+//   }
+//   // For Chrome 83 and later.
+//   // Create a FileSystemWritableFileStream to write to.
+//   const writable = await fileHandle.createWritable();
+//   // Write the contents of the file to the stream.
+//   await writable.write(contents);
+//   // Close the file and write the contents to disk.
+//   await writable.close();
+// }
+
 async function downloadBundle(e) {
   e.preventDefault();
+  // await writeFile(e, 'Gabriel Lantz');
   // if (!window.Babel) {
   //   insertScript('head', 'https://unpkg.com/@babel/standalone/babel.min.js', function(){document.querySelector('.js-download-bundle').click()});
   //   return;
