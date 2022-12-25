@@ -11,6 +11,11 @@ function initTemplate(data, components, config) {
 }
 
 function renderBlocks(data, components, config) {
+  window.template = {
+    data: data,
+    components: components,
+    config: config
+  };
   // const blockType = config.block_types.find((b) => b.name === 'TemplateEditorHero');
   // const blockData = config.data_defaults.blocks['TemplateEditorHero'];
   const blockType = config.block_types[0];
@@ -68,17 +73,57 @@ function setEvents() {
   btnDownloadBundle.addEventListener('click', (e) => downloadBundle(e));
 }
 
-function downloadBundle(e) {
+async function downloadBundle(e) {
   // e.preventDefault();
-  const link = e.target;
+  // if (!window.Babel) {
+  //   insertScript('head', 'https://unpkg.com/@babel/standalone/babel.min.js', function(){document.querySelector('.js-download-bundle').click()});
+  //   return;
+  // }
+  const cssLink = document.querySelector('.js-download-css-bundle');
   let css = document.querySelector('style').innerHTML;
   css = 'data:text/plain;charset=utf-8,' + encodeURIComponent(css);
   // console.log(css);
-  link.href = css;
-  link.target = '_blank';
-  const uniqueId = (new Date()).getTime();
-  link.download = 'index.' + uniqueId + '.css';
+  cssLink.href = css;
+  cssLink.target = '_blank';
+  let uniqueId = (new Date()).getTime();
+  cssLink.download = 'index.' + uniqueId + '.css';
+  cssLink.click();
   // console.log(parent.frames[0].klarContext)
+
+  const urls = window.template.config.block_types.map(b => {
+    const url = 'blocks/' + b.name + '.js'
+    return url;
+  });
+  const requests = urls.map((url) => fetch(url));
+  const responses = await Promise.all(requests); 
+  const promises = responses.map((response) => response.text());
+  let result = await Promise.all(promises);
+  // console.log(requests);
+  // console.log(responses);
+  // console.log(promises);
+  // console.log(result);
+  result = result.map(t => t.replace('export default ', ''));
+  // console.log(result);
+  let content = result.join('');
+  content = parent.frames[0].Babel.transform(content, { presets: ['react'] }).code;
+  content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(content);
+  // console.log(content)
+  const jsLink = document.querySelector('.js-download-js-bundle');
+  jsLink.href = content;
+  jsLink.target = '_blank';
+  uniqueId = (new Date()).getTime();
+  jsLink.download = 'index.' + uniqueId + '.js';
+  jsLink.click();
+
+}
+
+function insertScript(selector, src, callback) {
+  const script = document.createElement('script');
+  script.src = src;
+  if (callback) {
+    script.onload = callback;
+  }
+  document.querySelector(selector).appendChild(script);
 }
 
 function addHtml() {
@@ -102,7 +147,7 @@ function addHtml() {
             </button>
           </div>
         </div>
-        <div class="mt-4"><a href="#" title="When you are ready for a release.\nDownload the Tailwind css-file and put it in the dist folder." class="js-download-bundle w-[228px] absolute left-4 bottom-4 border border-gray-200 hover:border-gray-300 text-gray-700 block text-center rounded-lg px-4 py-1.5 text-base font-semibold leading-7 shadow-sm hover:bg-primary-dark">Download CSS Bundle</a></div>
+        <div class="mt-4"><a href="#" class="js-download-css-bundle hidden">Download CSS</a><a href="#" class="js-download-js-bundle hidden">Download JS</a><a href="#" title="When you are ready for a release.\nDownload the Tailwind css-file and put it in the dist folder." class="js-download-bundle w-[228px] absolute left-4 bottom-4 border border-gray-200 hover:border-gray-300 text-gray-700 block text-center rounded-lg px-4 py-1.5 text-base font-semibold leading-7 shadow-sm hover:bg-primary-dark">Download Bundle</a></div>
       </aside>
       <main class="main bg-neutral-100">
         <iframe class="iframe js-iframe transition-[width] shadow-lg" src="${getEditorSetting('current-page') ? getEditorSetting('current-page') : '/'}"></iframe>

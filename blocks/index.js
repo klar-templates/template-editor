@@ -1,11 +1,10 @@
 
-// import templateConfig from '../config.json';
-import hero from "./hero";
-import team from "./team";
+import TemplateEditorHero from './TemplateEditorHero.js';
+import TemplateEditorTeam from './TemplateEditorTeam.js';
 
 const templateComponents = {
-  TemplateEditorHero: hero,
-  TemplateEditorTeam: team,
+  TemplateEditorHero: TemplateEditorHero,
+  TemplateEditorTeam: TemplateEditorTeam,
 };
 
 window.templateComponents = templateComponents;
