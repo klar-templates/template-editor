@@ -1,4 +1,3 @@
-
 import TemplateEditorHero from './TemplateEditorHero.js';
 import TemplateEditorTeam from './TemplateEditorTeam.js';
 

@@ -140,7 +140,8 @@ async function downloadBundle(e) {
   // console.log(css);
   cssLink.href = css;
   cssLink.target = '_blank';
-  let uniqueId = (new Date()).getTime();
+  // let uniqueId = (new Date()).getTime();
+  uniqueId = 'template';
   cssLink.download = 'index.' + uniqueId + '.css';
   cssLink.click();
   // console.log(parent.frames[0].klarContext)
@@ -173,7 +174,8 @@ async function downloadBundle(e) {
   // jsLink.href = URL.createObjectURL(content);
   jsLink.href = content;
   // jsLink.target = '_blank';
-  uniqueId = (new Date()).getTime();
+  // uniqueId = (new Date()).getTime();
+  uniqueId = 'template';
   jsLink.download = 'index.' + uniqueId + '.js';
   jsLink.click();
   // URL.revokeObjectURL(jsLink.href);
