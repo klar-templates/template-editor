@@ -161,7 +161,7 @@ async function downloadBundle(e) {
   result = result.map(t => t.replace('export default ', ''));
   // console.log(result);
   let content = result.join('');
-  content = content.replace(/import (?:.|\n)*?';/gm, '');
+  content = content.replace(/import (?:.|\n)*?;/gm, '');
   content = parent.frames[0].Babel.transform(content, { presets: ['react'] }).code;
   // content = content + '';
   content = `(${content})()`;
