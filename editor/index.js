@@ -164,7 +164,7 @@ async function downloadBundle(e) {
   content = content.replace(/import (?:.|\n)*?;/gm, '');
   content = parent.frames[0].Babel.transform(content, { presets: ['react'] }).code;
   // content = content + '';
-  content = `(${content})()`;
+  content = `(function (){\n${content}\n})();`;
   // content = new Blob([content], {type: 'text/plain'});
   // console.log(content);
   content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(content);
