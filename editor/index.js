@@ -173,7 +173,7 @@ async function downloadBundle1(e) {
   content = content.replace(/import (?:.|\n)*?;/gm, '');
   content = parent.frames[0].Babel.transform(content, { presets: ['react'] }).code;
   // content = content + '';
-  content = `(function (){\n${content}\n})();`;
+  content = `(function () {\n${content}\n})();`;
   // content = new Blob([content], {type: 'text/plain'});
   // console.log(content);
   // content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(content);
@@ -188,8 +188,17 @@ async function downloadBundle1(e) {
   // jsLink.click();
   // URL.revokeObjectURL(jsLink.href);
   
- 
-  if (FileSystemFileHandle) {
+  const supportsFileSystemAccess =
+    'showSaveFilePicker' in window &&
+    (() => {
+      try {
+        return window.self === window.top;
+      } catch {
+        return false;
+      }
+    })();
+  // If the File System Access API is supported…
+  if (supportsFileSystemAccess) {
     const options = {
       multiple: true,
       suggestedName: "index.template",
