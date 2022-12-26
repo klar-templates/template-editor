@@ -136,14 +136,14 @@ async function downloadBundle(e) {
   // }
   const cssLink = document.querySelector('.js-download-css-bundle');
   let css = parent.frames[0].document.querySelector('style').innerHTML;
-  css = 'data:text/plain;charset=utf-8,' + encodeURIComponent(css);
+  // css = 'data:text/plain;charset=utf-8,' + encodeURIComponent(css);
   // console.log(css);
   cssLink.href = css;
-  cssLink.target = '_blank';
+  // cssLink.target = '_blank';
   // let uniqueId = (new Date()).getTime();
   uniqueId = 'template';
   cssLink.download = 'index.' + uniqueId + '.css';
-  cssLink.click();
+  // cssLink.click();
   // console.log(parent.frames[0].klarContext)
 
   const urls = window.template.config.block_types.map(b => {
@@ -168,7 +168,7 @@ async function downloadBundle(e) {
   content = `(function (){\n${content}\n})();`;
   // content = new Blob([content], {type: 'text/plain'});
   // console.log(content);
-  content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(content);
+  // content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(content);
   // console.log(content)
   const jsLink = document.querySelector('.js-download-js-bundle');
   // jsLink.href = URL.createObjectURL(content);
@@ -177,8 +177,46 @@ async function downloadBundle(e) {
   // uniqueId = (new Date()).getTime();
   uniqueId = 'template';
   jsLink.download = 'index.' + uniqueId + '.js';
-  jsLink.click();
+  // jsLink.click();
   // URL.revokeObjectURL(jsLink.href);
+  if (FileSystemFileHandle) {
+    const options = {
+      suggestedName: "index.template",
+      types: [
+        {
+          accept: {
+            "text/plain": [".js"],
+          },
+        },
+      ],
+    };
+    
+    const handle = await window.showSaveFilePicker(options);
+    const writable = await handle.createWritable();
+    
+    await writable.write(content);
+    await writable.close();
+
+    options.types = [
+      {
+        accept: {
+          "text/plain": [".css"],
+        },
+      },
+    ];
+
+    
+    const handle1 = await window.showSaveFilePicker(options);
+    const writable1 = await handle1.createWritable();
+    
+    await writable1.write(css);
+    await writable1.close();
+    
+    console.log(writable);
+  } else {
+    cssLink.click();
+    jsLink.click();
+  }
 }
 
 function insertScript(selector, src, callback) {
