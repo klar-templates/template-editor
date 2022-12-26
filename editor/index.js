@@ -128,6 +128,14 @@ function setEvents() {
 // }
 
 async function downloadBundle(e) {
+  try {
+    const result = await downloadBundle1(e);
+  } catch(e) {
+    // console.log(e);
+  }
+}
+
+async function downloadBundle1(e) {
   e.preventDefault();
   // await writeFile(e, 'Gabriel Lantz');
   // if (!window.Babel) {
@@ -179,8 +187,11 @@ async function downloadBundle(e) {
   jsLink.download = 'index.' + uniqueId + '.js';
   // jsLink.click();
   // URL.revokeObjectURL(jsLink.href);
+  
+ 
   if (FileSystemFileHandle) {
     const options = {
+      multiple: true,
       suggestedName: "index.template",
       types: [
         {
@@ -212,7 +223,7 @@ async function downloadBundle(e) {
     await writable1.write(css);
     await writable1.close();
     
-    console.log(writable);
+    return handle;
   } else {
     cssLink.click();
     jsLink.click();
