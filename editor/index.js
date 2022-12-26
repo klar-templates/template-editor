@@ -163,7 +163,7 @@ async function downloadBundle(e) {
   let content = result.join('');
   content = content.replace(/import (?:.|\n)*?';/gm, '');
   content = parent.frames[0].Babel.transform(content, { presets: ['react'] }).code;
-  content = content + '';
+  // content = content + '';
   content = `(${content})()`;
   // content = new Blob([content], {type: 'text/plain'});
   // console.log(content);
