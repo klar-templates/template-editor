@@ -20,7 +20,8 @@ function renderBlocks(data, components, config) {
   // const blockData = config.data_defaults.blocks['TemplateEditorHero'];
   const blockType = config.block_types[0];
   const blockData = config.data_defaults.blocks[Object.keys(config.data_defaults.blocks)[0]];
-  const b = {...blockData, _id: `${blockType.name}-123456`,  _type: blockType.name}
+  const b = {...blockData, data: blockData, _id: `${blockType.name}-123456`,  _type: blockType.name};
+  // console.log(b)
   // data.data.pages[0].blocks = [];
   // data.data.pages[0].blocks.push(b);
   // data.data.pages[0].blocks.splice(1, 1);
