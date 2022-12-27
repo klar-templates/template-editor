@@ -1,9 +1,11 @@
-export default function TemplateEditorHero(data) {
-  const {title, subtitle} = data.block;
-  const Section = KlarComponents.Section;
-  const Container = KlarComponents.Container;
-  const Button = KlarComponents.Button;
-  const Link = KlarLink;
+export default function TemplateEditorHero(props) {
+  const {title, subtitle} = props.block;
+  const {Section, Container, Button, Link} = props.ui;
+  console.log('props', props.ui);
+  // const Section = KlarComponents.Section;
+  // const Container = KlarComponents.Container;
+  // const Button = KlarComponents.Button;
+  // const Link = KlarLink;
   // console.log(KlarComponents);
   return (
     <Section className="bg-slate-900 text-on-background">
