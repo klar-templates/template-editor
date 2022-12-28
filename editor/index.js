@@ -26,7 +26,7 @@ function renderBlocks(data, components, config) {
   const blockType1 = config.block_types[1];
   const blockData1 = config.data_defaults.blocks[Object.keys(config.data_defaults.blocks)[1]];
   const b1 = {...blockData1, data: blockData1, _id: `${blockType1.name}-23456789`,  _type: blockType1.name};
-  data.data.pages[0].blocks.splice(1, 0, b1);
+  data.data.pages[1].blocks.splice(1, 0, b1);
   // console.log(b)
   // data.data.pages[0].blocks = [];
   // data.data.pages[0].blocks.push(b);
