@@ -16,7 +16,7 @@
 const initSite = function () {
   // Add klar-pages-app script after Babel has transpiled the JSX code
   const script = document.createElement('script');
-  script.src = 'http://localhost:4173/assets/index.38d307c1.js';
+  script.src = 'http://localhost:4173/assets/index.c579b328.js';
   script.type = 'module';
   script.crossOrigin = true;
   document.querySelector('head').appendChild(script);

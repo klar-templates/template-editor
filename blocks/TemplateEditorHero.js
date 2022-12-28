@@ -1,7 +1,7 @@
 export default function TemplateEditorHero(props) {
   const {title, subtitle} = props.block;
   const {Section, Container, Button, Link} = props.ui;
-  console.log('props', props.ui);
+  // console.log('props', props.ui);
   // const Section = KlarComponents.Section;
   // const Container = KlarComponents.Container;
   // const Button = KlarComponents.Button;
