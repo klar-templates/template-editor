@@ -76,6 +76,15 @@ function setEvents() {
     if((window.innerWidth - 260) < parseInt(e.target.value)) {return};
     clearBreakpoints(true);const w = e.target.value;if (!isNaN(w)) {bpInputWidth.value = '';iframe.style.width = w+'px';setEditorSetting('breakpoint', w);}});
 
+  const selectWidthLookup = {
+    '375': '375',
+    '640': '640',
+    '768': '768',
+    '1024': '1024',
+    '1280': '1280',
+    '1536': '1536',
+  }
+  
   const breakpointValue = getEditorSetting('breakpoint');
   if (breakpointValue) {
     iframe.classList.add(breakpointValue);
@@ -86,8 +95,13 @@ function setEvents() {
     } else if (breakpointValue === 'mobile') {
       mobile.classList.add('active');
     } else {
-      iframe.style.width = breakpointValue+'px';
-      bpInputWidth.value = breakpointValue;
+      if (selectWidthLookup[breakpointValue]) {
+        iframe.style.width = breakpointValue+'px';
+        bpSelectWidth.value = breakpointValue;
+      } else {
+        iframe.style.width = breakpointValue+'px';
+        bpInputWidth.value = breakpointValue;
+      }
     }
   }
 
