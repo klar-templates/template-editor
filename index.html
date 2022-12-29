@@ -15,20 +15,24 @@
       @tailwind utilities;
       
       @layer utilities {
-        h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+        h1, h2, h3, h4 {
           @apply font-bold;
         }
         
-        h1, .h1 {
+        .heading-1 {
           @apply text-4xl;
         }
-
-        h2, .h2 {
+      
+        .heading-2 {
           @apply text-3xl;
         }
-
-        h3, .h3 {
+      
+        .heading-3 {
           @apply text-2xl;
+        }
+
+        .heading-4 {
+          @apply text-xl;
         }
 
         .section {
@@ -36,7 +40,7 @@
         }
 
         .section-heading {
-          @apply h1;
+          @apply heading-1;
         }
 
         .section-subheading {
@@ -51,6 +55,10 @@
           @apply px-4 sm:px-6 xl:px-8;
         }
 
+        .grid-gap {
+          @apply gap-4 md:gap-8 lg:gap-12
+        }
+
         /* .display-1 {
           @apply text-7xl;
         }
@@ -61,18 +69,6 @@
       
         .display-3 {
           @apply text-5xl;
-        }
-      
-        .heading-1 {
-          @apply text-4xl;
-        }
-      
-        .heading-2 {
-          @apply text-3xl;
-        }
-      
-        .heading-3 {
-          @apply text-2xl;
         }
       
         .paragraph {
