@@ -8,72 +8,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Template</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="http://localhost:4173/assets/index.d69b317f.css" rel="stylesheet" />
+    <link href="http://localhost:4173/assets/index.7d5d8db6.css" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        corePlugins: {
+          preflight: false,
+        }
+      }
+    </script>
     <style type="text/tailwindcss">
       @tailwind base;
       @tailwind components;
       @tailwind utilities;
+
+      @layer base {
+        
+      }
       
       @layer utilities {
-        h1, h2, h3, h4 {
-          @apply font-bold;
-        }
         
-        .heading-1 {
-          @apply text-4xl;
-        }
-      
-        .heading-2 {
-          @apply text-3xl;
-        }
-      
-        .heading-3 {
-          @apply text-2xl;
-        }
-
-        .heading-4 {
-          @apply text-xl;
-        }
-
-        .section {
-          @apply py-16 sm:py-20;
-        }
-
-        .section-heading {
-          @apply heading-1;
-        }
-
-        .section-subheading {
-          @apply text-base font-medium italic mt-3
-        }
-      
-        .container-fluid {
-          @apply max-w-7xl;
-        }
-
-        .container-padding-x {
-          @apply px-4 sm:px-6 xl:px-8;
-        }
-
-        .grid-gap {
-          @apply gap-4 md:gap-8 lg:gap-12
-        }
-
-        /* .display-1 {
-          @apply text-7xl;
-        }
-      
-        .display-2 {
-          @apply text-6xl;
-        }
-      
-        .display-3 {
-          @apply text-5xl;
-        }
-      
-        .paragraph {
-          @apply text-base;
-        } */
       }
     </style>
   </head>
