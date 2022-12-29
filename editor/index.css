@@ -25,6 +25,7 @@ body {
 .main {
   position: relative;
   width: 100%;
+  overflow-y: scroll;
 }
 
 .iframe {
@@ -37,15 +38,15 @@ body {
 }
 
 .iframe.desktop {
-  width: 1280px;
-}
-
-.iframe.ipad {
   width: 1024px;
 }
 
-.iframe.mobile {
+.iframe.ipad {
   width: 768px;
+}
+
+.iframe.mobile {
+  width: 375px;
 }
 
 .breakpoints .active {

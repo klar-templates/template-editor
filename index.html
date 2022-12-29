@@ -8,7 +8,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Template</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="http://localhost:4173/assets/index.9d202c10.css" rel="stylesheet" />
+    <link href="http://localhost:4173/assets/index.d69b317f.css" rel="stylesheet" />
+    <style type="text/tailwindcss">
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+      
+      @layer utilities {
+        h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+          @apply font-bold;
+        }
+        
+        h1, .h1 {
+          @apply text-4xl;
+        }
+
+        h2, .h2 {
+          @apply text-3xl;
+        }
+
+        h3, .h3 {
+          @apply text-2xl;
+        }
+
+        .section {
+          @apply py-16 sm:py-20;
+        }
+
+        .section-heading {
+          @apply h1;
+        }
+
+        .section-subheading {
+          @apply text-base font-medium italic mt-3
+        }
+      
+        .container-fluid {
+          @apply max-w-7xl;
+        }
+
+        .container-padding-x {
+          @apply px-4 sm:px-6 xl:px-8;
+        }
+
+        /* .display-1 {
+          @apply text-7xl;
+        }
+      
+        .display-2 {
+          @apply text-6xl;
+        }
+      
+        .display-3 {
+          @apply text-5xl;
+        }
+      
+        .heading-1 {
+          @apply text-4xl;
+        }
+      
+        .heading-2 {
+          @apply text-3xl;
+        }
+      
+        .heading-3 {
+          @apply text-2xl;
+        }
+      
+        .paragraph {
+          @apply text-base;
+        } */
+      }
+    </style>
   </head>
   <body class="bg-background m-0">
     <div id="root"></div>
