@@ -14,9 +14,11 @@
 // }
 
 const initSite = function () {
+  window.templateNunjucksBlocks = parent.frames.templateNunjucksBlocks;
+  window.templateComponents = parent.frames.templateComponents;
   // Add klar-pages-app script after Babel has transpiled the JSX code
   const script = document.createElement('script');
-  script.src = 'http://localhost:4173/assets/index.33166117.js';
+  script.src = 'http://localhost:4173/assets/index.4c81e3cb.js';
   script.type = 'module';
   script.crossOrigin = true;
   document.querySelector('head').appendChild(script);

@@ -73,6 +73,7 @@
       "title": "Team",
       "name": "team",
       "icon": "group",
+      "template_engine": "nunjucks",
       "fields": [
         {
           "type": "string",

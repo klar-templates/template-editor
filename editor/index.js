@@ -190,10 +190,14 @@ async function downloadBundle1(e) {
   // console.log(parent.frames[0].klarContext)
 
   const urls = window.template.config.block_types.map(b => {
-    const url = 'blocks/' + b.name + '.js';
-    return url;
-  });
+    if (!b.template_engine) {
+      const url = 'blocks/' + b.name + '.js';
+      return url;
+    }
+    return null;
+  })?.filter(x => x !== null);
   urls.push('blocks/index.js');
+  console.log(urls)
   const requests = urls.map((url) => fetch(url));
   const responses = await Promise.all(requests); 
   const promises = responses.map((response) => response.text());
@@ -208,7 +212,7 @@ async function downloadBundle1(e) {
   content = content.replace(/import (?:.|\n)*?;/gm, '');
   content = parent.frames[0].Babel.transform(content, { presets: ['react'] }).code;
   // content = content + '';
-  content = `(function () {\n${content}\n})();`;
+  content = `(function () {\n${content}\nwindow.templateNunjucksBlocks = ${JSON.stringify(window.templateNunjucksBlocks)};\n})();`;
   // content = new Blob([content], {type: 'text/plain'});
   // console.log(content);
   // content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(content);
@@ -367,8 +371,9 @@ function setState() {
 
 }
 
-function startEditor(config) {
+function startEditor(config, templateNunjucksBlocks) {
   window.templateConfig = config;
+  window.templateNunjucksBlocks = templateNunjucksBlocks;
   setHead();
   addHtml();
   setInitTemplate();
@@ -383,6 +388,21 @@ function startEditor(config) {
 
 fetch('../config.json')
   .then((response) => response.json())
-  .then((data) => { 
-    startEditor(data);
+  .then(async (config) => { 
+    const urls = config.block_types.map(b => {
+      if (b.template_engine) {
+        const url = 'blocks/' + b.name + '.html';
+        return url;
+      }
+      return null;
+    })?.filter(x => x !== null);
+    const requests = urls.map((url) => fetch(url));
+    const responses = await Promise.all(requests); 
+    const promises = responses.map((response) => response.text());
+    let result = await Promise.all(promises);
+    const templateNunjucksBlocks = {};
+    result.forEach((b, i) => {
+      templateNunjucksBlocks[urls[i].replace('blocks/', '').replace('.html', '')] = b;
+    });
+    startEditor(config, templateNunjucksBlocks);
   });
