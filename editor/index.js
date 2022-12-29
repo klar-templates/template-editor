@@ -63,7 +63,7 @@ function setEvents() {
     iframe.removeAttribute('style');
     if (!notInputs) {
       bpInputWidth.value = '';
-      bpSelectWidth.value = 'Choose';
+      bpSelectWidth.value = '';
     }
   }
 
@@ -71,7 +71,7 @@ function setEvents() {
   ipad.addEventListener('click', (e) => {if((window.innerWidth - 260) < 768) {clearBreakpoints();removeEditorSetting('breakpoint');return;};if(iframe.classList.contains('ipad')) {clearBreakpoints();removeEditorSetting('breakpoint');} else {clearBreakpoints();iframe.classList.add('ipad');e.target.classList.add('active');setEditorSetting('breakpoint', 'ipad');}});
   mobile.addEventListener('click', (e) => {if((window.innerWidth - 260) < 375) {clearBreakpoints();removeEditorSetting('breakpoint');return;};if(iframe.classList.contains('mobile')) {clearBreakpoints();removeEditorSetting('breakpoint');} else {clearBreakpoints();iframe.classList.add('mobile');e.target.classList.add('active');setEditorSetting('breakpoint', 'mobile');}});
 
-  bpInputWidth.addEventListener('keyup', (e) => {if(e.target.value < 200) {return};clearBreakpoints(true);const w = e.target.value;if (!isNaN(w)) {bpSelectWidth.value = 'Choose';iframe.style.width = w+'px';setEditorSetting('breakpoint', w);}});
+  bpInputWidth.addEventListener('keyup', (e) => {if(e.target.value < 200) {return};clearBreakpoints(true);const w = e.target.value;if (!isNaN(w)) {bpSelectWidth.value = '';iframe.style.width = w+'px';setEditorSetting('breakpoint', w);}});
   bpSelectWidth.addEventListener('change', (e) => {
     if((window.innerWidth - 260) < parseInt(e.target.value)) {return};
     clearBreakpoints(true);const w = e.target.value;if (!isNaN(w)) {bpInputWidth.value = '';iframe.style.width = w+'px';setEditorSetting('breakpoint', w);}});
@@ -133,7 +133,7 @@ function setEvents() {
       mimeTypes: ['text/plain'],
     }],
   };
-  return window.chooseFileSystemEntries(opts);
+  return window.FileSystemEntries(opts);
 }
 
 /**
@@ -315,8 +315,8 @@ function addHtml() {
             <input type="text" name="bp-input-width" id="bp-input-width" class="block w-full rounded-md border py-1 border-gray-300 pl-2 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Enter a width" />
             <div class="absolute inset-y-0 right-0 flex items-center">
               <label for="bp-select-width" class="sr-only">Width</label>
-              <select id="bp-select-width" name="bp-select-width" class="h-full rounded-md border-transparent bg-transparent py-0 pl-2 pr-1 text-gray-500 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                <option>Choose</option>  
+              <select id="bp-select-width" name="bp-select-width" class="h-full rounded-md border-transparent bg-transparent py-0 pl-2 pr-1 mr-1 text-gray-500 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                <option></option>  
                 <option>375</option>
                 <option>640</option>
                 <option>768</option>
