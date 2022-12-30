@@ -5,29 +5,38 @@ function initTemplate(data, components, nunjucksBlocks, config) {
   const block2 = blocks[1];
   // blocks.push(block1)
   // console.log(data);
-  console.log(components);
+  // console.log(components);
   // console.log(nunjucksBlocks);
   // console.log(config);
-  renderBlocks(data, components, config);
+  renderBlocks(data, components, nunjucksBlocks, config);
 }
 
-function renderBlocks(data, components, config) {
+function renderBlocks(data, components, nunjucksBlocks, config) {
   window.template = {
     data: data,
     components: components,
+    nunjucksBlocks: nunjucksBlocks,
     config: config
   };
+  renderTemplateBlocks();
+  // data.data.pages[0].blocks = [];
+  // config.block_types.forEach((blockType, i) => {
+  //   const dataDefault = config.data_defaults.blocks[blockType.name];
+  //   const blockData = {...dataDefault, data: dataDefault, _id: `${blockType.name}-123456`,  _type: blockType.name};
+  //   data.data.pages[0].blocks.splice(i, 0, blockData);
+  // });
+
   // const blockType = config.block_types.find((b) => b.name === 'TemplateEditorHero');
   // const blockData = config.data_defaults.blocks['TemplateEditorHero'];
-  const blockType = config.block_types[0];
-  const blockData = config.data_defaults.blocks[Object.keys(config.data_defaults.blocks)[0]];
-  const b = {...blockData, data: blockData, _id: `${blockType.name}-123456`,  _type: blockType.name};
-  data.data.pages[0].blocks.splice(1, 0, b);
+  // const blockType = config.block_types[0];
+  // const blockData = config.data_defaults.blocks[Object.keys(config.data_defaults.blocks)[0]];
+  // const b = {...blockData, data: blockData, _id: `${blockType.name}-123456`,  _type: blockType.name};
+  // data.data.pages[0].blocks.splice(1, 0, b);
 
-  const blockType1 = config.block_types[2];
-  const blockData1 = config.data_defaults.blocks[Object.keys(config.data_defaults.blocks)[2]];
-  const b1 = {...blockData1, data: blockData1, _id: `${blockType1.name}-23456789`,  _type: blockType1.name};
-  data.data.pages[1].blocks.splice(1, 0, b1);
+  // const blockType1 = config.block_types[2];
+  // const blockData1 = config.data_defaults.blocks[Object.keys(config.data_defaults.blocks)[2]];
+  // const b1 = {...blockData1, data: blockData1, _id: `${blockType1.name}-23456789`,  _type: blockType1.name};
+  // data.data.pages[1].blocks.splice(1, 0, b1);
   // console.log(b)
   // data.data.pages[0].blocks = [];
   // data.data.pages[0].blocks.push(b);
@@ -36,6 +45,17 @@ function renderBlocks(data, components, config) {
   // data.setData(data);
   // console.log(data)
   // console.log(blockType)
+}
+
+function renderTemplateBlocks() {
+  const config = window.template.config;
+  const data = window.template.data;
+  data.data.pages[0].blocks = [];
+  config.block_types.forEach((blockType, i) => {
+    const dataDefault = config.data_defaults.blocks[blockType.name];
+    const blockData = {...dataDefault, data: dataDefault, _id: `${blockType.name}-123456`,  _type: blockType.name};
+    data.data.pages[0].blocks.splice(i, 0, blockData);
+  });
 }
 
 function setInitTemplate() {
@@ -164,6 +184,7 @@ function setEvents() {
 // }
 
 async function downloadBundle(e) {
+  // renderTemplateBlocks();
   try {
     const result = await downloadBundle1(e);
   } catch(e) {
