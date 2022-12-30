@@ -20,7 +20,7 @@ const initSite = function () {
     const result = parent.frames.templateComponentsArr.map(t => t.replace('export default ', ''));
     let content = result.join('');
     content = content.replace(/import (?:.|\n)*?;/gm, '');
-    content = parent.frames[0].Babel.transform(content, { presets: ['react'] }).code;
+    content = Babel.transform(content, { presets: ['react'] }).code;
     // content = content + '';
     // content = `(function () {\n${content}\nwindow.templateNunjucksBlocks = ${JSON.stringify(window.templateNunjucksBlocks)};\n})();`;
     content = `(function () {\n${content}\nwindow.templateComponents = templateComponents;\n})();`;
@@ -42,6 +42,8 @@ const initSite = function () {
   document.querySelector('head').appendChild(script);
 }
 
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('DOMContentLoaded', async (event) => {
+  const req = await fetch('https://unpkg.com/@babel/standalone/babel.min.js');
+  eval(await req.text());
   initSite();
 });
