@@ -6,7 +6,7 @@ const templateComponents = {
   TemplateEditorTeam: TemplateEditorTeam,
 };
 
-window.templateComponents = templateComponents;
+// window.templateComponents = templateComponents;
 // console.log(window.templateComponents)
 // window.templateNunjucksBlocks = templateNunjucksBlocks;
 

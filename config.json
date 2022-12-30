@@ -70,6 +70,24 @@
       ]
     },
     {
+      "title": "Hero",
+      "name": "TemplateEditorTeam",
+      "icon": "image",
+      "type": "object",
+      "fields": [
+        {
+          "title": "Lead in",
+          "name": "subtitle",
+          "type": "string"
+        },
+        {
+          "title": "Rubrik",
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
       "title": "Team",
       "name": "team",
       "icon": "group",
@@ -119,6 +137,9 @@
           "margin_top": 0,
           "bg_image_position_top": 0
         }
+      },
+      "TemplateEditorTeam": {
+        "title": "Create an account and start making your own web sites"
       },
       "team": {
         "heading": "Our Amazing Team",

@@ -23,8 +23,8 @@ function renderBlocks(data, components, config) {
   const b = {...blockData, data: blockData, _id: `${blockType.name}-123456`,  _type: blockType.name};
   data.data.pages[0].blocks.splice(1, 0, b);
 
-  const blockType1 = config.block_types[1];
-  const blockData1 = config.data_defaults.blocks[Object.keys(config.data_defaults.blocks)[1]];
+  const blockType1 = config.block_types[2];
+  const blockData1 = config.data_defaults.blocks[Object.keys(config.data_defaults.blocks)[2]];
   const b1 = {...blockData1, data: blockData1, _id: `${blockType1.name}-23456789`,  _type: blockType1.name};
   data.data.pages[1].blocks.splice(1, 0, b1);
   // console.log(b)
@@ -371,10 +371,10 @@ function setState() {
 
 }
 
-function startEditor(config, templateNunjucksBlocks, templateComponents) {
+function startEditor(config, templateNunjucksBlocks, templateComponentsArr) {
   window.templateConfig = config;
   window.templateNunjucksBlocks = templateNunjucksBlocks;
-  window.templateComponents = templateComponents;
+  window.templateComponentsArr = templateComponentsArr;
   setHead();
   addHtml();
   setInitTemplate();
@@ -399,18 +399,22 @@ fetch('../config.json')
         return url;
       }
     })?.filter(x => x !== null);
+    urls.push('blocks/index.js');
+    // console.log(urls)
     const requests = urls.map((url) => fetch(url));
     const responses = await Promise.all(requests);
     const promises = responses.map((response) => response.text());
     let result = await Promise.all(promises);
     const templateNunjucksBlocks = {};
     const templateComponents = {};
+    const templateComponentsArr = [];
     result.forEach((b, i) => {
       if (urls[i].includes('html')) {
         templateNunjucksBlocks[urls[i].replace('blocks/', '').replace('.html', '')] = b;
       } else {
-        templateComponents[urls[i].replace('blocks/', '').replace('.js', '')] = b;
+        templateComponentsArr.push(b);
+        templateComponents[urls[i].replace('blocks/', '').replace('.js', '')] = urls[i].replace('blocks/', '').replace('.js', '');
       }
     });
-    startEditor(config, templateNunjucksBlocks, templateComponents);
+    startEditor(config, templateNunjucksBlocks, templateComponentsArr);
   });

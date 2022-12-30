@@ -15,26 +15,25 @@
 
 const initSite = function () {
   window.templateNunjucksBlocks = parent.frames.templateNunjucksBlocks;
-  // window.templateComponents = parent.frames.templateComponents;
-  
-  // const tempTemplateComponents = {};
-  // Object.keys(parent.frames.templateComponents).forEach((key, i) => {
-  //   let content = parent.frames.templateComponents[key];
-  //   if (content.includes('export default ')) {
-  //     content = content.replace('export default ', '');
-  //     content = Babel.transform(content, { presets: ['react'] }).code;
-  //     // content = new Function ('something', content);
-  //     // serverRendered = new Function ('dataObj', reactTemplateScriptStr + reactScriptStr);
-  //     content = `(function () {\n${content}\n})();`;
-  //     tempTemplateComponents[key] = content;
-  //   }
-  // });
-  // // window.templateComponents = tempTemplateComponents;
-  // const s = document.createElement('script');
-  // s.innerHTML = 'window.templateComponents = ' + JSON.stringify(tempTemplateComponents);
-  // document.body.appendChild(s);
-  // console.log(window.templateComponents);
-    
+  const templateComponentsArr = parent.frames.templateComponentsArr;
+  if (templateComponentsArr) {
+    const result = parent.frames.templateComponentsArr.map(t => t.replace('export default ', ''));
+    let content = result.join('');
+    content = content.replace(/import (?:.|\n)*?;/gm, '');
+    content = parent.frames[0].Babel.transform(content, { presets: ['react'] }).code;
+    // content = content + '';
+    // content = `(function () {\n${content}\nwindow.templateNunjucksBlocks = ${JSON.stringify(window.templateNunjucksBlocks)};\n})();`;
+    content = `(function () {\n${content}\nwindow.templateComponents = templateComponents;\n})();`;
+    // console.log(window.templateComponents);
+    // console.log(parent.frames.templateComponentsArr)
+    // window.templateComponents = tempTemplateComponents;
+    const s = document.createElement('script');
+    s.innerHTML = content;
+    document.body.appendChild(s);
+    // console.log(window.templateNunjucksBlocks)
+    // console.log(window.templateComponents)
+    // console.log(content);
+  }
   // Add klar-pages-app script after Babel has transpiled the JSX code
   const script = document.createElement('script');
   script.src = 'http://localhost:4173/assets/index.717d46a8.js';
