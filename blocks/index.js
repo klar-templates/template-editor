@@ -7,6 +7,7 @@ const templateComponents = {
 };
 
 window.templateComponents = templateComponents;
+// console.log(window.templateComponents)
 // window.templateNunjucksBlocks = templateNunjucksBlocks;
 
 // window.templateConfig = templateConfig;

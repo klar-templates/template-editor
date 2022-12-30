@@ -178,7 +178,7 @@ async function downloadBundle1(e) {
   //   return;
   // }
   const cssLink = document.querySelector('.js-download-css-bundle');
-  let css = parent.frames[0].document.querySelector('style').innerHTML;
+  let css = parent.frames[0].document.getElementsByTagName('style')[1].innerHTML;
   // css = 'data:text/plain;charset=utf-8,' + encodeURIComponent(css);
   // console.log(css);
   cssLink.href = css;
@@ -371,9 +371,10 @@ function setState() {
 
 }
 
-function startEditor(config, templateNunjucksBlocks) {
+function startEditor(config, templateNunjucksBlocks, templateComponents) {
   window.templateConfig = config;
   window.templateNunjucksBlocks = templateNunjucksBlocks;
+  window.templateComponents = templateComponents;
   setHead();
   addHtml();
   setInitTemplate();
@@ -393,16 +394,23 @@ fetch('../config.json')
       if (b.template_engine) {
         const url = 'blocks/' + b.name + '.html';
         return url;
+      } else {
+        const url = 'blocks/' + b.name + '.js';
+        return url;
       }
-      return null;
     })?.filter(x => x !== null);
     const requests = urls.map((url) => fetch(url));
-    const responses = await Promise.all(requests); 
+    const responses = await Promise.all(requests);
     const promises = responses.map((response) => response.text());
     let result = await Promise.all(promises);
     const templateNunjucksBlocks = {};
+    const templateComponents = {};
     result.forEach((b, i) => {
-      templateNunjucksBlocks[urls[i].replace('blocks/', '').replace('.html', '')] = b;
+      if (urls[i].includes('html')) {
+        templateNunjucksBlocks[urls[i].replace('blocks/', '').replace('.html', '')] = b;
+      } else {
+        templateComponents[urls[i].replace('blocks/', '').replace('.js', '')] = b;
+      }
     });
-    startEditor(config, templateNunjucksBlocks);
+    startEditor(config, templateNunjucksBlocks, templateComponents);
   });

@@ -15,7 +15,26 @@
 
 const initSite = function () {
   window.templateNunjucksBlocks = parent.frames.templateNunjucksBlocks;
-  window.templateComponents = parent.frames.templateComponents;
+  // window.templateComponents = parent.frames.templateComponents;
+  
+  // const tempTemplateComponents = {};
+  // Object.keys(parent.frames.templateComponents).forEach((key, i) => {
+  //   let content = parent.frames.templateComponents[key];
+  //   if (content.includes('export default ')) {
+  //     content = content.replace('export default ', '');
+  //     content = Babel.transform(content, { presets: ['react'] }).code;
+  //     // content = new Function ('something', content);
+  //     // serverRendered = new Function ('dataObj', reactTemplateScriptStr + reactScriptStr);
+  //     content = `(function () {\n${content}\n})();`;
+  //     tempTemplateComponents[key] = content;
+  //   }
+  // });
+  // // window.templateComponents = tempTemplateComponents;
+  // const s = document.createElement('script');
+  // s.innerHTML = 'window.templateComponents = ' + JSON.stringify(tempTemplateComponents);
+  // document.body.appendChild(s);
+  // console.log(window.templateComponents);
+    
   // Add klar-pages-app script after Babel has transpiled the JSX code
   const script = document.createElement('script');
   script.src = 'http://localhost:4173/assets/index.717d46a8.js';
