@@ -43,6 +43,13 @@ const initSite = function () {
 }
 
 window.addEventListener('DOMContentLoaded', async (event) => {
+  const script = document.createElement('script');
+  script.innerHTML = `tailwind.config = {
+    corePlugins: {
+      preflight: false,
+    }
+  }`;
+  document.querySelector('head').appendChild(script);
   const req = await fetch('https://unpkg.com/@babel/standalone/babel.min.js');
   eval(await req.text());
   initSite();
