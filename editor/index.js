@@ -178,7 +178,7 @@ async function downloadBundle1(e) {
   //   return;
   // }
   const cssLink = document.querySelector('.js-download-css-bundle');
-  let css = parent.frames[0].document.getElementsByTagName('style')[1].innerHTML;
+  let css = parent.frames[0].document.getElementsByTagName('style')[0].innerHTML;
   // css = 'data:text/plain;charset=utf-8,' + encodeURIComponent(css);
   // console.log(css);
   cssLink.href = css;
