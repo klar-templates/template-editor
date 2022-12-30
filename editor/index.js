@@ -1,11 +1,12 @@
-function initTemplate(data, components, config) {
+function initTemplate(data, components, nunjucksBlocks, config) {
   const startpage = data.data.pages[0];
   const blocks = startpage.blocks;
   const block1 = blocks[0];
   const block2 = blocks[1];
   // blocks.push(block1)
   // console.log(data);
-  // console.log(components);
+  console.log(components);
+  // console.log(nunjucksBlocks);
   // console.log(config);
   renderBlocks(data, components, config);
 }
@@ -40,7 +41,7 @@ function renderBlocks(data, components, config) {
 function setInitTemplate() {
   const iframeWindow = frames[0];
   iframeWindow.initTemplate = function (siteData) {
-    initTemplate(siteData, iframeWindow.templateComponents, window.templateConfig);
+    initTemplate(siteData, window.templateComponents, window.templateNunjucksBlocks, window.templateConfig);
   }
 }
 

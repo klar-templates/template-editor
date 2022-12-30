@@ -34,6 +34,7 @@ const initSite = function () {
     // console.log(window.templateComponents)
     // console.log(content);
   }
+  parent.frames.templateComponents = window.templateComponents;
   // Add klar-pages-app script after Babel has transpiled the JSX code
   const script = document.createElement('script');
   script.src = 'http://localhost:4173/assets/index.717d46a8.js';
