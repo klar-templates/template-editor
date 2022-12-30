@@ -51,7 +51,14 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     }
   }`;
   document.querySelector('head').appendChild(script);
-  const req = await fetch('https://unpkg.com/@babel/standalone/babel.min.js');
-  eval(await req.text());
+  const babelPackage = parent.frames.getEditorSetting('babel_package');
+  if (babelPackage) {
+    eval(babelPackage);
+  } else {
+    const req = await fetch('https://unpkg.com/@babel/standalone/babel.min.js');
+    const res = await req.text();
+    eval(res);
+    parent.frames.setEditorSetting('babel_package', res);
+  }
   initSite();
 });
