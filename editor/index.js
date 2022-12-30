@@ -50,12 +50,13 @@ function renderBlocks(data, components, nunjucksBlocks, config) {
 function renderTemplateBlocks() {
   const config = window.template.config;
   const data = window.template.data;
-  data.data.pages[0].blocks = [];
+  // data.data.pages[0].blocks = [];
   config.block_types.forEach((blockType, i) => {
     const dataDefault = config.data_defaults.blocks[blockType.name];
     const blockData = {...dataDefault, data: dataDefault, _id: `${blockType.name}-123456`,  _type: blockType.name};
-    data.data.pages[0].blocks.splice(i, 0, blockData);
+    data.data.pages[0].blocks.splice(i+1, 0, blockData);
   });
+  // setTimeout((() => console.log(parent.frames[0].document.getElementsByTagName('style')[0].innerHTML)), 2000);
 }
 
 function setInitTemplate() {
@@ -128,60 +129,6 @@ function setEvents() {
 
   btnDownloadBundle.addEventListener('click', (e) => downloadBundle(e));
 }
-
-/**
- * Create a handle to a new (text) file on the local file system.
- *
- * @return {!Promise<FileSystemFileHandle>} Handle to the new file.
- */
- function getNewFileHandle() {
-  // For Chrome 86 and later...
-  if ('showSaveFilePicker' in window) {
-    const opts = {
-      types: [{
-        description: 'Text file',
-        accept: {'text/plain': ['.txt']},
-      }],
-    };
-    return window.showSaveFilePicker(opts);
-  }
-  // For Chrome 85 and earlier...
-  const opts = {
-    type: 'save-file',
-    accepts: [{
-      description: 'Text file',
-      extensions: ['txt'],
-      mimeTypes: ['text/plain'],
-    }],
-  };
-  return window.FileSystemEntries(opts);
-}
-
-/**
- * Writes the contents to disk.
- *
- * @param {FileSystemFileHandle} fileHandle File handle to write to.
- * @param {string} contents Contents to write.
- */
-//  async function writeFile(fileHandle, contents) {
-//   // Support for Chrome 82 and earlier.
-//   if (fileHandle.createWriter) {
-//     // Create a writer (request permission if necessary).
-//     const writer = await fileHandle.createWriter();
-//     // Write the full length of the contents
-//     await writer.write(0, contents);
-//     // Close the file and write the contents to disk
-//     await writer.close();
-//     return;
-//   }
-//   // For Chrome 83 and later.
-//   // Create a FileSystemWritableFileStream to write to.
-//   const writable = await fileHandle.createWritable();
-//   // Write the contents of the file to the stream.
-//   await writable.write(contents);
-//   // Close the file and write the contents to disk.
-//   await writable.close();
-// }
 
 async function downloadBundle(e) {
   // renderTemplateBlocks();
