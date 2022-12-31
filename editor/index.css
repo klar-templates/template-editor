@@ -8,12 +8,20 @@ body {
   inset: 0;
 }
 
+.layout > .sidebar-nav {
+  flex-shrink: 0;
+}
+
 .layout > .sidebar {
   flex-shrink: 0;
 }
 
 .layout > .main {
   flex-grow: 1;
+}
+
+.sidebar-nav {
+  border-right: 1px solid #eceff4;
 }
 
 .sidebar {
