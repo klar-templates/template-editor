@@ -10,7 +10,7 @@ export default function TemplateEditorHero(props) {
   return (
     <Section className="bg-slate-900 text-on-background">
       <Container>
-        <div className="text-center text-inverse-on-background mx-auto max-w-3xl px:4 sm:px-16 pb-32 pt-20 sm:pt-40 sm:pb-48">
+        <div className="text-center text-neutral-50 mx-auto max-w-3xl px:4 sm:px-16 pb-32 pt-20 sm:pt-40 sm:pb-48">
           <h1 className="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl">{title}</h1>
           <p className="mt-6 text-lg leading-8 sm:text-center">{subtitle}</p>
           <div className="mt-8 flex gap-x-4 sm:justify-center">
