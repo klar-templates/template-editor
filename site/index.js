@@ -43,6 +43,7 @@ const initSite = function () {
   style.rel = 'stylesheet';
   document.querySelector('head').appendChild(style);
   // setTimeout(() => {document.querySelector('head').appendChild(style)}, 1000);
+  
   // Add klar-pages-app script after Babel has transpiled the JSX code
   const script = document.createElement('script');
   script.src = 'http://localhost:4173/assets/index.2331676b.js';
@@ -53,7 +54,8 @@ const initSite = function () {
   // setTimeout(() => document.querySelector('body').removeAttribute('style'), 300);
 }
 
-window.addEventListener('DOMContentLoaded', async (event) => {
+// window.addEventListener('DOMContentLoaded', async (event) => {
+async function renderSite() {
   const script = document.createElement('script');
   script.innerHTML = `tailwind.config = {
     corePlugins: {
@@ -73,4 +75,6 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     }
   }
   initSite();
-});
+}
+renderSite();
+// });
