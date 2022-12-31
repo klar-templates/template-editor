@@ -50,11 +50,12 @@ function renderBlocks(data, components, nunjucksBlocks, config) {
 function renderTemplateBlocks() {
   const config = window.template.config;
   const data = window.template.data;
-  // data.data.pages[0].blocks = [];
+  const pageNumber = 0;
+  data.data.pages[pageNumber].blocks = data.data.pages[pageNumber].blocks.splice(0, 1);
   config.block_types.forEach((blockType, i) => {
     const dataDefault = config.data_defaults.blocks[blockType.name];
     const blockData = {...dataDefault, data: dataDefault, _id: `${blockType.name}-123456`,  _type: blockType.name};
-    data.data.pages[0].blocks.splice(i+1, 0, blockData);
+    data.data.pages[pageNumber].blocks.splice(i+1, 0, blockData);
   });
   // parent.frames[0].document.querySelector('body').style.display = 'none';
   // setTimeout(() => parent.frames[0].document.querySelector('body').removeAttribute('style'), 100);
@@ -279,8 +280,7 @@ function addHtml() {
             </button>
           </div>
         </div>
-        <div class="mt-4"><a href="#" class="js-download-css-bundle hidden">Download CSS</a><a href="#" class="js-download-js-bundle hidden">Download JS</a><a href="#" title="Build the CSS and JS-files and\nput them in the dist folder." class="js-download-bundle w-[228px] absolute left-4 bottom-4 border border-gray-200 hover:border-gray-300 text-gray-700 block text-center rounded-lg px-4 py-1.5 text-base font-semibold leading-7 shadow-sm hover:bg-primary-dark">Build Bundle</a></div>
-        <div>
+        <div class="mt-4">
           <label for="bp-input-width" class="block text-sm font-medium text-gray-700">Width</label>
           <div class="relative mt-1 rounded-md shadow-sm">
             <input type="text" name="bp-input-width" id="bp-input-width" class="block w-full rounded-md border py-1 border-gray-300 pl-2 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Enter a width" />
@@ -298,6 +298,7 @@ function addHtml() {
             </div>
           </div>
         </div>
+        <div class="mt-4"><a href="#" class="js-download-css-bundle hidden">Download CSS</a><a href="#" class="js-download-js-bundle hidden">Download JS</a><a href="#" title="Build the CSS and JS-files and\nput them in the dist folder." class="js-download-bundle w-[228px] absolute left-4 bottom-4 border border-gray-200 hover:border-gray-300 text-gray-700 block text-center rounded-lg px-4 py-1.5 text-base font-semibold leading-7 shadow-sm hover:bg-primary-dark">Build Bundle</a></div>
       </aside>
       <main class="main bg-neutral-100">
         <iframe class="iframe js-iframe transition-[width] shadow-lg" src="${getEditorSetting('current-page') ? getEditorSetting('current-page') : '/'}"></iframe>
