@@ -18,7 +18,8 @@ function renderBlocks(data, components, nunjucksBlocks, config) {
     nunjucksBlocks: nunjucksBlocks,
     config: config
   };
-  renderTemplateBlocks();
+  // renderTemplateBlocks();
+  renderBlockLinks();
   // data.data.pages[0].blocks = [];
   // config.block_types.forEach((blockType, i) => {
   //   const dataDefault = config.data_defaults.blocks[blockType.name];
@@ -60,6 +61,68 @@ function renderTemplateBlocks() {
   // parent.frames[0].document.querySelector('body').style.display = 'none';
   // setTimeout(() => parent.frames[0].document.querySelector('body').removeAttribute('style'), 100);
   // setTimeout((() => console.log(parent.frames[0].document.getElementsByTagName('style')[0].innerHTML)), 2000);
+}
+
+function getCurrentPage() {
+  const path = getEditorSetting('current-page');
+  const data = window.template.data;
+  let currentPage = data.data.pages[0];
+  if (path && path !== '/') {
+    currentPage = data.data.pages.find(p => p._path === path);
+  }
+  return currentPage;
+}
+
+function renderTemplateBlock(name) {
+  const config = window.template.config;
+  const data = window.template.data;
+  const currentPage = getCurrentPage();
+  const pageNumber = data.data.pages.indexOf(currentPage);
+  data.data.pages[pageNumber].blocks = data.data.pages[pageNumber].blocks.splice(0, 1);
+  config.block_types.forEach((blockType, i) => {
+    if (name === blockType.name) {
+      const dataDefault = config.data_defaults.blocks[blockType.name];
+      const blockData = {...dataDefault, data: dataDefault, _id: `${blockType.name}-123456`,  _type: blockType.name};
+      data.data.pages[pageNumber].blocks.splice(1, 0, blockData);
+    }
+  });
+  data.navigate(currentPage._path);
+}
+
+function setBlockLinkActive(name) {
+  const isActive = document.querySelectorAll('.js-blocks .bg-neutral-100');
+  isActive.forEach((element) => {
+    element.classList.remove('bg-neutral-100');
+  });
+  const link = document.querySelector('#block-' + name);
+  link.classList.add('bg-neutral-100');
+  setEditorSetting('active-template-block', name);
+}
+
+function renderBlockLinks() {
+  const config = window.template.config;
+  const container = document.querySelector('.js-blocks');
+  const content = [];
+  // content.push('<hr class="border-t border-gray-200 w-full mb-4"></hr>');
+  config.block_types.forEach((blockType, i) => {
+    content.push(
+      `<a id="block-${blockType.name}" onclick="renderTemplateBlock('${blockType.name}');setBlockLinkActive('${blockType.name}')" class="flex items-center w-full h-12 px-3 mt-2 text-neutral-500 border border-gray-200 g-gray-100 hover:bg-neutral-100 rounded" href="#">
+        <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <span class="ml-2 text-sm font-medium">${blockType.title}</span>
+      </a>`
+    );
+    // const dataDefault = config.data_defaults.blocks[blockType.name];
+    // const blockData = {...dataDefault, data: dataDefault, _id: `${blockType.name}-123456`,  _type: blockType.name};
+    // data.data.pages[pageNumber].blocks.splice(i+1, 0, blockData);
+  });
+  container.innerHTML = content.join('');
+  const activeBlock = getEditorSetting('active-template-block');
+  if (activeBlock) {
+    renderTemplateBlock(activeBlock);
+    setBlockLinkActive(activeBlock);
+  }
 }
 
 function setInitTemplate() {
@@ -262,7 +325,7 @@ function insertScript(selector, src, callback) {
 function addHtml() {
   const adminHtml = `
     <div class="layout">
-      <div class="sidebar-nav transition-[width] flex flex-col items-center w-16 h-full overflow-hidden text-neutral-500 bg-white border-r border-outline">
+      <aside class="sidebar-nav hidden transition-[width] flex flex-col items-center w-16 h-full overflow-hidden text-neutral-500 bg-white border-r border-outline">
         <a class="flex items-center justify-center mt-3" href="#">
           <svg class="w-8 h-8 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
             <path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z" />
@@ -307,15 +370,15 @@ function addHtml() {
             <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
             </svg>
-            <span class="absolute top-0 left-0 w-2 h-2 mt-2 ml-2 bg-indigo-500 rounded-full"></span>
+            <span class="hidden absolute top-0 left-0 w-2 h-2 mt-2 ml-2 bg-indigo-500 rounded-full"></span>
           </a>
         </div>
-        <a class="flex items-center justify-center w-16 h-16 mt-auto bg-gray-200 hover:bg-gray-100" href="#">
+        <a class="hidden flex items-center justify-center w-16 h-16 mt-auto bg-gray-200 hover:bg-gray-100" href="#">
           <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </a>
-      </div>
+      </aside>
       <aside class="sidebar p-4 relative border-r border-outline">
         <h1 class="text-2xl font-semibold text-neutral-700">Edit blocks</h1>
         <div class="breakpoints mt-4">
@@ -334,7 +397,7 @@ function addHtml() {
             </button>
           </div>
         </div>
-        <div class="mt-4">
+        <div class="hidden mt-4">
           <label for="bp-input-width" class="block text-sm font-medium text-gray-700">Width</label>
           <div class="relative mt-1 rounded-md shadow-sm">
             <input type="text" name="bp-input-width" id="bp-input-width" class="block w-full rounded-md border py-1 border-gray-300 pl-2 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Enter a width" />
@@ -352,6 +415,7 @@ function addHtml() {
             </div>
           </div>
         </div>
+        <div class="js-blocks mt-4"></div>
         <div class="mt-4"><a href="#" class="js-download-css-bundle hidden">Download CSS</a><a href="#" class="js-download-js-bundle hidden">Download JS</a><a href="#" title="Build the CSS and JS-files and\nput them in the dist folder." class="js-download-bundle w-[228px] absolute left-4 bottom-4 border border-gray-200 hover:border-gray-300 text-gray-700 block text-center rounded-lg px-4 py-1.5 text-base font-semibold leading-7 shadow-sm hover:bg-primary-dark">Build Bundle</a></div>
       </aside>
       <main class="main bg-neutral-100">
