@@ -35,12 +35,22 @@ const initSite = function () {
     // console.log(content);
   }
   parent.frames.templateComponents = window.templateComponents;
+
+  // <link href="http://localhost:4173/assets/index.7d5d8db6.css" rel="stylesheet" />
+  // Add klar-pages-app style after Babel has transpiled the JSX code
+  const style = document.createElement('link');
+  style.href = 'http://localhost:4173/assets/index.7d5d8db6.css';
+  style.rel = 'stylesheet';
+  document.querySelector('head').appendChild(style);
+  // setTimeout(() => {document.querySelector('head').appendChild(style)}, 1000);
   // Add klar-pages-app script after Babel has transpiled the JSX code
   const script = document.createElement('script');
-  script.src = 'http://localhost:4173/assets/index.717d46a8.js';
+  script.src = 'http://localhost:4173/assets/index.0d0fe183.js';
   script.type = 'module';
   script.crossOrigin = true;
   document.querySelector('head').appendChild(script);
+  // document.querySelector('body').style.display = 'none';
+  // setTimeout(() => document.querySelector('body').removeAttribute('style'), 300);
 }
 
 window.addEventListener('DOMContentLoaded', async (event) => {
@@ -51,14 +61,16 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     }
   }`;
   document.querySelector('head').appendChild(script);
-  const babelPackage = parent.frames.getEditorSetting('babel_package');
-  if (babelPackage) {
-    eval(babelPackage);
-  } else {
-    const req = await fetch('https://unpkg.com/@babel/standalone/babel.min.js');
-    const res = await req.text();
-    eval(res);
-    parent.frames.setEditorSetting('babel_package', res);
+  if (parent.frames.getEditorSetting) {
+    const babelPackage = parent.frames.getEditorSetting('babel_package');
+    if (babelPackage) {
+      eval(babelPackage);
+    } else {
+      const req = await fetch('https://unpkg.com/@babel/standalone/babel.min.js');
+      const res = await req.text();
+      eval(res);
+      parent.frames.setEditorSetting('babel_package', res);
+    }
   }
   initSite();
 });
