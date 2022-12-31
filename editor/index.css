@@ -21,11 +21,10 @@ body {
 }
 
 .sidebar-nav {
-  border-right: 1px solid #eceff4;
+  
 }
 
 .sidebar {
-  border-right: 1px solid #eceff4;
   color: #091238;
   width: 260px;
 }
