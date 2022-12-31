@@ -56,6 +56,8 @@ function renderTemplateBlocks() {
     const blockData = {...dataDefault, data: dataDefault, _id: `${blockType.name}-123456`,  _type: blockType.name};
     data.data.pages[0].blocks.splice(i+1, 0, blockData);
   });
+  // parent.frames[0].document.querySelector('body').style.display = 'none';
+  // setTimeout(() => parent.frames[0].document.querySelector('body').removeAttribute('style'), 100);
   // setTimeout((() => console.log(parent.frames[0].document.getElementsByTagName('style')[0].innerHTML)), 2000);
 }
 
