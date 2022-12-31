@@ -45,7 +45,7 @@ const initSite = function () {
   // setTimeout(() => {document.querySelector('head').appendChild(style)}, 1000);
   // Add klar-pages-app script after Babel has transpiled the JSX code
   const script = document.createElement('script');
-  script.src = 'http://localhost:4173/assets/index.0d0fe183.js';
+  script.src = 'http://localhost:4173/assets/index.2331676b.js';
   script.type = 'module';
   script.crossOrigin = true;
   document.querySelector('head').appendChild(script);
