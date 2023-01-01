@@ -76,7 +76,6 @@ function renderTemplateBlock(name) {
       data.data.pages[pageNumber].blocks.splice(1, 0, blockData);
     }
   });
-
   data.navigate(currentPage._path);
 }
 
@@ -98,6 +97,14 @@ function renderBlockLinks() {
     // const blockData = {...dataDefault, data: dataDefault, _id: `${blockType.name}-123456`,  _type: blockType.name};
     // data.data.pages[pageNumber].blocks.splice(i+1, 0, blockData);
   });
+  content.push(`
+    <button
+      type="button"
+      onclick="resetBlocks()"
+      class="js-reset-blocks w-[228px] mt-2 left-4 border border-gray-200 hover:border-gray-300 text-gray-700 block text-center rounded-lg px-4 py-1.5 font-semibold leading-7 shadow-sm hover:bg-primary-dark"
+      title="Remove all template blocks from site.">
+      Reset
+    </button>`);
   container.innerHTML = content.join('');
   const activeBlock = getEditorSetting('active-template-block');
   if (activeBlock) {
@@ -204,6 +211,11 @@ function setEvents() {
   setDarkmode();
 
   btnDownloadBundle.addEventListener('click', (e) => downloadBundle(e));
+}
+
+function resetBlocks() {
+  removeEditorSetting('active-template-block');
+  location.reload();
 }
 
 function setBlockLinkActive(name) {
@@ -466,14 +478,6 @@ function setHtml() {
           </div>
         </div>
         <div class="js-blocks mt-4"></div>
-        <div class="mt-4">
-          <button
-            type="button"
-            class="js-reset-blocks w-[228px] left-4 border border-gray-200 hover:border-gray-300 text-gray-700 block text-center rounded-lg px-4 py-1.5 font-semibold leading-7 shadow-sm hover:bg-primary-dark"
-            title="Reset the blocks">
-            Reset
-          </button>  
-        </div>
         <div class="mt-4"><a href="#" class="js-download-css-bundle hidden">Download CSS</a><a href="#" class="js-download-js-bundle hidden">Download JS</a><a href="#" title="Build the CSS and JS-files and\nput them in the dist folder." class="js-download-bundle w-[228px] absolute left-4 bottom-4 border border-gray-200 hover:border-gray-300 text-gray-700 block text-center rounded-lg px-4 py-1.5 text-base font-semibold leading-7 shadow-sm hover:bg-primary-dark">Build Bundle</a></div>
       </aside>
       <main class="main bg-neutral-100">
