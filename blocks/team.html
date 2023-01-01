@@ -1,47 +1,40 @@
-<section class="section bg-neutral-50 dark:bg-neutral-800" id="team">
+<section id="{{block_id}}" class="section bg-neutral-50 dark:bg-neutral-800">
   <div class="container-fluid container-padding-x mx-auto">
     <div class="text-center">
-      <h2 class="section-heading uppercase text-neutral-900 dark:text-neutral-100">Our Amazing Team</h2>
-      <h3 class="section-subheading text-neutral-500 dark:text-neutral-300">Lorem ipsum dolor sit amet consectetur.</h3>
+      <h2 class="section-heading uppercase text-neutral-900 dark:text-neutral-100" data-field-string="heading">{{block.heading}}</h2>
+      <h3 class="section-subheading text-neutral-500 dark:text-neutral-300" data-field-string="sub_heading">{{block.sub_heading}}</h3>
     </div>
-    <div class="grid grid-gap grid-cols-1 md:grid-cols-3 mt-12">
+    <div class="grid grid-gap grid-cols-1 md:grid-cols-3 mt-12" data-field-array="team">
+      {% for item in block.team %}
       <div class="mb-2 sm:mb-0">
-        <div class="text-center">
-          <img class="border-8 border-neutral-200 w-48 h-48 lg:w-56 lg:h-56 mx-auto rounded-full" src="https://startbootstrap.github.io/startbootstrap-agency/assets/img/team/1.jpg" alt="...">
-          <h4 class="text-2xl font-bold mt-4 text-neutral-900 dark:text-neutral-100">Parveen Anand</h4>
-          <p class="text-muted text-neutral-500 dark:text-neutral-300">Lead Designer</p>
+        <div class="text-center" data-field-array-item>
+          <img class="border-8 border-neutral-200 w-48 h-48 lg:w-56 lg:h-56 mx-auto rounded-full" src="{{ item.image }}" data-field-string-file="team[{{loop.index0}}].image" no-data-placement="top" no-data-inset="true" alt="{{ item.heading }}" />
+          <h4 class="text-2xl font-bold mt-4 text-neutral-900 dark:text-neutral-100" data-field-string="team[{{loop.index0}}].heading">{{ item.heading }}</h4>
+          <p class="text-muted text-neutral-500 dark:text-neutral-300" data-field-string="team[{{loop.index0}}].text" data-toolbar-buttons="['bold', 'italic', 'underline', 'anchor']">{{ item.text }}</p>
           <ul class="flex gap-4 justify-center mt-4">
-            <li><a href="#" class="dark:bg-neutral-900 focus:ring focus:ring-neutral-400 w-10 h-10 text-xl inline-flex bg-black/95 text-white items-center justify-center rounded-full"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#" class="dark:bg-neutral-900 focus:ring focus:ring-neutral-400 w-10 h-10 text-xl inline-flex bg-black/95 text-white items-center justify-center rounded-full"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#" class="dark:bg-neutral-900 focus:ring focus:ring-neutral-400 w-10 h-10 text-xl inline-flex bg-black/95 text-white items-center justify-center rounded-full"><i class="fa fa-instagram"></i></a></li>
+            {% set parent_index_0 = loop.index0 %}
+            {% for link_item in item.social_links %}
+              <li>
+                <a
+                  class="dark:bg-neutral-900 focus:ring focus:ring-neutral-400 w-10 h-10 text-xl inline-flex bg-black/95 text-white items-center justify-center rounded-full"
+                  href="{{ link_item.link }}"
+                  data-field-string-ui-widget-icon="team[{{parent_index_0}}].social_links[{{loop.index0}}].icon"
+                  data-field-string-format-uri="team[{{parent_index_0}}].social_links[{{loop.index0}}].link"
+                  data-placement="bottom"
+                ><i class="fa fa-{{ link_item.icon }}"></i></a>
+              </li>
+            {% endfor %}
           </ul>
         </div>
       </div>
-      <div class="mb-2 sm:mb-0">
-        <div class="text-center">
-          <img class="border-8 border-neutral-200 w-48 h-48 lg:w-56 lg:h-56 mx-auto rounded-full" src="https://startbootstrap.github.io/startbootstrap-agency/assets/img/team/2.jpg" alt="...">
-          <h4 class="text-2xl font-bold mt-4 text-neutral-900 dark:text-neutral-100">Diana Petersen</h4>
-          <p class="text-muted text-neutral-500 dark:text-neutral-300">Lead Marketer</p>
-          <ul class="flex gap-4 justify-center mt-4">
-            <li><a href="#" class="dark:bg-neutral-900 focus:ring focus:ring-neutral-400 w-10 h-10 text-xl inline-flex bg-black/95 text-white items-center justify-center rounded-full"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#" class="dark:bg-neutral-900 focus:ring focus:ring-neutral-400 w-10 h-10 text-xl inline-flex bg-black/95 text-white items-center justify-center rounded-full"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#" class="dark:bg-neutral-900 focus:ring focus:ring-neutral-400 w-10 h-10 text-xl inline-flex bg-black/95 text-white items-center justify-center rounded-full"><i class="fa fa-instagram"></i></a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="mb-2 sm:mb-0">
-        <div class="text-center">
-          <img class="border-8 border-neutral-200 w-48 h-48 lg:w-56 lg:h-56 mx-auto rounded-full" src="https://startbootstrap.github.io/startbootstrap-agency/assets/img/team/3.jpg" alt="...">
-          <h4 class="text-2xl font-bold mt-4 text-neutral-900 dark:text-neutral-100">Larry Parker</h4>
-          <p class="text-muted text-neutral-500 dark:text-neutral-300">Lead Developer</p>
-          <ul class="flex gap-4 justify-center mt-4">
-            <li><a href="#" class="dark:bg-neutral-900 focus:ring focus:ring-neutral-400 w-10 h-10 text-xl inline-flex bg-black/95 text-white items-center justify-center rounded-full"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#" class="dark:bg-neutral-900 focus:ring focus:ring-neutral-400 w-10 h-10 text-xl inline-flex bg-black/95 text-white items-center justify-center rounded-full"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#" class="dark:bg-neutral-900 focus:ring focus:ring-neutral-400 w-10 h-10 text-xl inline-flex bg-black/95 text-white items-center justify-center rounded-full"><i class="fa fa-instagram"></i></a></li>
-          </ul>
-        </div>
-      </div>
+      {% endfor %}
     </div>
-    <div class="col-lg-8 mx-auto text-center max-w-2xl mt-12"><p class="large text-muted text-neutral-5 dark:text-neutral-300">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
+    <div class="col-lg-8 mx-auto text-center max-w-2xl mt-12">
+      <p
+        class="large text-muted text-neutral-5 dark:text-neutral-300"
+        data-field-text="text"
+        data-toolbar-buttons="['bold', 'italic', 'underline', 'anchor']"
+      >{{ block.text }}</p>
+    </div>
   </div>
 </section>
