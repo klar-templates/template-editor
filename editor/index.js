@@ -1,4 +1,10 @@
 function initTemplate(data, components, nunjucksBlocks, config) {
+  window.template = {
+    data: data,
+    components: components,
+    nunjucksBlocks: nunjucksBlocks,
+    config: config
+  };
   const startpage = data.data.pages[0];
   const blocks = startpage.blocks;
   const block1 = blocks[0];
@@ -8,16 +14,10 @@ function initTemplate(data, components, nunjucksBlocks, config) {
   // console.log(components);
   // console.log(nunjucksBlocks);
   // console.log(config);
-  renderBlocks(data, components, nunjucksBlocks, config);
+  render(data, components, nunjucksBlocks, config);
 }
 
-function renderBlocks(data, components, nunjucksBlocks, config) {
-  window.template = {
-    data: data,
-    components: components,
-    nunjucksBlocks: nunjucksBlocks,
-    config: config
-  };
+function render(data, components, nunjucksBlocks, config) {
   // renderTemplateBlocks();
   renderBlockLinks();
   // data.data.pages[0].blocks = [];
@@ -63,16 +63,6 @@ function renderTemplateBlocks() {
   // setTimeout((() => console.log(parent.frames[0].document.getElementsByTagName('style')[0].innerHTML)), 2000);
 }
 
-function getCurrentPage() {
-  const path = getEditorSetting('current-page');
-  const data = window.template.data;
-  let currentPage = data.data.pages[0];
-  if (path && path !== '/') {
-    currentPage = data.data.pages.find(p => p._path === path);
-  }
-  return currentPage;
-}
-
 function renderTemplateBlock(name) {
   const config = window.template.config;
   const data = window.template.data;
@@ -86,17 +76,8 @@ function renderTemplateBlock(name) {
       data.data.pages[pageNumber].blocks.splice(1, 0, blockData);
     }
   });
-  data.navigate(currentPage._path);
-}
 
-function setBlockLinkActive(name) {
-  const isActive = document.querySelectorAll('.js-blocks .bg-neutral-100');
-  isActive.forEach((element) => {
-    element.classList.remove('bg-neutral-100');
-  });
-  const link = document.querySelector('#block-' + name);
-  link.classList.add('bg-neutral-100');
-  setEditorSetting('active-template-block', name);
+  data.navigate(currentPage._path);
 }
 
 function renderBlockLinks() {
@@ -123,6 +104,18 @@ function renderBlockLinks() {
     renderTemplateBlock(activeBlock);
     setBlockLinkActive(activeBlock);
   }
+}
+
+function getCurrentPage() {
+  const pathname = parent.frames[0].location.pathname;
+  setEditorSetting('current-page', pathname);
+  const path = getEditorSetting('current-page');
+  const data = window.template.data;
+  let currentPage = data.data.pages[0];
+  if (path && path !== '/') {
+    currentPage = data.data.pages.find(p => p._path === path);
+  }
+  return currentPage;
 }
 
 function setInitTemplate() {
@@ -208,17 +201,33 @@ function setEvents() {
     }
   });
 
-  const isDarkmode = getEditorSetting('darkmode');
-  if (isDarkmode === 'true') {
-    setTimeout(() => {
-      const htmlElParent = document.documentElement;
-      const htmlEl = parent.frames[0].document.documentElement;
-      htmlElParent.classList.add('dark');
-      htmlEl.classList.add('dark')}
-      , 100);
-  }
+  setDarkmode();
 
   btnDownloadBundle.addEventListener('click', (e) => downloadBundle(e));
+}
+
+function setBlockLinkActive(name) {
+  const isActive = document.querySelectorAll('.js-blocks .bg-neutral-100');
+  isActive.forEach((element) => {
+    element.classList.remove('bg-neutral-100');
+  });
+  const link = document.querySelector('#block-' + name);
+  link.classList.add('bg-neutral-100');
+  setEditorSetting('active-template-block', name);
+}
+
+function setDarkmode() {
+  const isDarkmode = getEditorSetting('darkmode');
+  if (isDarkmode === 'true') {
+    // setTimeout(() => {
+      const htmlElParent = document.documentElement;
+    // const htmlEl = parent.frames[0]?.document.documentElement;
+      htmlElParent.classList.add('dark');
+    //   if (htmlEl) {
+    //     htmlEl.classList.add('dark')
+    //   }
+    // }, 100);
+  }
 }
 
 async function downloadBundle(e) {
@@ -347,7 +356,7 @@ function insertScript(selector, src, callback) {
   document.querySelector(selector).appendChild(script);
 }
 
-function addHtml() {
+function setHtml() {
   const adminHtml = `
     <div class="layout">
       <aside class="sidebar-nav hidden transition-[width] flex flex-col items-center w-16 h-full overflow-hidden text-neutral-500 bg-white border-r border-outline">
@@ -445,7 +454,7 @@ function addHtml() {
             <div class="absolute inset-y-0 right-0 flex items-center">
               <label for="bp-select-width" class="sr-only">Width</label>
               <select id="bp-select-width" name="bp-select-width" class="h-full rounded-md border-transparent bg-transparent py-0 pl-2 pr-1 mr-1 text-gray-500 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                <option></option>  
+                <option></option>
                 <option>375</option>
                 <option>640</option>
                 <option>768</option>
@@ -457,6 +466,14 @@ function addHtml() {
           </div>
         </div>
         <div class="js-blocks mt-4"></div>
+        <div class="mt-4">
+          <button
+            type="button"
+            class="js-reset-blocks w-[228px] left-4 border border-gray-200 hover:border-gray-300 text-gray-700 block text-center rounded-lg px-4 py-1.5 font-semibold leading-7 shadow-sm hover:bg-primary-dark"
+            title="Reset the blocks">
+            Reset
+          </button>  
+        </div>
         <div class="mt-4"><a href="#" class="js-download-css-bundle hidden">Download CSS</a><a href="#" class="js-download-js-bundle hidden">Download JS</a><a href="#" title="Build the CSS and JS-files and\nput them in the dist folder." class="js-download-bundle w-[228px] absolute left-4 bottom-4 border border-gray-200 hover:border-gray-300 text-gray-700 block text-center rounded-lg px-4 py-1.5 text-base font-semibold leading-7 shadow-sm hover:bg-primary-dark">Build Bundle</a></div>
       </aside>
       <main class="main bg-neutral-100">
@@ -507,7 +524,7 @@ function startEditor(config, templateNunjucksBlocks, templateComponentsArr) {
   window.templateNunjucksBlocks = templateNunjucksBlocks;
   window.templateComponentsArr = templateComponentsArr;
   setHead();
-  addHtml();
+  setHtml();
   setInitTemplate();
   setEvents();
   parent.frames[0].addEventListener('unload', (event) => {
@@ -518,6 +535,7 @@ function startEditor(config, templateNunjucksBlocks, templateComponentsArr) {
   });
 }
 
+setDarkmode();
 fetch('../config.json')
   .then((response) => response.json())
   .then(async (config) => { 

@@ -13,6 +13,19 @@
 //   onError('Browser does not support service workers :-(')
 // }
 
+function setDarkmode() {
+  if (!parent.frames.length > 0) {
+    return;
+  }
+  const isDarkmode = parent.frames.getEditorSetting('darkmode');
+  if (isDarkmode === 'true') {
+    const htmlEl = document.documentElement;
+    if (htmlEl) {
+      htmlEl.classList.add('dark')
+    }
+  }
+}
+
 const initSite = function () {
   window.templateNunjucksBlocks = parent.frames.templateNunjucksBlocks;
   const templateComponentsArr = parent.frames.templateComponentsArr;
@@ -52,6 +65,8 @@ const initSite = function () {
   document.querySelector('head').appendChild(script);
   // document.querySelector('body').style.display = 'none';
   // setTimeout(() => document.querySelector('body').removeAttribute('style'), 300);
+
+  setDarkmode();
 }
 
 // window.addEventListener('DOMContentLoaded', async (event) => {
