@@ -15,6 +15,7 @@ function initTemplate(data, components, nunjucksBlocks, config) {
   // console.log(nunjucksBlocks);
   // console.log(config);
   render(data, components, nunjucksBlocks, config);
+  // console.log(document.getElementsByTagName('style')[0].innerHTML);
 }
 
 function render(data, components, nunjucksBlocks, config) {
