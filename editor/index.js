@@ -14,8 +14,8 @@ function initTemplate(data, components, nunjucksBlocks, config) {
   // console.log(components);
   // console.log(nunjucksBlocks);
   // console.log(config);
-  render(data, components, nunjucksBlocks, config);
   // console.log(document.getElementsByTagName('style')[0].innerHTML);
+  render(data, components, nunjucksBlocks, config);
 }
 
 function render(data, components, nunjucksBlocks, config) {
@@ -52,13 +52,15 @@ function render(data, components, nunjucksBlocks, config) {
 function renderTemplateBlocks() {
   const config = window.template.config;
   const data = window.template.data;
-  const pageNumber = 0;
+  const currentPage = getCurrentPage();
+  const pageNumber = data.data.pages.indexOf(currentPage);
   data.data.pages[pageNumber].blocks = data.data.pages[pageNumber].blocks.splice(0, 1);
   config.block_types.forEach((blockType, i) => {
     const dataDefault = config.data_defaults.blocks[blockType.name];
     const blockData = {...dataDefault, data: dataDefault, _id: `${blockType.name}-123456`,  _type: blockType.name};
     data.data.pages[pageNumber].blocks.splice(i+1, 0, blockData);
   });
+  data.navigate(currentPage._path);
   // parent.frames[0].document.querySelector('body').style.display = 'none';
   // setTimeout(() => parent.frames[0].document.querySelector('body').removeAttribute('style'), 100);
   // setTimeout((() => console.log(parent.frames[0].document.getElementsByTagName('style')[0].innerHTML)), 2000);
@@ -244,7 +246,7 @@ function setDarkmode() {
 }
 
 async function downloadBundle(e) {
-  // renderTemplateBlocks();
+  renderTemplateBlocks();
   try {
     const result = await downloadBundle1(e);
   } catch(e) {
