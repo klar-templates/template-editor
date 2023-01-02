@@ -3,6 +3,29 @@
   "version": "0.0.0",
   "block_types": [
     {
+      "title": "Team - Nunjucks",
+      "name": "team",
+      "icon": "group",
+      "template_engine": "nunjucks",
+      "fields": [
+        {
+          "type": "string",
+          "name": "heading",
+          "title": "Rubrik" 
+        },
+        {
+          "type": "string",
+          "name": "sub_heading",
+          "title": "Underrubrik" 
+        },
+        {
+          "type": "array",
+          "name": "team",
+          "title": "Team"
+        }
+      ]
+    },
+    {
       "title": "Hero",
       "name": "TemplateEditorHero",
       "icon": "image",
@@ -84,29 +107,6 @@
           "title": "Rubrik",
           "name": "title",
           "type": "string"
-        }
-      ]
-    },
-    {
-      "title": "Team - Nunjucks",
-      "name": "team",
-      "icon": "group",
-      "template_engine": "nunjucks",
-      "fields": [
-        {
-          "type": "string",
-          "name": "heading",
-          "title": "Rubrik" 
-        },
-        {
-          "type": "string",
-          "name": "sub_heading",
-          "title": "Underrubrik" 
-        },
-        {
-          "type": "array",
-          "name": "team",
-          "title": "Team"
         }
       ]
     }

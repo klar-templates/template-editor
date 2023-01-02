@@ -14,7 +14,7 @@ function initTemplate(data, components, nunjucksBlocks, config) {
   // console.log(components);
   // console.log(nunjucksBlocks);
   // console.log(config);
-  // console.log(document.getElementsByTagName('style')[0].innerHTML);
+  // setTimeout(() => console.log(document.getElementsByTagName('style')[0].innerHTML), 1000);
   render(data, components, nunjucksBlocks, config);
 }
 
