@@ -217,6 +217,9 @@ function setEvents() {
 }
 
 function resetBlocks() {
+  // template.data.navigate('/components');
+  setTimeout(() => console.log(parent.frames[0].document.getElementsByTagName('style')[1].innerHTML), 1000);
+  return;
   removeEditorSetting('active-template-block');
   location.reload();
 }
@@ -537,7 +540,7 @@ function startEditor(config, templateNunjucksBlocks, templateComponentsArr) {
   parent.frames[0].addEventListener('unload', (event) => {
     const pathname = parent.frames[0].location.pathname;
     if (pathname !== 'blank') {
-      setEditorSetting('current-page', pathname);
+      // setEditorSetting('current-page', pathname);
     }
   });
 }

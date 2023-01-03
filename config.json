@@ -26,6 +26,13 @@
       ]
     },
     {
+      "title": "Buttons - Nunjucks",
+      "name": "buttons",
+      "icon": "button",
+      "template_engine": "nunjucks",
+      "fields": []
+    },
+    {
       "title": "Hero",
       "name": "TemplateEditorHero",
       "icon": "image",

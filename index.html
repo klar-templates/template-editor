@@ -7,30 +7,112 @@
     <link rel="icon" href="#" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Template</title>
-    <!-- <link href="http://localhost:4173/assets/index.7d5d8db6.css" rel="stylesheet" /> -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- <script>
-      tailwind.config = {
-        corePlugins: {
-          preflight: false,
-        }
-      }
-    </script> -->
-    <!-- <style type="text/tailwindcss">
+    <style type="text/tailwindcss">
       @tailwind base;
       @tailwind components;
       @tailwind utilities;
 
       @layer base {
-        
+        html {
+          font-family: var(--font-body), system-ui, -apple-system, BlinkMacSystemFont,
+            'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+            'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+            'Noto Color Emoji';
+        }
+
+        h1,h2,h3,h4 {
+          @apply font-bold;
+        }
       }
-      
-      @layer utilities {
-        
+
+      @layer components {
+        /* Block */
+        .section {
+          @apply py-16 sm:py-20;
+        }
+
+        .section-padding-y {
+          @apply py-16 sm:py-20;
+        }
+
+        .section-heading {
+          @apply text-4xl;
+        }
+
+        .section-subheading {
+          @apply text-base font-medium italic mt-3;
+        }
+
+        .container-fluid {
+          @apply max-w-7xl;
+        }
+
+        /* Spacing */
+        .container-padding-x {
+          @apply px-4 sm:px-6 xl:px-8;
+        }
+
+        .grid-gap {
+          @apply gap-4 md:gap-8 lg:gap-12;
+        }
+
+        .flex-gap {
+          @apply gap-2 md:gap-4
+        }
+
+        /* Button */
+        .btn {
+          @apply px-5 py-2 text-sm leading-5 rounded-lg font-semibold;
+        }
+
+        .btn-text {
+          @apply dark:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-800;
+        }
+
+        .btn-link {
+          @apply text-blue-500 hover:underline;
+        }
+
+        .btn-filled {
+          @apply bg-blue-500 text-white dark:bg-blue-100 dark:text-blue-800;
+        }
+
+        .btn-filled-dark {
+          @apply bg-slate-900 hover:bg-slate-700 text-white dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-200 dark:hover:text-slate-900
+        }
+
+        .btn-tonal {
+          @apply bg-blue-100 text-blue-900 hover:bg-blue-200 dark:bg-blue-800 dark:text-blue-100 dark:hover:bg-blue-700;
+        }
+
+        .btn-outlined {
+          @apply text-blue-500 border border-neutral-900/10 hover:border-neutral-900/20 dark:text-neutral-100 dark:border-neutral-100/10 dark:hover:border-neutral-100/20;
+        }
+
+        .btn-elevated {
+          @apply text-blue-500 dark:text-neutral-100 shadow shadow-black/[0.1] hover:shadow-black/[0.2] dark:shadow-black/25  hover:dark:shadow-black/50;
+        }
+
+        .btn:disabled {
+          @apply opacity-[0.38];
+        }
+
+        .btn-sm {
+          @apply px-3 py-1.5 text-xs;
+        }
+
+        .btn-lg {
+          @apply px-7 py-3 text-base;
+        }
+
+        .btn-xl {
+          @apply px-10 py-4 text-base;
+        }
       }
-    </style> -->
+    </style>
   </head>
-  <body class="bg-background m-0">
+  <body class="m-0">
     <div id="root"></div>
     <!-- <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script> -->
     <!-- <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script> -->
