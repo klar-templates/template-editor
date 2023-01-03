@@ -218,8 +218,29 @@ function setEvents() {
 
 function resetBlocks() {
   // template.data.navigate('/components');
-  setTimeout(() => console.log(parent.frames[0].document.getElementsByTagName('style')[1].innerHTML), 1000);
-  return;
+  // setTimeout(() => {
+  //   // console.log(parent.frames[0].document.getElementsByTagName('style')[1].innerHTML)
+    
+  //   // Example POST method implementation:
+  //   // const data = { input: 'console.log(  1  )' };
+
+  //   // fetch('https://www.toptal.com/developers/javascript-minifier/api/raw', {
+  //   //   method: 'POST',
+  //   //   headers: {
+  //   //     'Content-Type': 'application/x-www-form-urlencoded',
+  //   //   },
+  //   //   body: JSON.stringify(data),
+  //   // })
+  //   // .then((response) => response.json())
+  //   // .then((data) => {
+  //   //   console.log('Success:', data);
+  //   // })
+  //   // .catch((error) => {
+  //   //   console.error('Error:', error);
+  //   // });
+
+  // }, 1000);
+  // return;
   removeEditorSetting('active-template-block');
   location.reload();
 }
@@ -249,6 +270,7 @@ function setDarkmode() {
 }
 
 async function downloadBundle(e) {
+  // template.data.navigate('/components');
   renderTemplateBlocks();
   try {
     const result = await downloadBundle1(e);
@@ -540,7 +562,7 @@ function startEditor(config, templateNunjucksBlocks, templateComponentsArr) {
   parent.frames[0].addEventListener('unload', (event) => {
     const pathname = parent.frames[0].location.pathname;
     if (pathname !== 'blank') {
-      // setEditorSetting('current-page', pathname);
+      setEditorSetting('current-page', pathname);
     }
   });
 }
