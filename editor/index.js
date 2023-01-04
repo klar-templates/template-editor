@@ -623,6 +623,7 @@ fetch('../config.json')
 
 function reactPageIsLoaded() {}
 
+// Klar CMS
 if (!localStorage.getItem('current-page')) {
   localStorage.setItem('current-page', 'startpage-1671137265622');
 }
@@ -631,26 +632,37 @@ window.klar = {};
 window.klar.data = {
   "pages": [
       {
-        "_id": "startpage-1671137265622",
-        "_type": "startpage",
-        "_menu_item_name": "Startsida",
-        "_slug": "startsida",
-        "_path": "/startsida",
-        "_startpage": true,
-        "_meta": {
-          "type_id": "startpage",
-          "created_at": "2022-12-15T20:47:45.622Z",
-          "updated_at": "2022-12-15T20:47:45.622Z",
-          "status": "published",
-          "created_by": "not-logged-in-user",
-          "updated_by": "not-logged-in-user",
-          "position": 0
-        },
-        "settings": {
-            "title": "Startsida",
-            "description": "This is my one page website and it's beautiful!"
-        },
-        "blocks": [
+          "settings": {
+              "title": "Startsida",
+              "description": "This is my one page website and it's beautiful!"
+          },
+          "_id": "startpage-1671137265622",
+          "_type": "startpage",
+          "id": "startpage-1671137265622",
+          "_menu_item_name": "Startsida",
+          "_slug": "startsida",
+          "_path": "/startsida",
+          "startpage": true,
+          "meta": {
+              "type_id": "startpage",
+              "created_at": "2022-12-15T20:47:45.622Z",
+              "updated_at": "2022-12-15T20:47:45.622Z",
+              "status": "published",
+              "created_by": "not-logged-in-user",
+              "updated_by": "not-logged-in-user",
+              "position": 0
+          },
+          "_startpage": true,
+          "_meta": {
+              "type_id": "startpage",
+              "created_at": "2022-12-15T20:47:45.622Z",
+              "updated_at": "2022-12-15T20:47:45.622Z",
+              "status": "published",
+              "created_by": "not-logged-in-user",
+              "updated_by": "not-logged-in-user",
+              "position": 0
+          },
+          "blocks": [
               {
                   "data": {
                       "logo_text": "The Page",
@@ -856,6 +868,1164 @@ window.klar.data = {
                   "_type": "hero3",
                   "template_id": "hero3",
                   "_position": 2
+              },
+              {
+                  "data": {},
+                  "_id": "cards-1671393969227",
+                  "_type": "cards",
+                  "template_id": "cards",
+                  "_position": 3
+              },
+              {
+                  "data": {
+                      "copyright_text": "Copyright &copy; Your Website 2016",
+                      "social_links": [
+                          {
+                              "title": "Twitter",
+                              "icon": "twitter",
+                              "link": "#youraccount"
+                          },
+                          {
+                              "title": "Facebook",
+                              "icon": "facebook",
+                              "link": "#youraccount"
+                          },
+                          {
+                              "title": "Instagram",
+                              "icon": "instagram",
+                              "link": "#youraccount"
+                          },
+                          {
+                              "title": "LinkedIn",
+                              "icon": "linkedin",
+                              "link": "#youraccount"
+                          }
+                      ],
+                      "quick_links": [
+                          {
+                              "title": "Privacy Policy",
+                              "link": ""
+                          },
+                          {
+                              "title": "Terms of Use",
+                              "link": ""
+                          }
+                      ],
+                      "style": {
+                          "block": {
+                              "bg_color": "#ffffff",
+                              "social_links_hover_bg_color": "#e02e3d",
+                              "padding_top": 25,
+                              "padding_bottom": 25
+                          }
+                      }
+                  },
+                  "copyright_text": "Copyright &copy; Your Website 2016",
+                  "social_links": [
+                      {
+                          "title": "Twitter",
+                          "icon": "twitter",
+                          "link": "#youraccount"
+                      },
+                      {
+                          "title": "Facebook",
+                          "icon": "facebook",
+                          "link": "#youraccount"
+                      },
+                      {
+                          "title": "Instagram",
+                          "icon": "instagram",
+                          "link": "#youraccount"
+                      },
+                      {
+                          "title": "LinkedIn",
+                          "icon": "linkedin",
+                          "link": "#youraccount"
+                      }
+                  ],
+                  "quick_links": [
+                      {
+                          "title": "Privacy Policy",
+                          "link": ""
+                      },
+                      {
+                          "title": "Terms of Use",
+                          "link": ""
+                      }
+                  ],
+                  "style": {
+                      "block": {
+                          "bg_color": "#ffffff",
+                          "social_links_hover_bg_color": "#e02e3d",
+                          "padding_top": 25,
+                          "padding_bottom": 25
+                      }
+                  },
+                  "_id": "footer-1671476959127",
+                  "_type": "footer",
+                  "template_id": "footer",
+                  "_position": 4
+              }
+          ]
+      },
+      {
+          "settings": {
+              "title": "Sida 1",
+              "description": "This is my one page website and it's beautiful!"
+          },
+          "_id": "subpage-1671204550412",
+          "_type": "subpage",
+          "id": "subpage-1671204550412",
+          "_menu_item_name": "Sida 1",
+          "_slug": "sida-1",
+          "_path": "/sida-1",
+          "startpage": false,
+          "meta": {
+              "type_id": "subpage",
+              "created_at": "2022-12-16T15:29:10.412Z",
+              "updated_at": "2022-12-16T15:29:10.412Z",
+              "status": "published",
+              "created_by": "not-logged-in-user",
+              "updated_by": "not-logged-in-user",
+              "position": 1
+          },
+          "_startpage": false,
+          "_meta": {
+              "type_id": "subpage",
+              "created_at": "2022-12-16T15:29:10.412Z",
+              "updated_at": "2022-12-16T15:29:10.412Z",
+              "status": "published",
+              "created_by": "not-logged-in-user",
+              "updated_by": "not-logged-in-user",
+              "position": 1
+          },
+          "blocks": [
+              {
+                  "data": {
+                      "logo_text": "The Page",
+                      "navigation": [
+                          {
+                              "title": "Services",
+                              "link": "#services"
+                          },
+                          {
+                              "title": "Portfolio",
+                              "link": "#portfolio"
+                          },
+                          {
+                              "title": "About",
+                              "link": "#about"
+                          },
+                          {
+                              "title": "Team",
+                              "link": "#team"
+                          },
+                          {
+                              "title": "Contact",
+                              "link": "#contact"
+                          }
+                      ],
+                      "style": {
+                          "darkmode": false,
+                          "transparent": true,
+                          "shadow": "none",
+                          "bg_color": "transparent",
+                          "margin_bottom": 0,
+                          "gradient": "none",
+                          "gradient_from": "#000",
+                          "gradient_to": "#fff",
+                          "navbar": {
+                              "transparent": true,
+                              "shadow": "none",
+                              "sticky": true,
+                              "bg_color": "transparent",
+                              "margin_bottom": 0,
+                              "padding_top": 25,
+                              "padding_bottom": 25,
+                              "border_bottom_width": 0,
+                              "border_bottom_color": "transparent",
+                              "show_overlay": false,
+                              "overlay_bg_color": "#000000",
+                              "overlay_opacity": 20,
+                              "margin_top_next_block": 0
+                          },
+                          "logo": {
+                              "text_color": "#e02e3d",
+                              "text_hover_color": "#e02e3d",
+                              "text_focus_color": "#e02e3d",
+                              "font_family": "Kaushan Script",
+                              "image": "https://assets.brandfolder.com/8w7lv8ml/view.png",
+                              "padding_top": 12,
+                              "width": 125,
+                              "show": false
+                          },
+                          "navigation": {
+                              "text_color": "#fff",
+                              "text_hover_color": "#e02e3d",
+                              "text_active_color": "#e02e3d",
+                              "text_focus_color": "#e02e3d",
+                              "bg_text_color": "transparent",
+                              "bg_text_hover_color": "transparent",
+                              "bg_text_active_color": "#e02e3d",
+                              "bg_text_focus_color": "#e02e3d",
+                              "mobile_menu_button_bg_color": "#e02e3d",
+                              "mobile_menu_button_hover_bg_color": "#e02e3d",
+                              "mobile_menu_button_focus_bg_color": "#e02e3d"
+                          }
+                      }
+                  },
+                  "logo_text": "The Page",
+                  "navigation": [
+                      {
+                          "title": "Services",
+                          "link": "#services"
+                      },
+                      {
+                          "title": "Portfolio",
+                          "link": "#portfolio"
+                      },
+                      {
+                          "title": "About",
+                          "link": "#about"
+                      },
+                      {
+                          "title": "Team",
+                          "link": "#team"
+                      },
+                      {
+                          "title": "Contact",
+                          "link": "#contact"
+                      }
+                  ],
+                  "style": {
+                      "darkmode": false,
+                      "transparent": true,
+                      "shadow": "none",
+                      "bg_color": "transparent",
+                      "margin_bottom": 0,
+                      "gradient": "none",
+                      "gradient_from": "#000",
+                      "gradient_to": "#fff",
+                      "navbar": {
+                          "transparent": true,
+                          "shadow": "none",
+                          "sticky": true,
+                          "bg_color": "transparent",
+                          "margin_bottom": 0,
+                          "padding_top": 25,
+                          "padding_bottom": 25,
+                          "border_bottom_width": 0,
+                          "border_bottom_color": "transparent",
+                          "show_overlay": false,
+                          "overlay_bg_color": "#000000",
+                          "overlay_opacity": 20,
+                          "margin_top_next_block": 0
+                      },
+                      "logo": {
+                          "text_color": "#e02e3d",
+                          "text_hover_color": "#e02e3d",
+                          "text_focus_color": "#e02e3d",
+                          "font_family": "Kaushan Script",
+                          "image": "https://assets.brandfolder.com/8w7lv8ml/view.png",
+                          "padding_top": 12,
+                          "width": 125,
+                          "show": false
+                      },
+                      "navigation": {
+                          "text_color": "#fff",
+                          "text_hover_color": "#e02e3d",
+                          "text_active_color": "#e02e3d",
+                          "text_focus_color": "#e02e3d",
+                          "bg_text_color": "transparent",
+                          "bg_text_hover_color": "transparent",
+                          "bg_text_active_color": "#e02e3d",
+                          "bg_text_focus_color": "#e02e3d",
+                          "mobile_menu_button_bg_color": "#e02e3d",
+                          "mobile_menu_button_hover_bg_color": "#e02e3d",
+                          "mobile_menu_button_focus_bg_color": "#e02e3d"
+                      }
+                  },
+                  "_id": "header3-1671204550414",
+                  "_type": "header3",
+                  "template_id": "header3",
+                  "_position": 0
+              },
+              {
+                  "data": {},
+                  "_id": "hero1-1671238281356",
+                  "_type": "hero1",
+                  "template_id": "hero1",
+                  "_position": 2
+              },
+              {
+                  "data": {},
+                  "_id": "cards1-1671238250408",
+                  "_type": "cards1",
+                  "template_id": "cards1",
+                  "_position": 3
+              },
+              {
+                  "data": {
+                      "copyright_text": "Copyright &copy; Your Website 2016",
+                      "social_links": [
+                          {
+                              "title": "Twitter",
+                              "icon": "twitter",
+                              "link": "#youraccount"
+                          },
+                          {
+                              "title": "Facebook",
+                              "icon": "facebook",
+                              "link": "#youraccount"
+                          },
+                          {
+                              "title": "Instagram",
+                              "icon": "instagram",
+                              "link": "#youraccount"
+                          },
+                          {
+                              "title": "LinkedIn",
+                              "icon": "linkedin",
+                              "link": "#youraccount"
+                          }
+                      ],
+                      "quick_links": [
+                          {
+                              "title": "Privacy Policy",
+                              "link": ""
+                          },
+                          {
+                              "title": "Terms of Use",
+                              "link": ""
+                          }
+                      ],
+                      "style": {
+                          "block": {
+                              "bg_color": "#ffffff",
+                              "social_links_hover_bg_color": "#e02e3d",
+                              "padding_top": 25,
+                              "padding_bottom": 25
+                          }
+                      }
+                  },
+                  "copyright_text": "Copyright &copy; Your Website 2016",
+                  "social_links": [
+                      {
+                          "title": "Twitter",
+                          "icon": "twitter",
+                          "link": "#youraccount"
+                      },
+                      {
+                          "title": "Facebook",
+                          "icon": "facebook",
+                          "link": "#youraccount"
+                      },
+                      {
+                          "title": "Instagram",
+                          "icon": "instagram",
+                          "link": "#youraccount"
+                      },
+                      {
+                          "title": "LinkedIn",
+                          "icon": "linkedin",
+                          "link": "#youraccount"
+                      }
+                  ],
+                  "quick_links": [
+                      {
+                          "title": "Privacy Policy",
+                          "link": ""
+                      },
+                      {
+                          "title": "Terms of Use",
+                          "link": ""
+                      }
+                  ],
+                  "style": {
+                      "block": {
+                          "bg_color": "#ffffff",
+                          "social_links_hover_bg_color": "#e02e3d",
+                          "padding_top": 25,
+                          "padding_bottom": 25
+                      }
+                  },
+                  "_id": "footer-1671490768077",
+                  "_type": "footer",
+                  "template_id": "footer",
+                  "_position": 4
+              }
+          ]
+      },
+      {
+          "settings": {
+              "title": "Agency - Start Bootstrap Theme",
+              "description": "This is my one page website and it's beautiful!"
+          },
+          "_id": "subpage-1672413887992",
+          "_type": "subpage",
+          "id": "subpage-1672413887992",
+          "_menu_item_name": "Sida 2",
+          "_slug": "sida-2",
+          "_path": "/sida-2",
+          "startpage": false,
+          "meta": {
+              "type_id": "subpage",
+              "created_at": "2022-12-30T15:24:47.992Z",
+              "updated_at": "2022-12-30T15:24:47.992Z",
+              "status": "published",
+              "created_by": "not-logged-in-user",
+              "updated_by": "not-logged-in-user",
+              "position": 2
+          },
+          "_startpage": false,
+          "_meta": {
+              "type_id": "subpage",
+              "created_at": "2022-12-30T15:24:47.992Z",
+              "updated_at": "2022-12-30T15:24:47.992Z",
+              "status": "published",
+              "created_by": "not-logged-in-user",
+              "updated_by": "not-logged-in-user",
+              "position": 2
+          },
+          "blocks": [
+              {
+                  "data": {
+                      "logo_text": "The Page",
+                      "navigation": [
+                          {
+                              "title": "Services",
+                              "link": "#services"
+                          },
+                          {
+                              "title": "Portfolio",
+                              "link": "#portfolio"
+                          },
+                          {
+                              "title": "About",
+                              "link": "#about"
+                          },
+                          {
+                              "title": "Team",
+                              "link": "#team"
+                          },
+                          {
+                              "title": "Contact",
+                              "link": "#contact"
+                          }
+                      ],
+                      "style": {
+                          "darkmode": false,
+                          "transparent": true,
+                          "shadow": "none",
+                          "bg_color": "transparent",
+                          "margin_bottom": 0,
+                          "gradient": "none",
+                          "gradient_from": "#000",
+                          "gradient_to": "#fff",
+                          "navbar": {
+                              "transparent": true,
+                              "shadow": "none",
+                              "sticky": true,
+                              "bg_color": "transparent",
+                              "margin_bottom": 0,
+                              "padding_top": 25,
+                              "padding_bottom": 25,
+                              "border_bottom_width": 0,
+                              "border_bottom_color": "transparent",
+                              "show_overlay": false,
+                              "overlay_bg_color": "#000000",
+                              "overlay_opacity": 20,
+                              "margin_top_next_block": 0
+                          },
+                          "logo": {
+                              "text_color": "#e02e3d",
+                              "text_hover_color": "#e02e3d",
+                              "text_focus_color": "#e02e3d",
+                              "font_family": "Kaushan Script",
+                              "image": "https://assets.brandfolder.com/8w7lv8ml/view.png",
+                              "padding_top": 12,
+                              "width": 125,
+                              "show": false
+                          },
+                          "navigation": {
+                              "text_color": "#fff",
+                              "text_hover_color": "#e02e3d",
+                              "text_active_color": "#e02e3d",
+                              "text_focus_color": "#e02e3d",
+                              "bg_text_color": "transparent",
+                              "bg_text_hover_color": "transparent",
+                              "bg_text_active_color": "#e02e3d",
+                              "bg_text_focus_color": "#e02e3d",
+                              "mobile_menu_button_bg_color": "#e02e3d",
+                              "mobile_menu_button_hover_bg_color": "#e02e3d",
+                              "mobile_menu_button_focus_bg_color": "#e02e3d"
+                          }
+                      }
+                  },
+                  "logo_text": "The Page",
+                  "navigation": [
+                      {
+                          "title": "Services",
+                          "link": "#services"
+                      },
+                      {
+                          "title": "Portfolio",
+                          "link": "#portfolio"
+                      },
+                      {
+                          "title": "About",
+                          "link": "#about"
+                      },
+                      {
+                          "title": "Team",
+                          "link": "#team"
+                      },
+                      {
+                          "title": "Contact",
+                          "link": "#contact"
+                      }
+                  ],
+                  "style": {
+                      "darkmode": false,
+                      "transparent": true,
+                      "shadow": "none",
+                      "bg_color": "transparent",
+                      "margin_bottom": 0,
+                      "gradient": "none",
+                      "gradient_from": "#000",
+                      "gradient_to": "#fff",
+                      "navbar": {
+                          "transparent": true,
+                          "shadow": "none",
+                          "sticky": true,
+                          "bg_color": "transparent",
+                          "margin_bottom": 0,
+                          "padding_top": 25,
+                          "padding_bottom": 25,
+                          "border_bottom_width": 0,
+                          "border_bottom_color": "transparent",
+                          "show_overlay": false,
+                          "overlay_bg_color": "#000000",
+                          "overlay_opacity": 20,
+                          "margin_top_next_block": 0
+                      },
+                      "logo": {
+                          "text_color": "#e02e3d",
+                          "text_hover_color": "#e02e3d",
+                          "text_focus_color": "#e02e3d",
+                          "font_family": "Kaushan Script",
+                          "image": "https://assets.brandfolder.com/8w7lv8ml/view.png",
+                          "padding_top": 12,
+                          "width": 125,
+                          "show": false
+                      },
+                      "navigation": {
+                          "text_color": "#fff",
+                          "text_hover_color": "#e02e3d",
+                          "text_active_color": "#e02e3d",
+                          "text_focus_color": "#e02e3d",
+                          "bg_text_color": "transparent",
+                          "bg_text_hover_color": "transparent",
+                          "bg_text_active_color": "#e02e3d",
+                          "bg_text_focus_color": "#e02e3d",
+                          "mobile_menu_button_bg_color": "#e02e3d",
+                          "mobile_menu_button_hover_bg_color": "#e02e3d",
+                          "mobile_menu_button_focus_bg_color": "#e02e3d"
+                      }
+                  },
+                  "_id": "header3-1672413887995",
+                  "_type": "header3",
+                  "template_id": "header3",
+                  "_position": 0
+              },
+              {
+                  "data": {
+                      "title": "Create an account and start making your own web sites",
+                      "subtitle": "Edit everything on this site and if you like it...",
+                      "link": "#services",
+                      "link_text": "Tell me more",
+                      "image": "https://raw.githubusercontent.com/klar-templates/agency/master/img/header-bg.jpg",
+                      "show_title": true,
+                      "show_subtitle": true,
+                      "show_button": true,
+                      "style": {
+                          "title_text_color": "#ffffff",
+                          "subtitle_text_color": "#ffffff",
+                          "button_bg_color": "#e02e3d",
+                          "button_text_color": "#ffffff",
+                          "padding_top": 300,
+                          "padding_bottom": 200,
+                          "full_screen": true,
+                          "text_align": "center",
+                          "show_overlay": true,
+                          "overlay_bg_color": "#000000",
+                          "overlay_opacity": 40,
+                          "margin_top": 0,
+                          "bg_image_position_top": 0
+                      }
+                  },
+                  "title": "Create an account and start making your own web sites",
+                  "subtitle": "Edit everything on this site and if you like it...",
+                  "link": "#services",
+                  "link_text": "Tell me more",
+                  "image": "https://raw.githubusercontent.com/klar-templates/agency/master/img/header-bg.jpg",
+                  "show_title": true,
+                  "show_subtitle": true,
+                  "show_button": true,
+                  "style": {
+                      "title_text_color": "#ffffff",
+                      "subtitle_text_color": "#ffffff",
+                      "button_bg_color": "#e02e3d",
+                      "button_text_color": "#ffffff",
+                      "padding_top": 300,
+                      "padding_bottom": 200,
+                      "full_screen": true,
+                      "text_align": "center",
+                      "show_overlay": true,
+                      "overlay_bg_color": "#000000",
+                      "overlay_opacity": 40,
+                      "margin_top": 0,
+                      "bg_image_position_top": 0
+                  },
+                  "_id": "hero3-1672418295464",
+                  "_type": "hero3",
+                  "template_id": "hero3",
+                  "_position": 1
+              }
+          ]
+      },
+      {
+          "settings": {
+              "title": "Agency - Start Bootstrap Theme",
+              "description": "This is my one page website and it's beautiful!"
+          },
+          "_id": "subpage-1672617870066",
+          "_type": "subpage",
+          "id": "subpage-1672617870066",
+          "_menu_item_name": "Sida 3",
+          "_slug": "sida-3",
+          "_path": "/sida-3",
+          "startpage": false,
+          "meta": {
+              "type_id": "subpage",
+              "created_at": "2023-01-02T00:04:30.066Z",
+              "updated_at": "2023-01-02T00:04:30.066Z",
+              "status": "published",
+              "created_by": "not-logged-in-user",
+              "updated_by": "not-logged-in-user",
+              "position": 3
+          },
+          "_startpage": false,
+          "_meta": {
+              "type_id": "subpage",
+              "created_at": "2023-01-02T00:04:30.066Z",
+              "updated_at": "2023-01-02T00:04:30.066Z",
+              "status": "published",
+              "created_by": "not-logged-in-user",
+              "updated_by": "not-logged-in-user",
+              "position": 3
+          },
+          "blocks": [
+              {
+                  "data": {
+                      "logo_text": "The Page",
+                      "navigation": [
+                          {
+                              "title": "Services",
+                              "link": "#services"
+                          },
+                          {
+                              "title": "Portfolio",
+                              "link": "#portfolio"
+                          },
+                          {
+                              "title": "About",
+                              "link": "#about"
+                          },
+                          {
+                              "title": "Team",
+                              "link": "#team"
+                          },
+                          {
+                              "title": "Contact",
+                              "link": "#contact"
+                          }
+                      ],
+                      "style": {
+                          "darkmode": false,
+                          "transparent": true,
+                          "shadow": "none",
+                          "bg_color": "transparent",
+                          "margin_bottom": 0,
+                          "gradient": "none",
+                          "gradient_from": "#000",
+                          "gradient_to": "#fff",
+                          "navbar": {
+                              "transparent": true,
+                              "shadow": "none",
+                              "sticky": true,
+                              "bg_color": "transparent",
+                              "margin_bottom": 0,
+                              "padding_top": 25,
+                              "padding_bottom": 25,
+                              "border_bottom_width": 0,
+                              "border_bottom_color": "transparent",
+                              "show_overlay": false,
+                              "overlay_bg_color": "#000000",
+                              "overlay_opacity": 20,
+                              "margin_top_next_block": 0
+                          },
+                          "logo": {
+                              "text_color": "#e02e3d",
+                              "text_hover_color": "#e02e3d",
+                              "text_focus_color": "#e02e3d",
+                              "font_family": "Kaushan Script",
+                              "image": "https://assets.brandfolder.com/8w7lv8ml/view.png",
+                              "padding_top": 12,
+                              "width": 125,
+                              "show": false
+                          },
+                          "navigation": {
+                              "text_color": "#fff",
+                              "text_hover_color": "#e02e3d",
+                              "text_active_color": "#e02e3d",
+                              "text_focus_color": "#e02e3d",
+                              "bg_text_color": "transparent",
+                              "bg_text_hover_color": "transparent",
+                              "bg_text_active_color": "#e02e3d",
+                              "bg_text_focus_color": "#e02e3d",
+                              "mobile_menu_button_bg_color": "#e02e3d",
+                              "mobile_menu_button_hover_bg_color": "#e02e3d",
+                              "mobile_menu_button_focus_bg_color": "#e02e3d"
+                          }
+                      }
+                  },
+                  "logo_text": "The Page",
+                  "navigation": [
+                      {
+                          "title": "Services",
+                          "link": "#services"
+                      },
+                      {
+                          "title": "Portfolio",
+                          "link": "#portfolio"
+                      },
+                      {
+                          "title": "About",
+                          "link": "#about"
+                      },
+                      {
+                          "title": "Team",
+                          "link": "#team"
+                      },
+                      {
+                          "title": "Contact",
+                          "link": "#contact"
+                      }
+                  ],
+                  "style": {
+                      "darkmode": false,
+                      "transparent": true,
+                      "shadow": "none",
+                      "bg_color": "transparent",
+                      "margin_bottom": 0,
+                      "gradient": "none",
+                      "gradient_from": "#000",
+                      "gradient_to": "#fff",
+                      "navbar": {
+                          "transparent": true,
+                          "shadow": "none",
+                          "sticky": true,
+                          "bg_color": "transparent",
+                          "margin_bottom": 0,
+                          "padding_top": 25,
+                          "padding_bottom": 25,
+                          "border_bottom_width": 0,
+                          "border_bottom_color": "transparent",
+                          "show_overlay": false,
+                          "overlay_bg_color": "#000000",
+                          "overlay_opacity": 20,
+                          "margin_top_next_block": 0
+                      },
+                      "logo": {
+                          "text_color": "#e02e3d",
+                          "text_hover_color": "#e02e3d",
+                          "text_focus_color": "#e02e3d",
+                          "font_family": "Kaushan Script",
+                          "image": "https://assets.brandfolder.com/8w7lv8ml/view.png",
+                          "padding_top": 12,
+                          "width": 125,
+                          "show": false
+                      },
+                      "navigation": {
+                          "text_color": "#fff",
+                          "text_hover_color": "#e02e3d",
+                          "text_active_color": "#e02e3d",
+                          "text_focus_color": "#e02e3d",
+                          "bg_text_color": "transparent",
+                          "bg_text_hover_color": "transparent",
+                          "bg_text_active_color": "#e02e3d",
+                          "bg_text_focus_color": "#e02e3d",
+                          "mobile_menu_button_bg_color": "#e02e3d",
+                          "mobile_menu_button_hover_bg_color": "#e02e3d",
+                          "mobile_menu_button_focus_bg_color": "#e02e3d"
+                      }
+                  },
+                  "_id": "header3-1672617870068",
+                  "_type": "header3",
+                  "template_id": "header3",
+                  "_position": 0
+              },
+              {
+                  "data": {
+                      "heading": "Our Amazing Team",
+                      "sub_heading": "Lorem ipsum dolor sit amet consectetur.",
+                      "team": [
+                          {
+                              "image": "https://startbootstrap.github.io/startbootstrap-agency/assets/img/team/1.jpg",
+                              "heading": "Kay Garland",
+                              "text": "Lead Designer",
+                              "social_links": [
+                                  {
+                                      "title": "Twitter",
+                                      "icon": "twitter",
+                                      "link": "#youraccount"
+                                  },
+                                  {
+                                      "title": "Facebook",
+                                      "icon": "facebook",
+                                      "link": "#youraccount"
+                                  },
+                                  {
+                                      "title": "Instagram",
+                                      "icon": "instagram",
+                                      "link": "#youraccount"
+                                  }
+                              ]
+                          },
+                          {
+                              "image": "https://startbootstrap.github.io/startbootstrap-agency/assets/img/team/2.jpg",
+                              "heading": "Larry Parker",
+                              "text": "Lead Marketer",
+                              "social_links": [
+                                  {
+                                      "title": "Twitter",
+                                      "icon": "twitter",
+                                      "link": "#youraccount"
+                                  },
+                                  {
+                                      "title": "Facebook",
+                                      "icon": "facebook",
+                                      "link": "#youraccount"
+                                  },
+                                  {
+                                      "title": "Instagram",
+                                      "icon": "instagram",
+                                      "link": "#youraccount"
+                                  }
+                              ]
+                          },
+                          {
+                              "image": "https://startbootstrap.github.io/startbootstrap-agency/assets/img/team/3.jpg",
+                              "heading": "Diana Pertersen",
+                              "text": "Lead Developer",
+                              "social_links": [
+                                  {
+                                      "title": "Twitter",
+                                      "icon": "twitter",
+                                      "link": "#youraccount"
+                                  },
+                                  {
+                                      "title": "Facebook",
+                                      "icon": "facebook",
+                                      "link": "#youraccount"
+                                  },
+                                  {
+                                      "title": "Instagram",
+                                      "icon": "instagram",
+                                      "link": "#youraccount"
+                                  }
+                              ]
+                          }
+                      ],
+                      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.",
+                      "style": {
+                          "block": {
+                              "social_links_hover_bg_color": "#e02e3d"
+                          }
+                      }
+                  },
+                  "heading": "Our Amazing Team",
+                  "sub_heading": "Lorem ipsum dolor sit amet consectetur.",
+                  "team": [
+                      {
+                          "image": "https://startbootstrap.github.io/startbootstrap-agency/assets/img/team/1.jpg",
+                          "heading": "Kay Garland",
+                          "text": "Lead Designer",
+                          "social_links": [
+                              {
+                                  "title": "Twitter",
+                                  "icon": "twitter",
+                                  "link": "#youraccount"
+                              },
+                              {
+                                  "title": "Facebook",
+                                  "icon": "facebook",
+                                  "link": "#youraccount"
+                              },
+                              {
+                                  "title": "Instagram",
+                                  "icon": "instagram",
+                                  "link": "#youraccount"
+                              }
+                          ]
+                      },
+                      {
+                          "image": "https://startbootstrap.github.io/startbootstrap-agency/assets/img/team/2.jpg",
+                          "heading": "Larry Parker",
+                          "text": "Lead Marketer",
+                          "social_links": [
+                              {
+                                  "title": "Twitter",
+                                  "icon": "twitter",
+                                  "link": "#youraccount"
+                              },
+                              {
+                                  "title": "Facebook",
+                                  "icon": "facebook",
+                                  "link": "#youraccount"
+                              },
+                              {
+                                  "title": "Instagram",
+                                  "icon": "instagram",
+                                  "link": "#youraccount"
+                              }
+                          ]
+                      },
+                      {
+                          "image": "https://startbootstrap.github.io/startbootstrap-agency/assets/img/team/3.jpg",
+                          "heading": "Diana Pertersen",
+                          "text": "Lead Developer",
+                          "social_links": [
+                              {
+                                  "title": "Twitter",
+                                  "icon": "twitter",
+                                  "link": "#youraccount"
+                              },
+                              {
+                                  "title": "Facebook",
+                                  "icon": "facebook",
+                                  "link": "#youraccount"
+                              },
+                              {
+                                  "title": "Instagram",
+                                  "icon": "instagram",
+                                  "link": "#youraccount"
+                              }
+                          ]
+                      }
+                  ],
+                  "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.",
+                  "style": {
+                      "block": {
+                          "social_links_hover_bg_color": "#e02e3d"
+                      }
+                  },
+                  "_id": "temp-team-1672617878077",
+                  "_type": "temp-team",
+                  "template_id": "temp-team",
+                  "_position": 1
+              }
+          ]
+      },
+      {
+          "settings": {
+              "title": "Agency - Start Bootstrap Theme",
+              "description": "This is my one page website and it's beautiful!"
+          },
+          "_id": "contact-page-1672413862350",
+          "_type": "contact-page",
+          "id": "contact-page-1672413862350",
+          "_menu_item_name": "Kontakt",
+          "_slug": "kontakt",
+          "_path": "/kontakt",
+          "startpage": false,
+          "meta": {
+              "type_id": "contact-page",
+              "created_at": "2022-12-30T15:24:22.350Z",
+              "updated_at": "2022-12-30T15:24:22.350Z",
+              "status": "published",
+              "created_by": "not-logged-in-user",
+              "updated_by": "not-logged-in-user",
+              "position": 4
+          },
+          "_startpage": false,
+          "_meta": {
+              "type_id": "contact-page",
+              "created_at": "2022-12-30T15:24:22.350Z",
+              "updated_at": "2022-12-30T15:24:22.350Z",
+              "status": "published",
+              "created_by": "not-logged-in-user",
+              "updated_by": "not-logged-in-user",
+              "position": 2
+          },
+          "blocks": [
+              {
+                  "data": {
+                      "logo_text": "The Page",
+                      "navigation": [
+                          {
+                              "title": "Services",
+                              "link": "#services"
+                          },
+                          {
+                              "title": "Portfolio",
+                              "link": "#portfolio"
+                          },
+                          {
+                              "title": "About",
+                              "link": "#about"
+                          },
+                          {
+                              "title": "Team",
+                              "link": "#team"
+                          },
+                          {
+                              "title": "Contact",
+                              "link": "#contact"
+                          }
+                      ],
+                      "style": {
+                          "darkmode": false,
+                          "transparent": true,
+                          "shadow": "none",
+                          "bg_color": "transparent",
+                          "margin_bottom": 0,
+                          "gradient": "none",
+                          "gradient_from": "#000",
+                          "gradient_to": "#fff",
+                          "navbar": {
+                              "transparent": true,
+                              "shadow": "none",
+                              "sticky": true,
+                              "bg_color": "transparent",
+                              "margin_bottom": 0,
+                              "padding_top": 25,
+                              "padding_bottom": 25,
+                              "border_bottom_width": 0,
+                              "border_bottom_color": "transparent",
+                              "show_overlay": false,
+                              "overlay_bg_color": "#000000",
+                              "overlay_opacity": 20,
+                              "margin_top_next_block": 0
+                          },
+                          "logo": {
+                              "text_color": "#e02e3d",
+                              "text_hover_color": "#e02e3d",
+                              "text_focus_color": "#e02e3d",
+                              "font_family": "Kaushan Script",
+                              "image": "https://assets.brandfolder.com/8w7lv8ml/view.png",
+                              "padding_top": 12,
+                              "width": 125,
+                              "show": false
+                          },
+                          "navigation": {
+                              "text_color": "#fff",
+                              "text_hover_color": "#e02e3d",
+                              "text_active_color": "#e02e3d",
+                              "text_focus_color": "#e02e3d",
+                              "bg_text_color": "transparent",
+                              "bg_text_hover_color": "transparent",
+                              "bg_text_active_color": "#e02e3d",
+                              "bg_text_focus_color": "#e02e3d",
+                              "mobile_menu_button_bg_color": "#e02e3d",
+                              "mobile_menu_button_hover_bg_color": "#e02e3d",
+                              "mobile_menu_button_focus_bg_color": "#e02e3d"
+                          }
+                      }
+                  },
+                  "logo_text": "The Page",
+                  "navigation": [
+                      {
+                          "title": "Services",
+                          "link": "#services"
+                      },
+                      {
+                          "title": "Portfolio",
+                          "link": "#portfolio"
+                      },
+                      {
+                          "title": "About",
+                          "link": "#about"
+                      },
+                      {
+                          "title": "Team",
+                          "link": "#team"
+                      },
+                      {
+                          "title": "Contact",
+                          "link": "#contact"
+                      }
+                  ],
+                  "style": {
+                      "darkmode": false,
+                      "transparent": true,
+                      "shadow": "none",
+                      "bg_color": "transparent",
+                      "margin_bottom": 0,
+                      "gradient": "none",
+                      "gradient_from": "#000",
+                      "gradient_to": "#fff",
+                      "navbar": {
+                          "transparent": true,
+                          "shadow": "none",
+                          "sticky": true,
+                          "bg_color": "transparent",
+                          "margin_bottom": 0,
+                          "padding_top": 25,
+                          "padding_bottom": 25,
+                          "border_bottom_width": 0,
+                          "border_bottom_color": "transparent",
+                          "show_overlay": false,
+                          "overlay_bg_color": "#000000",
+                          "overlay_opacity": 20,
+                          "margin_top_next_block": 0
+                      },
+                      "logo": {
+                          "text_color": "#e02e3d",
+                          "text_hover_color": "#e02e3d",
+                          "text_focus_color": "#e02e3d",
+                          "font_family": "Kaushan Script",
+                          "image": "https://assets.brandfolder.com/8w7lv8ml/view.png",
+                          "padding_top": 12,
+                          "width": 125,
+                          "show": false
+                      },
+                      "navigation": {
+                          "text_color": "#fff",
+                          "text_hover_color": "#e02e3d",
+                          "text_active_color": "#e02e3d",
+                          "text_focus_color": "#e02e3d",
+                          "bg_text_color": "transparent",
+                          "bg_text_hover_color": "transparent",
+                          "bg_text_active_color": "#e02e3d",
+                          "bg_text_focus_color": "#e02e3d",
+                          "mobile_menu_button_bg_color": "#e02e3d",
+                          "mobile_menu_button_hover_bg_color": "#e02e3d",
+                          "mobile_menu_button_focus_bg_color": "#e02e3d"
+                      }
+                  },
+                  "_id": "header3-1672413862353",
+                  "_type": "header3",
+                  "template_id": "header3",
+                  "_position": 0
+              },
+              {
+                  "data": {},
+                  "_id": "cards-1672413862356",
+                  "_type": "cards",
+                  "template_id": "cards",
+                  "_position": 0
               }
           ]
       }
@@ -1043,6 +2213,6 @@ window.klar.data = {
       },
       "_show_styleguide": true
   }
-}
+};
 window.klar.sdk = klarSdk;
 console.log(window.klar);
