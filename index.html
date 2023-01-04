@@ -64,7 +64,11 @@
 
         /* Button */
         .btn {
-          @apply px-5 py-2 text-sm leading-5 rounded-lg font-semibold inline-flex items-center;
+          @apply pl-6 px-6 h-10 text-[18px] font-normal leading-5 rounded-lg leading-none inline-flex items-center;
+        }
+
+        .btn-extended {
+          @apply pl-4 px-6;
         }
 
         .btn-text {
@@ -101,7 +105,7 @@
 
         .btn [class^='material-icons'],
         .btn .fa {
-          @apply mr-1.5;
+          @apply mr-2 text-xl leading-none w-5 h-5
         }
 
         .btn-icon {
@@ -110,23 +114,19 @@
 
         .btn-icon [class^='material-icons'],
         .btn-icon .fa {
-          @apply m-0;
-        }
-
-        .btn .fa {
-          @apply text-xl leading-none;
+          @apply m-0
         }
 
         .btn-sm {
-          @apply px-3 py-1.5 text-xs;
+          @apply px-4 h-8 text-xs;
         }
 
         .btn-lg {
-          @apply px-7 py-3 text-base;
+          @apply px-8 h-12 text-base;
         }
 
         .btn-xl {
-          @apply px-10 py-4 text-base;
+          @apply px-10 h-14 text-base;
         }
       }
     </style>
