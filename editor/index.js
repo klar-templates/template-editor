@@ -61,9 +61,9 @@ function renderTemplateBlocks() {
     data.data.pages[pageNumber].blocks.splice(i+1, 0, blockData);
   });
   data.navigate(currentPage._path);
-  // parent.frames[0].document.querySelector('body').style.display = 'none';
-  // setTimeout(() => parent.frames[0].document.querySelector('body').removeAttribute('style'), 100);
-  // setTimeout((() => console.log(parent.frames[0].document.getElementsByTagName('style')[0].innerHTML)), 2000);
+  // site().document.querySelector('body').style.display = 'none';
+  // setTimeout(() => site().document.querySelector('body').removeAttribute('style'), 100);
+  // setTimeout((() => console.log(site().document.getElementsByTagName('style')[0].innerHTML)), 2000);
 }
 
 function renderTemplateBlock(name) {
@@ -131,7 +131,7 @@ function renderBlockLinks() {
 }
 
 function getCurrentPage() {
-  const pathname = parent.frames[0].location.pathname;
+  const pathname = site().location.pathname;
   setEditorSetting('current-page', pathname);
   const path = getEditorSetting('current-page');
   const data = window.template.data;
@@ -143,7 +143,7 @@ function getCurrentPage() {
 }
 
 function setInitTemplate() {
-  const iframeWindow = frames[0];
+  const iframeWindow = site();
   iframeWindow.initTemplate = function (siteData) {
     initTemplate(siteData, window.templateComponents, window.templateNunjucksBlocks, window.templateConfig);
   }
@@ -213,7 +213,7 @@ function setEvents() {
 
   btnDarkmode.addEventListener('click', (e) => {
     const htmlElParent = document.documentElement;
-    const htmlEl = parent.frames[0].document.documentElement;
+    const htmlEl = site().document.documentElement;
     if (htmlElParent.classList.contains('dark')) {
       htmlElParent.classList.remove('dark');
       htmlEl.classList.remove('dark');
@@ -233,7 +233,7 @@ function setEvents() {
 function resetBlocks() {
   // template.data.navigate('/components');
   // setTimeout(() => {
-  //   // console.log(parent.frames[0].document.getElementsByTagName('style')[1].innerHTML)
+  //   // console.log(site().document.getElementsByTagName('style')[1].innerHTML)
     
   //   // Example POST method implementation:
   //   // const data = { input: 'console.log(  1  )' };
@@ -278,7 +278,7 @@ function setDarkmode() {
   if (isDarkmode === 'true') {
     // setTimeout(() => {
       const htmlElParent = document.documentElement;
-    // const htmlEl = parent.frames[0]?.document.documentElement;
+    // const htmlEl = site()?.document.documentElement;
       htmlElParent.classList.add('dark');
     //   if (htmlEl) {
     //     htmlEl.classList.add('dark')
@@ -305,7 +305,7 @@ async function downloadBundle1(e) {
   //   return;
   // }
   const cssLink = document.querySelector('.js-download-css-bundle');
-  let css = parent.frames[0].document.getElementsByTagName('style')[0].innerHTML;
+  let css = site().document.getElementsByTagName('style')[0].innerHTML;
   // css = 'data:text/plain;charset=utf-8,' + encodeURIComponent(css);
   // console.log(css);
   cssLink.href = css;
@@ -314,7 +314,7 @@ async function downloadBundle1(e) {
   uniqueId = 'template';
   cssLink.download = 'index.' + uniqueId + '.css';
   // cssLink.click();
-  // console.log(parent.frames[0].klarContext)
+  // console.log(site().klarContext)
 
   const urls = window.template.config.block_types.map(b => {
     if (!b.template_engine) {
@@ -337,7 +337,7 @@ async function downloadBundle1(e) {
   // console.log(result);
   let content = result.join('');
   content = content.replace(/import (?:.|\n)*?;/gm, '');
-  content = parent.frames[0].Babel.transform(content, { presets: ['react'] }).code;
+  content = site().Babel.transform(content, { presets: ['react'] }).code;
   // content = content + '';
   content = `(function () {\n${content}\nwindow.templateComponents = templateComponents;\nwindow.templateNunjucksBlocks = ${JSON.stringify(window.templateNunjucksBlocks)};\n})();`;
   // content = new Blob([content], {type: 'text/plain'});
@@ -577,13 +577,15 @@ function startEditor(config, templateNunjucksBlocks, templateComponentsArr) {
   setHtml();
   setInitTemplate();
   setEvents();
-  parent.frames[0].addEventListener('unload', (event) => {
-    const pathname = parent.frames[0].location.pathname;
+  site().addEventListener('unload', (event) => {
+    const pathname = site().location.pathname;
     if (pathname !== 'blank') {
       setEditorSetting('current-page', pathname);
     }
   });
 }
+
+const site = function () {return parent.frames[0]};
 
 setDarkmode();
 fetch('../config.json')
