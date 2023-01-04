@@ -52,7 +52,7 @@ const initSite = function () {
   // <link href="http://localhost:4173/assets/index.7d5d8db6.css" rel="stylesheet" />
   // Add klar-pages-app style after Babel has transpiled the JSX code
   const style = document.createElement('link');
-  style.href = 'http://localhost:4173/assets/index.71dd4668.css';
+  style.href = 'http://localhost:4173/assets/index.9bf37f58.css';
   style.rel = 'stylesheet';
   document.querySelector('head').prepend(style);
   // setTimeout(() => {document.querySelector('head').appendChild(style)}, 1000);

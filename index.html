@@ -7,6 +7,8 @@
     <link rel="icon" href="#" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Template</title>
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style type="text/tailwindcss">
       @tailwind base;
@@ -62,7 +64,7 @@
 
         /* Button */
         .btn {
-          @apply px-5 py-2 text-sm leading-5 rounded-lg font-semibold;
+          @apply px-5 py-2 text-sm leading-5 rounded-full font-semibold inline-flex items-center;
         }
 
         .btn-text {
@@ -70,7 +72,7 @@
         }
 
         .btn-link {
-          @apply text-primary-500 hover:underline;
+          @apply text-primary-500 hover:bg-neutral-200;
         }
 
         .btn-filled {
@@ -90,11 +92,29 @@
         }
 
         .btn-elevated {
-          @apply text-primary-500 dark:text-neutral-100 shadow shadow-black/[0.1] hover:shadow-black/[0.2] dark:shadow-black/25  hover:dark:shadow-black/50;
+          @apply text-primary-500 dark:text-neutral-100 shadow-sm shadow-black/25 hover:shadow-black/50;
         }
 
         .btn:disabled {
           @apply opacity-[0.38];
+        }
+
+        .btn-icon {
+          @apply py-2.5 px-3 rounded-full;
+        }
+
+        .btn [class^='material-icons'],
+        .btn .fa {
+          @apply mr-1.5;
+        }
+
+        .btn-icon [class^='material-icons'],
+        .btn-icon .fa {
+          @apply m-0;
+        }
+
+        .btn .fa {
+          @apply text-2xl leading-none w-6 h-6;
         }
 
         .btn-sm {
