@@ -114,7 +114,7 @@ function renderBlockLinks() {
       type="button"
       onclick="resetBlocks()"
       class="js-reset-blocks w-[228px] mt-2 left-4 border border-gray-200 hover:border-gray-300 text-gray-700 block text-center rounded-lg px-4 py-1.5 font-semibold leading-7 shadow-sm hover:bg-primary-dark"
-      title="Remove all template blocks from site.">
+      title="Reset all template blocks from site.">
       Reset
     </button>`);
   container.innerHTML = content.join('');
@@ -144,6 +144,7 @@ function getCurrentPage() {
 
 function setInitTemplate() {
   const iframeWindow = site();
+  // window.klar = {};
   iframeWindow.initTemplate = function (siteData) {
     initTemplate(siteData, window.templateComponents, window.templateNunjucksBlocks, window.templateConfig);
   }
@@ -569,6 +570,8 @@ function setState() {
 
 }
 
+const site = function () {return parent.frames[0]};
+
 function startEditor(config, templateNunjucksBlocks, templateComponentsArr) {
   window.templateConfig = config;
   window.templateNunjucksBlocks = templateNunjucksBlocks;
@@ -584,8 +587,6 @@ function startEditor(config, templateNunjucksBlocks, templateComponentsArr) {
     }
   });
 }
-
-const site = function () {return parent.frames[0]};
 
 setDarkmode();
 fetch('../config.json')
@@ -619,3 +620,430 @@ fetch('../config.json')
     });
     startEditor(config, templateNunjucksBlocks, templateComponentsArr);
   });
+
+// function reactPageIsLoaded() {
+//   console.log('Partytime');
+// }
+
+// window.klar = {};
+// window.klar.sdk = {}
+// window.klar.sdk.currentPage = {}
+// window.klar.sdk.currentPage.get = function () {
+//   return  {_path: '/'};
+// }
+// window.klar.data = {
+//   "pages": [
+//       {
+//         "_id": "startpage-1671137265622",
+//         "_type": "startpage",
+//         "_menu_item_name": "Startsida",
+//         "_slug": "startsida",
+//         "_path": "/startsida",
+//         "_startpage": true,
+//         "_meta": {
+//           "type_id": "startpage",
+//           "created_at": "2022-12-15T20:47:45.622Z",
+//           "updated_at": "2022-12-15T20:47:45.622Z",
+//           "status": "published",
+//           "created_by": "not-logged-in-user",
+//           "updated_by": "not-logged-in-user",
+//           "position": 0
+//         },
+//         "settings": {
+//             "title": "Startsida",
+//             "description": "This is my one page website and it's beautiful!"
+//         },
+//         "blocks": [
+//               {
+//                   "data": {
+//                       "logo_text": "The Page",
+//                       "navigation": [
+//                           {
+//                               "title": "Services",
+//                               "link": "#services"
+//                           },
+//                           {
+//                               "title": "Portfolio",
+//                               "link": "#portfolio"
+//                           },
+//                           {
+//                               "title": "About",
+//                               "link": "#about"
+//                           },
+//                           {
+//                               "title": "Team",
+//                               "link": "#team"
+//                           },
+//                           {
+//                               "title": "Contact",
+//                               "link": "#contact"
+//                           }
+//                       ],
+//                       "style": {
+//                           "darkmode": true,
+//                           "transparent": true,
+//                           "shadow": "none",
+//                           "bg_color": "transparent",
+//                           "margin_bottom": -84,
+//                           "gradient": "none",
+//                           "gradient_from": "#000",
+//                           "gradient_to": "#fff",
+//                           "navbar": {
+//                               "transparent": true,
+//                               "shadow": "none",
+//                               "sticky": true,
+//                               "bg_color": "transparent",
+//                               "margin_bottom": 0,
+//                               "padding_top": 25,
+//                               "padding_bottom": 25,
+//                               "border_bottom_width": 0,
+//                               "border_bottom_color": "transparent",
+//                               "show_overlay": false,
+//                               "overlay_bg_color": "#000000",
+//                               "overlay_opacity": 20,
+//                               "margin_top_next_block": 0
+//                           },
+//                           "logo": {
+//                               "text_color": "#e02e3d",
+//                               "text_hover_color": "#e02e3d",
+//                               "text_focus_color": "#e02e3d",
+//                               "font_family": "Kaushan Script",
+//                               "image": "https://assets.brandfolder.com/8w7lv8ml/view.png",
+//                               "padding_top": 12,
+//                               "width": 125,
+//                               "show": false
+//                           },
+//                           "navigation": {
+//                               "text_color": "#fff",
+//                               "text_hover_color": "#e02e3d",
+//                               "text_active_color": "#e02e3d",
+//                               "text_focus_color": "#e02e3d",
+//                               "bg_text_color": "transparent",
+//                               "bg_text_hover_color": "transparent",
+//                               "bg_text_active_color": "#e02e3d",
+//                               "bg_text_focus_color": "#e02e3d",
+//                               "mobile_menu_button_bg_color": "#e02e3d",
+//                               "mobile_menu_button_hover_bg_color": "#e02e3d",
+//                               "mobile_menu_button_focus_bg_color": "#e02e3d"
+//                           },
+//                           "_unique_style": true
+//                       }
+//                   },
+//                   "logo_text": "The Page",
+//                   "navigation": [
+//                       {
+//                           "title": "Services",
+//                           "link": "#services"
+//                       },
+//                       {
+//                           "title": "Portfolio",
+//                           "link": "#portfolio"
+//                       },
+//                       {
+//                           "title": "About",
+//                           "link": "#about"
+//                       },
+//                       {
+//                           "title": "Team",
+//                           "link": "#team"
+//                       },
+//                       {
+//                           "title": "Contact",
+//                           "link": "#contact"
+//                       }
+//                   ],
+//                   "style": {
+//                       "darkmode": true,
+//                       "transparent": true,
+//                       "shadow": "none",
+//                       "bg_color": "transparent",
+//                       "margin_bottom": -84,
+//                       "gradient": "none",
+//                       "gradient_from": "#000",
+//                       "gradient_to": "#fff",
+//                       "navbar": {
+//                           "transparent": true,
+//                           "shadow": "none",
+//                           "sticky": true,
+//                           "bg_color": "transparent",
+//                           "margin_bottom": 0,
+//                           "padding_top": 25,
+//                           "padding_bottom": 25,
+//                           "border_bottom_width": 0,
+//                           "border_bottom_color": "transparent",
+//                           "show_overlay": false,
+//                           "overlay_bg_color": "#000000",
+//                           "overlay_opacity": 20,
+//                           "margin_top_next_block": 0
+//                       },
+//                       "logo": {
+//                           "text_color": "#e02e3d",
+//                           "text_hover_color": "#e02e3d",
+//                           "text_focus_color": "#e02e3d",
+//                           "font_family": "Kaushan Script",
+//                           "image": "https://assets.brandfolder.com/8w7lv8ml/view.png",
+//                           "padding_top": 12,
+//                           "width": 125,
+//                           "show": false
+//                       },
+//                       "navigation": {
+//                           "text_color": "#fff",
+//                           "text_hover_color": "#e02e3d",
+//                           "text_active_color": "#e02e3d",
+//                           "text_focus_color": "#e02e3d",
+//                           "bg_text_color": "transparent",
+//                           "bg_text_hover_color": "transparent",
+//                           "bg_text_active_color": "#e02e3d",
+//                           "bg_text_focus_color": "#e02e3d",
+//                           "mobile_menu_button_bg_color": "#e02e3d",
+//                           "mobile_menu_button_hover_bg_color": "#e02e3d",
+//                           "mobile_menu_button_focus_bg_color": "#e02e3d"
+//                       },
+//                       "_unique_style": true
+//                   },
+//                   "_id": "header3-1671137272973",
+//                   "_type": "header3",
+//                   "template_id": "header3",
+//                   "_position": 0
+//               },
+//               {
+//                   "data": {
+//                       "title": "Create an account and start making your own web sites",
+//                       "subtitle": "3 Edit everything on this site and if you like it...",
+//                       "link": "#services",
+//                       "link_text": "Tell me more",
+//                       "image": "https://raw.githubusercontent.com/klar-templates/agency/master/img/header-bg.jpg",
+//                       "show_title": true,
+//                       "show_subtitle": true,
+//                       "show_button": true,
+//                       "style": {
+//                           "title_text_color": "#ffffff",
+//                           "subtitle_text_color": "#ffffff",
+//                           "button_bg_color": "#e02e3d",
+//                           "button_text_color": "#ffffff",
+//                           "padding_top": 300,
+//                           "padding_bottom": 200,
+//                           "full_screen": true,
+//                           "text_align": "center",
+//                           "show_overlay": true,
+//                           "overlay_bg_color": "#000000",
+//                           "overlay_opacity": 40,
+//                           "margin_top": 0,
+//                           "bg_image_position_top": 0
+//                       }
+//                   },
+//                   "title": "Create an account and start making your own web sites",
+//                   "subtitle": "3 Edit everything on this site and if you like it...",
+//                   "link": "#services",
+//                   "link_text": "Tell me more",
+//                   "image": "https://raw.githubusercontent.com/klar-templates/agency/master/img/header-bg.jpg",
+//                   "show_title": true,
+//                   "show_subtitle": true,
+//                   "show_button": true,
+//                   "style": {
+//                       "title_text_color": "#ffffff",
+//                       "subtitle_text_color": "#ffffff",
+//                       "button_bg_color": "#e02e3d",
+//                       "button_text_color": "#ffffff",
+//                       "padding_top": 300,
+//                       "padding_bottom": 200,
+//                       "full_screen": true,
+//                       "text_align": "center",
+//                       "show_overlay": true,
+//                       "overlay_bg_color": "#000000",
+//                       "overlay_opacity": 40,
+//                       "margin_top": 0,
+//                       "bg_image_position_top": 0
+//                   },
+//                   "_id": "hero3-1671137277396",
+//                   "_type": "hero3",
+//                   "template_id": "hero3",
+//                   "_position": 2
+//               }
+//           ]
+//       }
+//   ],
+//   "theme": {
+//       "colors": {
+//           "primary_color": "#e02e3d",
+//           "primary_shades": {
+//               "name": "Primary",
+//               "colors": {
+//                   "50": "#fdf5f5",
+//                   "100": "#fceaec",
+//                   "200": "#f7cbcf",
+//                   "300": "#f3abb1",
+//                   "400": "#e96d77",
+//                   "500": "#e02e3d",
+//                   "600": "#ca2937",
+//                   "700": "#a8232e",
+//                   "800": "#861c25",
+//                   "900": "#6e171e"
+//               }
+//           },
+//           "primary_shades_rgb": {
+//               "name": "Primary",
+//               "colors": {
+//                   "50": {
+//                       "r": 253,
+//                       "g": 245,
+//                       "b": 245
+//                   },
+//                   "100": {
+//                       "r": 252,
+//                       "g": 234,
+//                       "b": 236
+//                   },
+//                   "200": {
+//                       "r": 247,
+//                       "g": 203,
+//                       "b": 207
+//                   },
+//                   "300": {
+//                       "r": 243,
+//                       "g": 171,
+//                       "b": 177
+//                   },
+//                   "400": {
+//                       "r": 233,
+//                       "g": 109,
+//                       "b": 119
+//                   },
+//                   "500": {
+//                       "r": 224,
+//                       "g": 46,
+//                       "b": 61
+//                   },
+//                   "600": {
+//                       "r": 202,
+//                       "g": 41,
+//                       "b": 55
+//                   },
+//                   "700": {
+//                       "r": 168,
+//                       "g": 35,
+//                       "b": 46
+//                   },
+//                   "800": {
+//                       "r": 134,
+//                       "g": 28,
+//                       "b": 37
+//                   },
+//                   "900": {
+//                       "r": 110,
+//                       "g": 23,
+//                       "b": 30
+//                   }
+//               }
+//           },
+//           "neutral_color": "#6b7280",
+//           "neutral_shades": {
+//               "name": "neutral",
+//               "colors": {
+//                   "50": "#f8f8f9",
+//                   "100": "#f0f1f2",
+//                   "200": "#dadcdf",
+//                   "300": "#c4c7cc",
+//                   "400": "#979ca6",
+//                   "500": "#6b7280",
+//                   "600": "#606773",
+//                   "700": "#505660",
+//                   "800": "#40444d",
+//                   "900": "#34383f"
+//               }
+//           },
+//           "neutral_shades_rgb": {
+//               "name": "neutral",
+//               "colors": {
+//                   "50": {
+//                       "r": 248,
+//                       "g": 248,
+//                       "b": 249
+//                   },
+//                   "100": {
+//                       "r": 240,
+//                       "g": 241,
+//                       "b": 242
+//                   },
+//                   "200": {
+//                       "r": 218,
+//                       "g": 220,
+//                       "b": 223
+//                   },
+//                   "300": {
+//                       "r": 196,
+//                       "g": 199,
+//                       "b": 204
+//                   },
+//                   "400": {
+//                       "r": 151,
+//                       "g": 156,
+//                       "b": 166
+//                   },
+//                   "500": {
+//                       "r": 107,
+//                       "g": 114,
+//                       "b": 128
+//                   },
+//                   "600": {
+//                       "r": 96,
+//                       "g": 103,
+//                       "b": 115
+//                   },
+//                   "700": {
+//                       "r": 80,
+//                       "g": 86,
+//                       "b": 96
+//                   },
+//                   "800": {
+//                       "r": 64,
+//                       "g": 68,
+//                       "b": 77
+//                   },
+//                   "900": {
+//                       "r": 52,
+//                       "g": 56,
+//                       "b": 63
+//                   }
+//               }
+//           },
+//           "bg_color": "#f8f8f9",
+//           "bg_color_darkmode": "#34383f",
+//           "bg_color_rgb": {
+//               "r": 248,
+//               "g": 248,
+//               "b": 249
+//           },
+//           "bg_color_rgb_darkmode": {
+//               "r": 52,
+//               "g": 56,
+//               "b": 63
+//           },
+//           "title_text_color": "#333333",
+//           "subtitle_text_color": "#777777",
+//           "text_color": "#777777",
+//           "link_text_color": "#fed136",
+//           "link_text_hover_color": "#fec503",
+//           "selection_text_color": "#ffffff",
+//           "selection_bg_color": "#fed136"
+//       },
+//       "lightmode": {
+//           "bg_color": "#f8f8f9"
+//       },
+//       "darkmode": {
+//           "bg_color": "#34383f"
+//       },
+//       "typography": {
+//           "font_display": "Montserrat",
+//           "font_body": "Roboto",
+//           "font_logo": "Kaushan Script",
+//           "subtitle_font_family": "Droid Serif",
+//           "text_base_size": 16
+//       },
+//       "block": {
+//           "padding_top": "150",
+//           "padding_bottom": "150"
+//       },
+//       "_show_styleguide": true
+//   }
+// }
