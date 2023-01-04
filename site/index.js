@@ -51,15 +51,15 @@ const initSite = function () {
 
   // <link href="http://localhost:4173/assets/index.7d5d8db6.css" rel="stylesheet" />
   // Add klar-pages-app style after Babel has transpiled the JSX code
-  // const style = document.createElement('link');
-  // style.href = 'http://localhost:4173/assets/index.a9f33bf8.css';
-  // style.rel = 'stylesheet';
-  // document.querySelector('head').appendChild(style);
+  const style = document.createElement('link');
+  style.href = 'http://localhost:4173/assets/index.71dd4668.css';
+  style.rel = 'stylesheet';
+  document.querySelector('head').prepend(style);
   // setTimeout(() => {document.querySelector('head').appendChild(style)}, 1000);
   
   // Add klar-pages-app script after Babel has transpiled the JSX code
   const script = document.createElement('script');
-  script.src = 'http://localhost:4173/assets/index.6ed6e1ea.js';
+  script.src = 'http://localhost:4173/assets/index.92f764bc.js';
   script.type = 'module';
   script.crossOrigin = true;
   document.querySelector('head').appendChild(script);
@@ -76,7 +76,7 @@ async function renderSite() {
   {
     darkMode: 'class',
     corePlugins: {
-      preflight: true,
+      preflight: false,
     },
     theme: {
       extend: {

@@ -21,17 +21,16 @@
             'Noto Color Emoji';
         }
 
-        h1,h2,h3,h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
           @apply font-bold;
         }
       }
 
       @layer components {
         /* Block */
-        .section {
-          @apply py-16 sm:py-20;
-        }
-
         .section-padding-y {
           @apply py-16 sm:py-20;
         }
@@ -58,7 +57,7 @@
         }
 
         .flex-gap {
-          @apply gap-2 md:gap-4
+          @apply gap-2 md:gap-4;
         }
 
         /* Button */
@@ -79,7 +78,7 @@
         }
 
         .btn-filled-dark {
-          @apply bg-slate-900 hover:bg-slate-700 text-white dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-200 dark:hover:text-slate-900
+          @apply bg-slate-900 hover:bg-slate-700 text-white dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-200 dark:hover:text-slate-900;
         }
 
         .btn-tonal {
