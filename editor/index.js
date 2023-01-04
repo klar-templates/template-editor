@@ -621,16 +621,13 @@ fetch('../config.json')
     startEditor(config, templateNunjucksBlocks, templateComponentsArr);
   });
 
-function reactPageIsLoaded() {
-  console.log('Partytime');
+function reactPageIsLoaded() {}
+
+if (!localStorage.getItem('current-page')) {
+  localStorage.setItem('current-page', 'startpage-1671137265622');
 }
 
 window.klar = {};
-window.klar.sdk = {}
-window.klar.sdk.currentPage = {}
-window.klar.sdk.currentPage.get = function () {
-  return  {_path: '/'};
-}
 window.klar.data = {
   "pages": [
       {
@@ -1047,3 +1044,5 @@ window.klar.data = {
       "_show_styleguide": true
   }
 }
+window.klar.sdk = klarSdk;
+console.log(window.klar);
