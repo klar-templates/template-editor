@@ -101,6 +101,15 @@ function renderBlockLinks() {
     // data.data.pages[pageNumber].blocks.splice(i+1, 0, blockData);
   });
   content.push(`
+    <hr class="border-t border-gray-200 mt-4 mb-4"></hr>
+    <a id="block-render-all-blocks" onclick="renderTemplateBlocks();setBlockLinkActive('render-all-blocks');" class="flex items-center w-full h-12 px-3 mt-2 text-neutral-500 border border-gray-200 g-gray-100 hover:bg-neutral-100 rounded" href="#">
+      <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+      <span class="ml-2 text-sm font-medium">Render all blocks</span>
+    </a>`);
+  content.push(`
+    <hr class="border-t border-gray-200 mt-4 mb-4"></hr>
     <button
       type="button"
       onclick="resetBlocks()"
@@ -111,8 +120,13 @@ function renderBlockLinks() {
   container.innerHTML = content.join('');
   const activeBlock = getEditorSetting('active-template-block');
   if (activeBlock) {
-    renderTemplateBlock(activeBlock);
-    setBlockLinkActive(activeBlock);
+    if (activeBlock === 'render-all-blocks') {
+      renderTemplateBlocks();
+      setBlockLinkActive('render-all-blocks');  
+    } else {
+      renderTemplateBlock(activeBlock);
+      setBlockLinkActive(activeBlock);
+    }
   }
 }
 
@@ -245,11 +259,15 @@ function resetBlocks() {
   location.reload();
 }
 
-function setBlockLinkActive(name) {
+function setBlockLinksInActive() {
   const isActive = document.querySelectorAll('.js-blocks .bg-neutral-100');
   isActive.forEach((element) => {
     element.classList.remove('bg-neutral-100');
   });
+}
+
+function setBlockLinkActive(name) {
+  setBlockLinksInActive();
   const link = document.querySelector('#block-' + name);
   link.classList.add('bg-neutral-100');
   setEditorSetting('active-template-block', name);
