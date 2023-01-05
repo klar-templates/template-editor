@@ -7,12 +7,6 @@
         </span>
         Enabled
       </button>
-      <button class="btn btn-link btn-extended">
-        <span class="material-icons-outlined">
-          home
-        </span>
-        Enabled
-      </button>
       <button class="btn btn-filled btn-extended">
         <span class="material-icons">settings</span>
         Enabled
@@ -40,10 +34,6 @@
     </div>
     <div class="flex flex-wrap justify-center gap-2 mt-10">
       <button class="btn btn-text btn-extended">
-        <span class="fa fa-instagram"></span>
-        Enabled
-      </button>
-      <button class="btn btn-link btn-extended">
         <span class="fa fa-instagram"></span>
         Enabled
       </button>
@@ -76,9 +66,6 @@
       <button class="btn btn-text btn-icon">
         <span class="fa fa-instagram"></span>
       </button>
-      <button class="btn btn-link btn-icon">
-        <span class="fa fa-twitter"></span>
-      </button>
       <button class="btn btn-filled btn-icon">
         <span class="fa fa-image"></span>
       </button>
@@ -102,9 +89,6 @@
       <button class="btn btn-text btn-icon">
         <span class="material-icons-outlined">brush</span>
       </button>
-      <button class="btn btn-link btn-icon">
-        <span class="material-icons-outlined">home</span>
-      </button>
       <button class="btn btn-filled btn-icon">
         <span class="material-icons">settings</span>
       </button>
@@ -126,9 +110,6 @@
     </div>
     <div class="flex flex-wrap justify-center gap-2 mt-10">
       <button class="btn btn-text btn-lg">
-        Enabled
-      </button>
-      <button class="btn btn-link btn-lg">
         Enabled
       </button>
       <button class="btn btn-filled btn-lg">
@@ -154,9 +135,6 @@
       <button class="btn btn-text">
         Enabled
       </button>
-      <button class="btn btn-link">
-        Enabled
-      </button>
       <button class="btn btn-filled">
         Enabled
       </button>
@@ -178,9 +156,6 @@
     </div>
     <div class="flex flex-wrap justify-center gap-2 mt-10">
       <button class="btn btn-text btn-sm">
-        Enabled
-      </button>
-      <button class="btn btn-link btn-sm">
         Enabled
       </button>
       <button class="btn btn-filled btn-sm">
@@ -206,9 +181,6 @@
       <button class="btn btn-text justify-center w-full mt-4">
         Enabled
       </button>
-      <button class="btn btn-link justify-center w-full content-center mt-4">
-        Enabled
-      </button>
       <button class="btn btn-filled justify-center w-full mt-4">
         Enabled
       </button>
@@ -228,5 +200,56 @@
         Enabled
       </button>
     </div>
+    <div class="flex flex-wrap justify-center gap-2 mt-10">
+      <button class="btn btn-filled btn-color-success">
+        Success
+      </button>
+      <button class="btn btn-filled btn-color-error">
+        Error
+      </button>
+      <button class="btn btn-filled btn-color-danger">
+        Danger
+      </button>
+      <button class="btn btn-filled btn-color-info">
+        Info
+      </button>
+      <button class="btn btn-filled btn-color-link">
+        Link
+      </button>
+      <button class="btn btn-filled btn-color-error" disabled>
+        Disabled
+      </button>
+    </div>
   </div>
 </section>
+<script>
+  function createRipple(event) {
+    const el = event.currentTarget;
+
+    const circle = document.createElement('span');
+    const diameter = Math.max(el.clientWidth, el.clientHeight);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    
+    circle.style.left = `${((event.clientX - el.offsetLeft) + window.pageXOffset) - radius}px`;
+    circle.style.top = `${((event.clientY - el.offsetTop) + window.pageYOffset) - radius}px`;
+    circle.style.transform = 'scale(0)';
+    circle.classList.add('ripple');
+
+    const ripple = el.querySelector('.ripple');
+
+    if (ripple) {
+      ripple.remove();
+    }
+
+    el.appendChild(circle);
+  }
+
+  (function () {
+    const elArr = document.querySelectorAll('.btn:not([data-ripple="false"])');
+    for (const el of elArr) {
+      el.addEventListener('click', createRipple);
+    }
+  })();
+</script>
