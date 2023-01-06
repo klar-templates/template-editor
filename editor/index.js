@@ -147,6 +147,7 @@ function setInitTemplate() {
   // window.klar = {};
   iframeWindow.initTemplate = function (siteData) {
     initTemplate(siteData, window.templateComponents, window.templateNunjucksBlocks, window.templateConfig);
+    // site().loadTemplateScript();
   }
 }
 

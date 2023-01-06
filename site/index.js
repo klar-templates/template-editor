@@ -26,6 +26,13 @@ function setDarkmode() {
   }
 }
 
+const loadTemplateScript = function () {
+  // Add template site script after Babel has transpiled the JSX code
+  const templateScript = document.createElement('script');
+  templateScript.innerHTML = parent.frames.templateJs;
+  document.querySelector('body').appendChild(templateScript);
+}
+
 const initSite = function () {
   window.templateNunjucksBlocks = parent.frames.templateNunjucksBlocks;
   const templateComponentsArr = parent.frames.templateComponentsArr;
@@ -49,13 +56,16 @@ const initSite = function () {
   }
   parent.frames.templateComponents = window.templateComponents;
 
-  // <link href="http://localhost:4173/assets/index.7d5d8db6.css" rel="stylesheet" />
+  // Add template site style after Babel has transpiled the JSX code
+  const s = document.createElement('style');
+  s.innerHTML = parent.frames.templateCss;
+  document.querySelector('head').appendChild(s);
+
   // Add klar-pages-app style after Babel has transpiled the JSX code
   const style = document.createElement('link');
   style.href = 'http://localhost:4173/assets/index.9bf37f58.css';
   style.rel = 'stylesheet';
   document.querySelector('head').prepend(style);
-  // setTimeout(() => {document.querySelector('head').appendChild(style)}, 1000);
   
   // Add klar-pages-app script after Babel has transpiled the JSX code
   const script = document.createElement('script');
@@ -66,6 +76,8 @@ const initSite = function () {
   // document.querySelector('body').style.display = 'none';
   // setTimeout(() => document.querySelector('body').removeAttribute('style'), 300);
 
+  setTimeout(() => loadTemplateScript(), 60);
+  
   setDarkmode();
 }
 
