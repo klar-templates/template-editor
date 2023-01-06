@@ -325,7 +325,7 @@ async function downloadBundle1(e) {
     return null;
   })?.filter(x => x !== null);
   urls.push('templates/blocks/index.js');
-  console.log(urls)
+  // console.log(urls)
   const requests = urls.map((url) => fetch(url));
   const responses = await Promise.all(requests); 
   const promises = responses.map((response) => response.text());
@@ -340,7 +340,7 @@ async function downloadBundle1(e) {
   content = content.replace(/import (?:.|\n)*?;/gm, '');
   content = site().Babel.transform(content, { presets: ['react'] }).code;
   // content = content + '';
-  content = `(function () {\n${window.templateJs}\n\n${content}\nwindow.templateComponents = templateComponents;\nwindow.templateNunjucksBlocks = ${JSON.stringify(window.templateNunjucksBlocks)};\n})();`;
+  content = `(function () {\nwindow.templateJs = ${JSON.stringify(window.templateJs)};\n\n${content}\nwindow.templateComponents = templateComponents;\nwindow.templateNunjucksBlocks = ${JSON.stringify(window.templateNunjucksBlocks)};\n})();`;
   // content = new Blob([content], {type: 'text/plain'});
   console.log(content);
   // content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(content);
