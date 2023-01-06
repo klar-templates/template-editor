@@ -64,7 +64,7 @@
 
         /* Button */
         .btn {
-          @apply pl-6 px-6 h-10 text-[18px] font-normal text-base leading-5 rounded-lg leading-none inline-flex items-center relative overflow-hidden transition duration-[400ms] transition-[background];
+          @apply pl-6 px-6 h-10 font-normal text-base rounded-lg leading-[1.313rem] inline-flex items-center relative overflow-hidden transition duration-[400ms] transition-[background];
         }
 
         .btn-text {
@@ -96,22 +96,33 @@
           @apply opacity-[0.38];
         }
 
-        .btn-extended {
+        /* Extended buttons */
+        .btn-extended-start {
           @apply pl-4 px-6;
         }
 
-        .btn [class^='material-icons'],
-        .btn .fa {
-          @apply mr-2 text-xl leading-none w-5 h-5
+        .btn-extended-start [class^='material-icons'],
+        .btn-extended-start .fa {
+          @apply mr-2 text-xl leading-5 w-5 h-5
         }
 
+        .btn-extended-end {
+          @apply pl-6 px-4;
+        }
+
+        .btn-extended-end [class^='material-icons'],
+        .btn-extended-end .fa {
+          @apply ml-2 text-xl leading-5 w-5 h-5
+        }
+
+        /* Icon buttons */
         .btn-icon {
-          @apply p-0 w-10 h-10 justify-center rounded-full;
+          @apply p-0 w-10 h-10 justify-center rounded-full text-2xl;
         }      
 
         .btn-icon [class^='material-icons'],
         .btn-icon .fa {
-          @apply m-0
+          @apply m-0 w-6 h-6
         }
 
         .btn-sm {

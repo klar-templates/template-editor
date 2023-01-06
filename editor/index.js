@@ -306,9 +306,8 @@ async function downloadBundle1(e) {
   //   return;
   // }
   const cssLink = document.querySelector('.js-download-css-bundle');
-  let css = site().document.getElementsByTagName('style')[0].innerHTML;
+  let css = window.templateCss + '\n' + site().document.getElementsByTagName('style')[1].innerHTML;
   // css = 'data:text/plain;charset=utf-8,' + encodeURIComponent(css);
-  // console.log(css);
   cssLink.href = css;
   // cssLink.target = '_blank';
   // let uniqueId = (new Date()).getTime();
@@ -319,12 +318,12 @@ async function downloadBundle1(e) {
 
   const urls = window.template.config.block_types.map(b => {
     if (!b.template_engine) {
-      const url = 'blocks/' + b.name + '.js';
+      const url = 'templates/blocks/' + b.name + '.js';
       return url;
     }
     return null;
   })?.filter(x => x !== null);
-  urls.push('blocks/index.js');
+  urls.push('templates/blocks/index.js');
   console.log(urls)
   const requests = urls.map((url) => fetch(url));
   const responses = await Promise.all(requests); 
@@ -340,9 +339,9 @@ async function downloadBundle1(e) {
   content = content.replace(/import (?:.|\n)*?;/gm, '');
   content = site().Babel.transform(content, { presets: ['react'] }).code;
   // content = content + '';
-  content = `(function () {\n${content}\nwindow.templateComponents = templateComponents;\nwindow.templateNunjucksBlocks = ${JSON.stringify(window.templateNunjucksBlocks)};\n})();`;
+  content = `(function () {\n${window.templateJs}\n\n${content}\nwindow.templateComponents = templateComponents;\nwindow.templateNunjucksBlocks = ${JSON.stringify(window.templateNunjucksBlocks)};\n})();`;
   // content = new Blob([content], {type: 'text/plain'});
-  // console.log(content);
+  console.log(content);
   // content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(content);
   // console.log(content)
   const jsLink = document.querySelector('.js-download-js-bundle');
@@ -591,18 +590,20 @@ function startEditor(config, templateNunjucksBlocks, templateComponentsArr) {
 setDarkmode();
 fetch('../config.json')
   .then((response) => response.json())
-  .then(async (config) => { 
+  .then(async (config) => {
     const urls = config.block_types.map(b => {
       if (b.template_engine) {
-        const url = 'blocks/' + b.name + '.html';
+        const url = 'templates/blocks/' + b.name + '.html';
         return url;
       } else {
-        const url = 'blocks/' + b.name + '.js';
+        const url = 'templates/blocks/' + b.name + '.js';
         return url;
       }
     })?.filter(x => x !== null);
-    urls.push('blocks/index.js');
-    // console.log(urls)
+    urls.push('templates/blocks/index.js');
+    urls.push('templates/public/index.css');
+    urls.push('templates/public/index.js');
+    // console.log(urls);
     const requests = urls.map((url) => fetch(url));
     const responses = await Promise.all(requests);
     const promises = responses.map((response) => response.text());
@@ -612,12 +613,20 @@ fetch('../config.json')
     const templateComponentsArr = [];
     result.forEach((b, i) => {
       if (urls[i].includes('html')) {
-        templateNunjucksBlocks[urls[i].replace('blocks/', '').replace('.html', '')] = b;
-      } else {
+        templateNunjucksBlocks[urls[i].replace('templates/blocks/', '').replace('.html', '')] = b;
+      } else if (urls[i].includes('templates/blocks/') && urls[i].includes('js')) {
         templateComponentsArr.push(b);
-        templateComponents[urls[i].replace('blocks/', '').replace('.js', '')] = urls[i].replace('blocks/', '').replace('.js', '');
+        templateComponents[urls[i].replace('templates/blocks/', '').replace('.js', '')] = urls[i].replace('templates/blocks/', '').replace('.js', '');
+      } else {
+        if (urls[i].includes('css')) {
+          window.templateCss = b;
+        } else {
+          window.templateJs = b;
+        }
       }
     });
+    // console.log(window.templateCss)
+    // console.log(window.templateJs)
     startEditor(config, templateNunjucksBlocks, templateComponentsArr);
   });
 
