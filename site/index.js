@@ -35,7 +35,7 @@ function setDarkmode() {
 
 const initSite = function () {
   window.templateNunjucksBlocks = parent.frames.templateNunjucksBlocks;
-  window.templateJs = parent.frames.templateJs;
+  window.templateJs = '(function () {' + parent.frames.templateJs + '})()';
   const templateComponentsArr = parent.frames.templateComponentsArr;
   if (templateComponentsArr) {
     const result = parent.frames.templateComponentsArr.map(t => t.replace('export default ', ''));
@@ -70,7 +70,7 @@ const initSite = function () {
   
   // Add klar-pages-app script after Babel has transpiled the JSX code
   const script = document.createElement('script');
-  script.src = 'http://localhost:4173/assets/index.2366e6d4.js';
+  script.src = 'http://localhost:4173/assets/index.4538190c.js';
   script.type = 'module';
   script.crossOrigin = true;
   document.querySelector('head').appendChild(script);
