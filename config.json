@@ -26,6 +26,59 @@
       ]
     },
     {
+      "title": "Services - Nunjucks",
+      "name": "services",
+      "icon": "file-text-o",
+      "ui:css_selector": "#services",
+      "template_engine": "nunjucks",
+      "fields": [
+        {
+          "title": "Rubrik",
+          "name": "heading",
+          "type": "string"
+        },
+        {
+          "title": "Underrubrik",
+          "name": "sub_heading",
+          "type": "string"
+        },
+        {
+          "title": "Services",
+          "name": "services",
+          "type": "array",
+          "display_field": "heading",
+          "of": [
+            {
+              "title": "Service",
+              "name": "service",
+              "type": "object",
+              "fields": [
+                {
+                  "title": "Icon",
+                  "name": "icon",
+                  "type": "string",
+                  "ui:widget": "icon",
+                  "default": "image"
+                },
+                {
+                  "title": "Rubrik",
+                  "type": "string",
+                  "name": "heading",
+                  "default": "Rubrik"
+                },
+                {
+                  "title": "Text",
+                  "name": "text",
+                  "type": "text",
+                  "default": "En kortare text"
+                }
+              ]
+            }
+          ]
+        }      
+      ]  
+    },
+    {
       "title": "Buttons - Nunjucks",
       "name": "buttons",
       "icon": "button",
@@ -120,34 +173,6 @@
   ],
   "data_defaults": {
     "blocks": {
-      "TemplateEditorHero": {
-        "title": "Create an account and start making your own web sites",
-        "subtitle": "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.",
-        "link": "#services",
-        "link_text": "Tell me more",
-        "image": "https://raw.githubusercontent.com/klar-templates/agency/master/img/header-bg.jpg",
-        "show_title": true,
-        "show_subtitle": true,
-        "show_button": true,
-        "style": {
-          "title_text_color": "#ffffff",
-          "subtitle_text_color": "#ffffff",
-          "button_bg_color": "{{theme.colors.primary_color}}",
-          "button_text_color": "#ffffff",
-          "padding_top": 300,
-          "padding_bottom": 200,
-          "full_screen": true,
-          "text_align": "center",
-          "show_overlay": true,
-          "overlay_bg_color": "#000000",
-          "overlay_opacity": 40,
-          "margin_top": 0,
-          "bg_image_position_top": 0
-        }
-      },
-      "TemplateEditorTeam": {
-        "title": "Create an account and start making your own web sites"
-      },
       "team": {
         "heading": "Our Amazing Team",
         "sub_heading": "Lorem ipsum dolor sit amet consectetur.",
@@ -225,6 +250,58 @@
             "social_links_hover_bg_color": "{{theme.colors.primary_color}}"            
           }
         }
+      },
+      "services": {
+        "heading": "Services",
+        "sub_heading": "Lorem ipsum dolor sit amet consectetur.",
+        "items": [
+          {
+            "icon": "shopping-cart",
+            "heading": "E-Commerce",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
+          },
+          {
+            "icon": "laptop",
+            "heading": "Responsive Design",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
+          },
+          {
+            "icon": "lock",
+            "heading": "Web Security",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
+          }
+        ],
+        "style": {
+          
+        }
+      },
+      "TemplateEditorHero": {
+        "title": "Create an account and start making your own web sites",
+        "subtitle": "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.",
+        "link": "#services",
+        "link_text": "Tell me more",
+        "image": "https://raw.githubusercontent.com/klar-templates/agency/master/img/header-bg.jpg",
+        "show_title": true,
+        "show_subtitle": true,
+        "show_button": true,
+        "style": {
+          "title_text_color": "#ffffff",
+          "subtitle_text_color": "#ffffff",
+          "button_bg_color": "{{theme.colors.primary_color}}",
+          "button_text_color": "#ffffff",
+          "padding_top": 300,
+          "padding_bottom": 200,
+          "full_screen": true,
+          "text_align": "center",
+          "show_overlay": true,
+          "overlay_bg_color": "#000000",
+          "overlay_opacity": 40,
+          "margin_top": 0,
+          "bg_image_position_top": 0
+        }
+      },
+      "TemplateEditorTeam": {
+        "title": "Create an account and start making your own web sites"
       }
     }
   }
