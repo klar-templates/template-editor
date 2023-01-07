@@ -1,4 +1,4 @@
-<section id="{{block._id}}" class="section-padding-y">
+<section id="{{block._id}}" class="dark:bg-neutral-900 section-padding-y">
   <div class="container-fluid container-padding-x mx-auto">
     <div class="text-center">
       <h2 class="section-heading uppercase text-neutral-900 dark:text-neutral-100" data-field-string="heading">{{block.heading}}</h2>
@@ -6,31 +6,28 @@
     </div>
     <div class="grid grid-gap grid-cols-1 md:grid-cols-3 mt-12" data-field-array="items">
     {% for item in block.items %}
-      <div class="mb-2 sm:mb-0">
-        <div class="text-center text-base" data-field-array-item>
-          <span
-            class="fa-stack fa-4x"
-            data-field-string-ui-widget-icon="items[{{loop.index0}}].icon"
-            data-placement="center"
-          >
-            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-            <i class="fa fa-{{ item.icon }} fa-stack-1x fa-inverse"></i>
-          </span>
-          <h4
-            class="text-2xl font-bold mt-2 text-neutral-900 dark:text-neutral-100"
-            data-field-string="items[{{loop.index0}}].heading"
-          >{{ item.heading }}</h4>
-          <p
-            class="mt-4 leading-7 text-neutral-500 dark:text-neutral-200"
-            data-field-string="items[{{loop.index0}}].text"
-            data-toolbar-buttons="['bold', 'italic', 'underline', 'anchor']"
-          >{{ item.text }}</p>
-        </div>
+    <div class="mb-2 sm:mb-0">
+      <div class="text-center" data-field-array-item>
+        <span
+          class="fa-stack fa-4x"
+          data-field-string-ui-widget-icon="items[{{loop.index0}}].icon"
+          data-placement="center"
+        >
+          <i class="fa fa-circle fa-stack-2x text-primary"></i>
+          <i class="fa fa-{{ item.icon }} fa-stack-1x fa-inverse"></i>
+        </span>
+        <h4
+          class="text-2xl font-bold mt-2 text-neutral-900 dark:text-neutral-100"
+          data-field-string="items[{{loop.index0}}].heading"
+        >{{ item.heading }}</h4>
+        <p
+          class="mt-4 leading-7 text-neutral-500 dark:text-neutral-200"
+          data-field-string="items[{{loop.index0}}].text"
+          data-toolbar-buttons="['bold', 'italic', 'underline', 'anchor']"
+        >{{ item.text }}</p>
       </div>
-    {% endfor %}
     </div>
-    <div class="col-lg-8 mx-auto text-center max-w-2xl mt-12">
-      <p class="large text-muted text-neutral-700 dark:text-neutral-200" data-field-text="text" data-toolbar-buttons="['bold', 'italic', 'underline', 'anchor']">{{ block.text }}</p>
+    {% endfor %}
     </div>
   </div>
 </section>
