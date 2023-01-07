@@ -34,17 +34,23 @@ for (const link of links) {
       e.preventDefault();
       const url = link.getAttribute('data-href');
       if (document.location.pathname !== url) {
-        console.log(document.location.pathname)
-        console.log(url)
+        // console.log(document.location.pathname)
+        // console.log(url)
         navigate(url);
       } else {
         console.log('nothing happens')
       }
     }
     link.addEventListener('click', navigateTo);
-    function removeNavigateTo() {
-      console.log('tog bort lyssnaren')
+    const sub_uid = PubSub.subscribe('page-transition', function (data) {
+      // console.log(data);
+      // console.log(sub_uid);
       link.removeEventListener('click', navigateTo);
-    }
+      PubSub.unsubscribe('page-transition', sub_uid);
+    });
+    // function removeNavigateTo() {
+    //   console.log('tog bort lyssnaren')
+    //   link.removeEventListener('click', navigateTo);
+    // }
   }
 }
