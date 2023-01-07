@@ -64,13 +64,13 @@ const initSite = function () {
 
   // Add klar-pages-app style after Babel has transpiled the JSX code
   const style = document.createElement('link');
-  style.href = 'http://localhost:4173/assets/index.9bf37f58.css';
+  style.href = 'http://localhost:4173/assets/index.00de0542.css';
   style.rel = 'stylesheet';
   document.querySelector('head').prepend(style);
   
   // Add klar-pages-app script after Babel has transpiled the JSX code
   const script = document.createElement('script'); 
-  script.src = 'http://localhost:4173/assets/index.e5406449.js';
+  script.src = 'http://localhost:4173/assets/index.8aab111e.js';
   script.type = 'module';
   script.crossOrigin = true;
   document.querySelector('head').appendChild(script);

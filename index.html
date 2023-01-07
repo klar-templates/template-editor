@@ -23,13 +23,27 @@
             'Noto Color Emoji';
         }
 
-        body {background-color: red}
+        body {
+          background-color: var(--bg-color);
+          color: rgb(var(--neutral-900));
+          font-size: var(--text-base-size)px;
+        }
+
+        .dark body {
+          color: rgb(var(--neutral-50));
+        }
 
         h1,
         h2,
         h3,
-        h4 {
+        h4,
+        h5,
+        h6 {
           @apply font-bold;
+          font-family: var(--font-display), system-ui, -apple-system,
+            BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+            'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+            'Segoe UI Symbol', 'Noto Color Emoji';
         }
       }
 
@@ -105,7 +119,7 @@
 
         .btn-extended-start [class^='material-icons'],
         .btn-extended-start .fa {
-          @apply mr-2 text-xl leading-5 w-5 h-5
+          @apply mr-2 text-xl leading-5 w-5 h-5;
         }
 
         .btn-extended-end {
@@ -114,17 +128,17 @@
 
         .btn-extended-end [class^='material-icons'],
         .btn-extended-end .fa {
-          @apply ml-2 text-xl leading-5 w-5 h-5
+          @apply ml-2 text-xl leading-5 w-5 h-5;
         }
 
         /* Icon buttons */
         .btn-icon {
           @apply p-0 w-10 h-10 justify-center rounded-full text-xl;
-        }      
+        }
 
         .btn-icon [class^='material-icons'],
         .btn-icon .fa {
-          @apply m-0
+          @apply m-0;
         }
 
         .btn-sm {
@@ -151,7 +165,7 @@
         .btn-filled.btn-color-danger {
           @apply bg-orange-500 hover:bg-orange-600 focus:bg-orange-700 dark:bg-orange-100;
         }
-        
+
         .btn-filled.btn-color-info {
           @apply bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 dark:bg-blue-100;
         }
