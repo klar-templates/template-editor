@@ -14,7 +14,16 @@
           <ul class="flex gap-4 justify-center mt-4">
             {% set parent_index_0 = loop.index0 %}
             {% for link_item in item.social_links %}
-              <li><a class="dark:bg-neutral-900 focus:ring focus:ring-neutral-400 outline-neutral-400 w-10 h-10 text-xl inline-flex bg-black/95 text-white items-center justify-center rounded-full" href="{{ link_item.link }}" data-field-string-ui-widget-icon="team[{{parent_index_0}}].social_links[{{loop.index0}}].icon" data-field-string-format-uri="team[{{parent_index_0}}].social_links[{{loop.index0}}].link" data-placement="bottom"><i class="fa fa-{{ link_item.icon }}"></i></a></li>
+              <li>
+                <a
+                  class="btn btn-filled-dark btn-icon"
+                  href="{{ link_item.link }}"
+                  data-field-string-ui-widget-icon="team[{{parent_index_0}}].social_links[{{loop.index0}}].icon"
+                  data-field-string-format-uri="team[{{parent_index_0}}].social_links[{{loop.index0}}].link"
+                  data-placement="bottom">
+                    <span class="fa fa-{{ link_item.icon }}"></span>
+                  </a>
+              </li>
             {% endfor %}
           </ul>
         </div>

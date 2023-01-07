@@ -8,15 +8,14 @@ export default function TemplateEditorHero(props) {
   // const Link = KlarLink;
   // console.log(KlarComponents);
   return (
-    <Section className="bg-slate-900 text-on-background">
+    <Section className="dark bg-slate-900">
       <Container>
-        <div className="text-center text-neutral-50 mx-auto max-w-3xl px:4 sm:px-16 pb-32 pt-20 sm:pt-40 sm:pb-48">
+        <div className="text-center mx-auto max-w-3xl px:4 sm:px-16 pb-32 pt-20 sm:pt-40 sm:pb-48 dark:text-neutral-50">
           <h1 className="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl">{title}</h1>
-          <p className="mt-6 text-lg leading-8 sm:text-center">{subtitle}</p>
+          <p className="mt-6 text-lg leading-8 sm:text-center text-neutral-700 dark:text-neutral-200">{subtitle}</p>
           <div className="mt-8 flex gap-x-4 sm:justify-center">
-            <Link className="bg-primary text-on-primary inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 shadow-sm hover:bg-primary-dark" to="/sida-1">Sida 1</Link>
-            <a href="#" className="bg-primary text-on-primary inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 shadow-sm hover:bg-primary-dark">Learn more <span class="text-on-primary" aria-hidden="true">→</span></a>
-            <a href="#" className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-neutral-200 ring-1 ring-gray-200/10 hover:ring-gray-200/20">Live demo <span class="text-neutral-400" aria-hidden="true">→</span></a>
+            <Link className="btn btn-filled-dark btn-lg" to="/sida-1">Learn more <span class="ml-1 leading-[1.312rem]" aria-hidden="true"> →</span></Link>
+            <Link className="btn btn-outlined btn-lg" to="/kontakt">Live demo <span class="ml-1 leading-[1.312rem]" aria-hidden="true">→</span></Link>
           </div>
         </div>
       </Container>
