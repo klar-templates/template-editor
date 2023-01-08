@@ -1,18 +1,3 @@
-// function onError(err) {
-//   console.error('Error registering service-worker:', err)
-//   document.getElementById('root').innerText = err.toString()
-// }
-// if ('serviceWorker' in navigator) {
-//   navigator.serviceWorker.register('/service-worker.js', {scope: '/'})
-//     .then(registration => {
-//       window.serviceWorkerRegistration = registration
-//       // use `await window.serviceWorkerRegistration.unregister()` to unregister the service worker
-//     })
-//     .catch(onError)
-// } else {
-//   onError('Browser does not support service workers :-(')
-// }
-
 function setDarkmode() {
   if (!parent.frames.length > 0) {
     return;
@@ -26,13 +11,6 @@ function setDarkmode() {
   }
 }
 
-// const loadTemplateScript = function () {
-//   // Add template site script after Babel has transpiled the JSX code
-//   const templateScript = document.createElement('script');
-//   templateScript.innerHTML = parent.frames.templateJs;
-//   document.querySelector('body').appendChild(templateScript);
-// }
-
 const initSite = function () {
   window.templateNunjucksBlocks = parent.frames.templateNunjucksBlocks;
   window.templateJs = '(function () {' + parent.frames.templateJs + '})()';
@@ -42,18 +20,11 @@ const initSite = function () {
     let content = result.join('');
     content = content.replace(/import (?:.|\n)*?;/gm, '');
     content = Babel.transform(content, { presets: ['react'] }).code;
-    // content = content + '';
     // content = `(function () {\n${content}\nwindow.templateNunjucksBlocks = ${JSON.stringify(window.templateNunjucksBlocks)};\n})();`;
     content = `(function () {\n${content}\nwindow.templateComponents = templateComponents;\n})();`;
-    // console.log(window.templateComponents);
-    // console.log(parent.frames.templateComponentsArr)
-    // window.templateComponents = tempTemplateComponents;
     const s = document.createElement('script');
     s.innerHTML = content;
     document.body.appendChild(s);
-    // console.log(window.templateNunjucksBlocks)
-    // console.log(window.templateComponents)
-    // console.log(content);
   }
   parent.frames.templateComponents = window.templateComponents;
 
@@ -63,10 +34,10 @@ const initSite = function () {
   document.querySelector('head').appendChild(s);
 
   // Add klar-pages-app style after Babel has transpiled the JSX code
-  const style = document.createElement('link');
-  style.href = 'http://localhost:4173/assets/index.00de0542.css';
-  style.rel = 'stylesheet';
-  document.querySelector('head').prepend(style);
+  // const style = document.createElement('link');
+  // style.href = 'http://localhost:4173/assets/index.00de0542.css';
+  // style.rel = 'stylesheet';
+  // document.querySelector('head').prepend(style);
   
   // Add klar-pages-app script after Babel has transpiled the JSX code
   const script = document.createElement('script'); 
@@ -89,7 +60,7 @@ async function renderSite() {
   {
     darkMode: 'class',
     corePlugins: {
-      preflight: false,
+      preflight: true,
     },
     theme: {
       extend: {
