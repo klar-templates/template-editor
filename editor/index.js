@@ -593,6 +593,7 @@ function startEditor(config, templateNunjucksBlocks, templateComponentsArr) {
 }
 
 setDarkmode();
+
 fetch('../config.json')
   .then((response) => response.json())
   .then(async (config) => {
