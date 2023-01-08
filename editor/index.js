@@ -587,7 +587,7 @@ function startEditor(config, templateNunjucksBlocks, templateComponentsArr) {
   site().addEventListener('unload', (event) => {
     const pathname = site().location.pathname;
     if (pathname !== 'blank') {
-      // setEditorSetting('current-page', pathname);
+      setEditorSetting('current-page', pathname);
     }
   });
 }
