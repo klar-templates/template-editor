@@ -564,7 +564,7 @@ function removeEditorSetting(key) {
 
 function setEditorSetting(key, value) {
   const editorSettings = getEditorSettings();
-  editorSettings[key] = value; 
+  editorSettings[key] = value;
   localStorage.setItem('editor-settings', JSON.stringify(editorSettings));
 }
 
@@ -585,7 +585,7 @@ function startEditor(config, templateNunjucksBlocks, templateComponentsArr) {
   site().addEventListener('unload', (event) => {
     const pathname = site().location.pathname;
     if (pathname !== 'blank') {
-      setEditorSetting('current-page', pathname);
+      // setEditorSetting('current-page', pathname);
     }
   });
 }

@@ -4,7 +4,7 @@
   "block_types": [
     {
       "title": "Team - Nunjucks",
-      "name": "team",
+      "name": "team-template",
       "icon": "group",
       "template_engine": "nunjucks",
       "fields": [
@@ -27,7 +27,7 @@
     },
     {
       "title": "Services - Nunjucks",
-      "name": "services",
+      "name": "services-template",
       "icon": "file-text-o",
       "ui:css_selector": "#services",
       "template_engine": "nunjucks",
@@ -173,7 +173,7 @@
   ],
   "data_defaults": {
     "blocks": {
-      "team": {
+      "team-template": {
         "heading": "Our Amazing Team",
         "sub_heading": "Lorem ipsum dolor sit amet consectetur.",
         "team": [
@@ -251,7 +251,7 @@
           }
         }
       },
-      "services": {
+      "services-template": {
         "heading": "Services",
         "sub_heading": "Lorem ipsum dolor sit amet consectetur.",
         "items": [
