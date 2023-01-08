@@ -290,13 +290,15 @@ function setDarkmode() {
 }
 
 async function downloadBundle(e) {
-  // template.data.navigate('/components');
-  renderTemplateBlocks();
-  try {
-    const result = await downloadBundle1(e);
-  } catch(e) {
-    // console.log(e);
-  }
+  template.data.navigate('/components');
+  // renderTemplateBlocks();
+  setTimeout(async () => {
+    try {
+        const result = await downloadBundle1(e);
+    } catch(e) {
+      // console.log(e);
+    }
+  }, 100);
 }
 
 async function downloadBundle1(e) {
