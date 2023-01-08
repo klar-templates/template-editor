@@ -310,6 +310,7 @@ async function downloadBundle1(e) {
   // let css = window.templateCss + '\n' + site().document.getElementsByTagName('style')[1].innerHTML;
   let css = site().document.getElementsByTagName('style')[1].innerHTML;
   // css = 'data:text/plain;charset=utf-8,' + encodeURIComponent(css);
+  console.log(css)
   cssLink.href = css;
   // cssLink.target = '_blank';
   // let uniqueId = (new Date()).getTime();
