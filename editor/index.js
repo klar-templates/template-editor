@@ -307,7 +307,8 @@ async function downloadBundle1(e) {
   //   return;
   // }
   const cssLink = document.querySelector('.js-download-css-bundle');
-  let css = window.templateCss + '\n' + site().document.getElementsByTagName('style')[1].innerHTML;
+  // let css = window.templateCss + '\n' + site().document.getElementsByTagName('style')[1].innerHTML;
+  let css = site().document.getElementsByTagName('style')[1].innerHTML;
   // css = 'data:text/plain;charset=utf-8,' + encodeURIComponent(css);
   cssLink.href = css;
   // cssLink.target = '_blank';
