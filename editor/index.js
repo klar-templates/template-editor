@@ -290,13 +290,16 @@ function setDarkmode() {
 }
 
 async function downloadBundle(e) {
+  const tempUrl = getEditorSetting('current-page');
   template.data.navigate('/components');
   // renderTemplateBlocks();
   setTimeout(async () => {
     try {
         const result = await downloadBundle1(e);
+        template.data.navigate(tempUrl);
     } catch(e) {
-      // console.log(e);
+      console.log(e);
+      template.data.navigate(tempUrl);
     }
   }, 100);
 }
@@ -312,7 +315,7 @@ async function downloadBundle1(e) {
   // let css = window.templateCss + '\n' + site().document.getElementsByTagName('style')[1].innerHTML;
   let css = site().document.getElementsByTagName('style')[1].innerHTML;
   // css = 'data:text/plain;charset=utf-8,' + encodeURIComponent(css);
-  console.log(css)
+  // console.log(css)
   cssLink.href = css;
   // cssLink.target = '_blank';
   // let uniqueId = (new Date()).getTime();
@@ -344,6 +347,7 @@ async function downloadBundle1(e) {
   content = content.replace(/import (?:.|\n)*?;/gm, '');
   content = site().Babel.transform(content, { presets: ['react'] }).code;
   // content = content + '';
+  // console.log(window.templateNunjucksBlocks['team-template'])
   content = `(function () {\nwindow.templateJs = ${JSON.stringify(window.templateJs)};\n\n${content}\nwindow.templateComponents = templateComponents;\nwindow.templateNunjucksBlocks = ${JSON.stringify(window.templateNunjucksBlocks)};\n})();`;
   // content = new Blob([content], {type: 'text/plain'});
   // console.log(content);
