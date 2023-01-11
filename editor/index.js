@@ -348,7 +348,7 @@ async function downloadBundle1(e) {
   content = site().Babel.transform(content, { presets: ['react'] }).code;
   // content = content + '';
   // console.log(window.templateNunjucksBlocks['team-template'])
-  content = `(function () {\nwindow.templateJs = ${JSON.stringify(window.templateJs)};\n\n${content}\nwindow.templateComponents = templateComponents;\nwindow.templateNunjucksBlocks = ${JSON.stringify(window.templateNunjucksBlocks)};\n})();`;
+  content = `(function () {\nwindow.templateJs = ${JSON.stringify(window.templateJs)};\n\n${content}\nwindow.templateComponents = templateComponents;\nwindow.templateNunjucksBlocks = ${JSON.stringify(window.templateNunjucksBlocks).toString().replace('</script>', '<\\\/script>')};\n})();`;
   // content = new Blob([content], {type: 'text/plain'});
   // console.log(content);
   // content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(content);
